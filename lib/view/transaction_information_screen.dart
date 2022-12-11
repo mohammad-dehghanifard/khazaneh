@@ -53,7 +53,7 @@ class TransactionInformation  extends StatelessWidget {
                       children: [
                         Text(AppStrings.todayReceiptTxt,style: theme.headline2,),
                         const SizedBox(width: 8),
-                        Text("0 تومان",style: theme.headline2,),
+                        Text("${transactionController.receiptTodayCalculator()}",style: theme.headline2,),
                       ],
                     ),
                     const SizedBox(height: 8,),
@@ -61,15 +61,15 @@ class TransactionInformation  extends StatelessWidget {
                       children: [
                         Text(AppStrings.monthReceiptTxt,style: theme.headline2,),
                         const SizedBox(width: 8),
-                        Text("0 تومان",style: theme.headline2,),
+                        Text("${transactionController.receiptMothCalculator()}",style: theme.headline2,),
                       ],
                     ),
                     const SizedBox(height: 8,),
                     Row(
                       children: [
-                        Text(AppStrings.monthReceiptTxt,style: theme.headline2,),
+                        Text(AppStrings.yearReceiptTxt,style: theme.headline2,),
                         const SizedBox(width: 8),
-                        Text("0 تومان",style: theme.headline2,),
+                        Text("${transactionController.receiptYearCalculator()}",style: theme.headline2,),
                       ],
                     ),
 
@@ -78,7 +78,7 @@ class TransactionInformation  extends StatelessWidget {
                       child: Divider(color: AppColors.lightGrayColor,height: 10,),
                     ),
 
-                    // دریافتی ها
+                    //پرداختی ها
                      const Text("پرداختی ها : "),
                     const SizedBox(height: 8,),
                     Row(
@@ -93,15 +93,15 @@ class TransactionInformation  extends StatelessWidget {
                       children: [
                         Text(AppStrings.monthPaymentTxt,style: theme.headline2,),
                         const SizedBox(width: 8),
-                        Text("0 تومان",style: theme.headline2,),
+                        Text("${transactionController.paymentMothCalculator()}",style: theme.headline2,),
                       ],
                     ),
                     const SizedBox(height: 8,),
                     Row(
                       children: [
-                        Text(AppStrings.monthPaymentTxt,style: theme.headline2,),
+                        Text(AppStrings.yearPaymentTxt,style: theme.headline2,),
                         const SizedBox(width: 8),
-                        Text("0 تومان",style: theme.headline2,),
+                        Text("${transactionController.paymentYearCalculator()}",style: theme.headline2,),
                       ],
                     ),
                   ],

@@ -88,7 +88,7 @@ class AddOrEditTransaction extends StatelessWidget {
 
                   SizedBox(height: Get.height / 12),
                   ElevatedButton(
-                      onPressed: () => transactionController.addOrEditTransaction(),
+                      onPressed: () => transactionController.addTransaction(),
                       style: ButtonStyle(
                           minimumSize: MaterialStateProperty.all(Size(Get.width, 50)),
                           shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)))
