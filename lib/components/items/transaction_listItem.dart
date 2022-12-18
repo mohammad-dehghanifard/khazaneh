@@ -33,11 +33,10 @@ class TransactionListItem extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          Get.to(AddOrEditTransaction());
-          transactionController.deleteTransaction(transactionEntity);
+          transactionController.updateTransactionNavigation(transactionEntity);
         },
         onLongPress: () {
-          transactionController.deleteTransaction(transactionEntity);
+          transactionController.deleteTransaction(context,transactionEntity);
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

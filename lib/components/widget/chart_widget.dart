@@ -1,6 +1,9 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:khazaneh/components/app_colors.dart';
+import 'package:khazaneh/controller/transaction/transaction_controller.dart';
 
 class AppChart extends StatefulWidget {
   const AppChart({super.key});
@@ -11,7 +14,7 @@ class AppChart extends StatefulWidget {
 
 class PieChart2State extends State {
   int touchedIndex = -1;
-
+  final TransactionController transactionController = Get.put(TransactionController());
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -108,8 +111,8 @@ class PieChart2State extends State {
         case 0:
           return PieChartSectionData(
             color: const Color(0xff0293ee),
-            value: 40,
-            title: '40%',
+            value: transactionController.receiptMothCalculator(),
+            title: '',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -120,8 +123,8 @@ class PieChart2State extends State {
         case 1:
           return PieChartSectionData(
             color: const Color(0xfff8b250),
-            value: 30,
-            title: '30%',
+            value: transactionController.paymentMothCalculator(),
+            title: '',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -132,8 +135,8 @@ class PieChart2State extends State {
         case 2:
           return PieChartSectionData(
             color: const Color(0xff845bef),
-            value: 15,
-            title: '15%',
+            value: transactionController.receiptTodayCalculator(),
+            title: '',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -144,8 +147,8 @@ class PieChart2State extends State {
         case 3:
           return PieChartSectionData(
             color: const Color(0xff13d38e),
-            value: 15,
-            title: '15%',
+            value: transactionController.paymentTodayCalculator(),
+            title: '',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -189,7 +192,7 @@ class Indicator extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          width: 4,
+          width: 8,
         ),
         Text(
           text,

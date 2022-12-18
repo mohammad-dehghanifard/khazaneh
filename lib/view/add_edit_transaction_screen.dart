@@ -13,7 +13,8 @@ import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 
 class AddOrEditTransaction extends StatelessWidget {
-  AddOrEditTransaction({Key? key}) : super(key: key);
+  final bool isEdit;
+  AddOrEditTransaction({Key? key,this.isEdit = false}) : super(key: key);
   final TransactionController transactionController = Get.put(TransactionController());
   @override
   Widget build(BuildContext context) {
@@ -88,7 +89,9 @@ class AddOrEditTransaction extends StatelessWidget {
 
                   SizedBox(height: Get.height / 12),
                   ElevatedButton(
-                      onPressed: () => transactionController.addTransaction(),
+                      onPressed: () {
+                        transactionController.addTransaction();
+                      },
                       style: ButtonStyle(
                           minimumSize: MaterialStateProperty.all(Size(Get.width, 50)),
                           shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)))
