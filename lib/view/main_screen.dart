@@ -6,9 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 import 'package:khazaneh/components/bottom_navigation.dart';
+import 'package:khazaneh/components/widget/navigation_bottom_widget.dart';
+import 'package:khazaneh/constant/app_margin.dart';
 import 'package:khazaneh/constant/app_route.dart';
+import 'package:khazaneh/controller/home/home_controller.dart';
+import 'package:khazaneh/controller/navigation/navigation_controller.dart';
 import 'package:khazaneh/gen/assets.gen.dart';
 import 'package:khazaneh/view/home_screen.dart';
+import 'package:khazaneh/view/profile_screen.dart';
 import '../components/app_colors.dart';
 import 'transaction_information_screen.dart';
 
@@ -16,54 +21,36 @@ import 'transaction_information_screen.dart';
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
 class MainScreen extends StatelessWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  HomeController homeController = Get.put(HomeController());
+  MainScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
-    var selectedPageIndex = 0.obs;
+    final NavigationController navigationController = Get.put(NavigationController());
     return Obx(
       () {
         return Scaffold(
           backgroundColor: AppColors.scaffoldColor,
-          floatingActionButton: FloatingActionButton(
-            onPressed: () => Get.toNamed(RouteAPP.routeAddOrEditTransactionScreen),
-            backgroundColor: AppColors.darkGrayColor,
-            child: const Icon(
-              CupertinoIcons.add,
-              size: 40,
-            ),
-          ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-          bottomNavigationBar: navigationBottom(selectedPageIndex),
           key: scaffoldKey,
-          appBar: selectedPageIndex == 0 ?AppBar(
+          appBar:AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
             automaticallyImplyLeading: false,
             actions: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          scaffoldKey.currentState!.openDrawer();
-                        },
-                        icon: Icon(CupertinoIcons.list_bullet, size: 38),
-                      ),
-                      const Icon(CupertinoIcons.money_dollar, size: 38),
-                      const Icon(CupertinoIcons.info, size: 38),
-                    ],
-                  ),
-                ),
-              )
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: AppMargin.bodyMargin),
+                child: IconButton(
+                    onPressed:() {
+                      scaffoldKey.currentState?.openDrawer();
+                    },
+                    icon: const Icon(CupertinoIcons.list_bullet_indent,color: AppColors.primaryColor,) ),
+              ),
+              Expanded(child: SizedBox(width: Get.width,)),
             ],
-          ) : null,
+          ),
           drawer: Drawer(
-            backgroundColor: AppColors.darkGrayColor,
+            backgroundColor: AppColors.scaffoldColor,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListView(
@@ -71,52 +58,54 @@ class MainScreen extends StatelessWidget {
                   DrawerHeader(child: Assets.icons.logotest.image()),
                   ListTile(
                     title: Text("درباره برنامه",
-                        style: textTheme.headline1!
-                            .apply(color: Colors.white)),
+                        style: textTheme.bodyText2),
                     subtitle: Text(
                       "معرفی برنامه و برنامه نویس خزانه",
-                      style: Theme.of(context).textTheme.subtitle1!.apply(fontSizeFactor: 0.8,color: Colors.white),
+                      style: Theme.of(context).textTheme.subtitle1!.apply(fontSizeFactor: 0.8),
                     ),
+                    onTap: () => Get.toNamed(RouteAPP.creatorMainScreen),
                   ),
                   const Divider(color: AppColors.lightGrayColor),
+                  ListTile(
+                    title: Text("اشتراک گذاری",
+                        style: textTheme.bodyText2),
+                    subtitle: Text(
+                      "خزانه رو به دوستات معرفی کن",
+                      style: Theme.of(context).textTheme.subtitle1!.apply(fontSizeFactor: 0.8),
+                    ),
+                    onTap: () => homeController.shareApp(),
+                  ),
+                  const Divider(height: 0.9,color: AppColors.lightGrayColor),
                   ListTile(
                     title: Text("راهنما",
-                        style: textTheme.headline1!
-                            .apply(color: Colors.white)),
+                        style: textTheme.bodyText2),
                     subtitle: Text(
                       "راهنمای استفاده از برنامه",
-                      style: Theme.of(context).textTheme.subtitle1!.apply(fontSizeFactor: 0.8,color: Colors.white),
+                      style: Theme.of(context).textTheme.subtitle1!.apply(fontSizeFactor: 0.8),
                     ),
+                    onTap: () => Get.toNamed(RouteAPP.routeHelpScreen),
                   ),
-                  const Divider(color: AppColors.lightGrayColor),
-                  ListTile(
-                    title: Text("وب سایت سازنده",
-                        style: textTheme.headline1!
-                            .apply(color: Colors.white)),
-                    subtitle: Text(
-                      "مشاهده وب سایت سازنده برنامه",
-                      style: Theme.of(context).textTheme.subtitle1!.apply(fontSizeFactor: 0.8,color: Colors.white),
-                    ),
-                  ),
-                  const Divider(color: AppColors.lightGrayColor),
-                  ListTile(
-                    title: Text("به اشتراک گذاشتن خزانه",
-                        style: textTheme.headline1!
-                            .apply(color: Colors.white)),
-                    subtitle: Text(
-                      "خزانه رو با دوستات به اشتراک بزار",
-                      style: Theme.of(context).textTheme.subtitle1!.apply(fontSizeFactor: 0.8,color: Colors.white),
-                    ),
-                  ),
+                  const Divider(height: 0.8,color: AppColors.lightGrayColor),
                 ],
               ),
             ),
           ),
-          body: IndexedStack(
-            index: selectedPageIndex.value,
-            children:  [
-              const HomeScreen(),
-              TransactionInformation()
+          body: Stack(
+            children: [
+              Positioned.fill(
+                child: IndexedStack(
+                  index: navigationController.selectedScreen.value,
+                  children: const [
+                    HomeScreen(),
+                    ProfileScreen()
+                  ],
+                ),
+              ),
+               Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: NavigationBottomWidget())
             ],
           ),
         );
@@ -125,5 +114,8 @@ class MainScreen extends StatelessWidget {
   }
 
 }
+
+
+
 
 

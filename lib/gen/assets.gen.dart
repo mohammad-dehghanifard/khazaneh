@@ -26,16 +26,37 @@ class $AssetsIconsGen {
   /// File path: assets/icons/avatar.png
   AssetGenImage get avatar => const AssetGenImage('assets/icons/avatar.png');
 
+  /// File path: assets/icons/instagram.png
+  AssetGenImage get instagram =>
+      const AssetGenImage('assets/icons/instagram.png');
+
   /// File path: assets/icons/logotest.png
   AssetGenImage get logotest =>
       const AssetGenImage('assets/icons/logotest.png');
+
+  /// File path: assets/icons/mywebsite.png
+  AssetGenImage get mywebsite =>
+      const AssetGenImage('assets/icons/mywebsite.png');
+
+  /// File path: assets/icons/telegram.png
+  AssetGenImage get telegram =>
+      const AssetGenImage('assets/icons/telegram.png');
 
   /// File path: assets/icons/wallet.png
   AssetGenImage get wallet => const AssetGenImage('assets/icons/wallet.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [creditCard, financeGrowth, money, avatar, logotest, wallet];
+  List<AssetGenImage> get values => [
+        creditCard,
+        financeGrowth,
+        money,
+        avatar,
+        instagram,
+        logotest,
+        mywebsite,
+        telegram,
+        wallet
+      ];
 }
 
 class Assets {

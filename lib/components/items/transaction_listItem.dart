@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:khazaneh/components/app_colors.dart';
+import 'package:khazaneh/components/widget/price_label.dart';
+import 'package:khazaneh/constant/app_margin.dart';
 import 'package:khazaneh/constant/app_route.dart';
 import 'package:khazaneh/controller/transaction/transaction_controller.dart';
 import 'package:khazaneh/model/transaction/transaction_model.dart';
@@ -24,11 +26,10 @@ class TransactionListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 12,vertical: 20),
+      margin: const EdgeInsets.symmetric(vertical: 16),
       width: Get.width,
-      height: 160,
       decoration: BoxDecoration(
-          color: AppColors.darkGrayColor,
+          color: AppColors.scaffoldColor,
           borderRadius: BorderRadius.circular(12)
       ),
       child: InkWell(
@@ -39,6 +40,53 @@ class TransactionListItem extends StatelessWidget {
           transactionController.deleteTransaction(context,transactionEntity);
         },
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(children: [
+              Container(
+                margin: EdgeInsets.only(right: AppMargin.bodyMargin),
+                width: 89,
+                height: 89,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: transactionEntity.transactionType == TransactionType.receipt? AppColors.greenColor.withOpacity(0.5) : AppColors.redColor.withOpacity(0.5)
+                ),
+                child: transactionEntity.transactionType == TransactionType.receipt? const Icon(Icons.keyboard_arrow_up_sharp,size: 64,) : const Icon(Icons.keyboard_arrow_down_sharp,size: 64,),
+
+              ),
+              const SizedBox(width: 12),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(transactionEntity.title,style: textTheme.headline5),
+                  const SizedBox(height: 6),
+                  Text(transactionEntity.date,style: textTheme.caption)
+                ],
+              ),
+            ],),
+            Padding(
+              padding: const EdgeInsets.only(left: 24),
+              child: Expanded(
+                child: Text(
+                    transactionEntity.price.withPriceLable,
+                    style: textTheme.headline5!.apply(
+                      color: transactionEntity.transactionType == TransactionType.receipt?
+                      AppColors.greenColor :
+                          AppColors.redColor
+                    ),
+                ),
+              ),
+            )
+          ],
+        )
+      ),
+    );
+  }
+}
+
+/*
+Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             //information
@@ -71,7 +119,4 @@ class TransactionListItem extends StatelessWidget {
             )
           ],
         ),
-      ),
-    );
-  }
-}
+ */

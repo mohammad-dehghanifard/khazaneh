@@ -10,10 +10,12 @@ import 'package:khazaneh/components/app_colors.dart';
 import 'package:khazaneh/components/app_service_item.dart';
 import 'package:khazaneh/components/app_strings.dart';
 import 'package:khazaneh/components/bottom_navigation.dart';
+import 'package:khazaneh/constant/app_margin.dart';
 import 'package:khazaneh/constant/app_route.dart';
 import 'package:khazaneh/constant/database_key.dart';
 import 'package:khazaneh/controller/auth/auth_controller.dart';
 import 'package:khazaneh/controller/home/home_controller.dart';
+import 'package:khazaneh/controller/user/user_controller.dart';
 import 'package:khazaneh/gen/assets.gen.dart';
 import 'package:khazaneh/view/add_edit_transaction_screen.dart';
 
@@ -24,92 +26,68 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final HomeController homeController = Get.put(HomeController());
-    return Scaffold(
-      backgroundColor: AppColors.scaffoldColor,
-
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            // user information card
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 36),
-              width: Get.width,
-              height: Get.height / 4,
-              decoration: BoxDecoration(
-                  color: AppColors.darkGrayColor,
-                  borderRadius: BorderRadius.circular(35)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    final UserController userController = Get.put(UserController());
+    return Obx(() {
+      return Scaffold(
+        backgroundColor: AppColors.scaffoldColor,
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 16),
+              // user information card
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  const SizedBox(width: 16),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(75),
                     child:  homeController.box.read(DataBaseKey.saveUserImageKey) != null ?
-                    Image.file(File(homeController.loadUserImage()),width: 150,fit: BoxFit.cover,):
+                    SizedBox(
+                      width: 60,
+                      height: 60,
+                        child: Image.file(File(userController.userImagePath.value),fit: BoxFit.cover,)):
                     Image.asset(
                       Assets.icons.avatar.path,
                       width: 120,
                     ),
                   ),
+                  const SizedBox(width: 8),
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(homeController.loadUserName()),
-                      const SizedBox(height: 8),
+                      Text("${userController.userName.value} عزیز ",style: Theme.of(context).textTheme.subtitle1,),
+                      const SizedBox(height: 2),
                       Text(
-                        "تعداد تراکنش ها : 0",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText1!
-                            .apply(color: Colors.white),
+                          "به اپلیکیشن خزانه خوش آمدید!",
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle1
                       )
                     ],
                   )
                 ],
               ),
-            ),
+              const SizedBox(height: 48),
 
-            // app service item
-            SizedBox(
-              width: Get.width,
-              height: Get.height / 2.2,
-              child: GridView.count(
-                primary: false,
-                padding: const EdgeInsets.symmetric(horizontal: 35),
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 15,
-                crossAxisCount: 2,
+              // app service item
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  AppServicesItem(
-                    title: AppStrings.recordTransactionTxt,
-                    icon: Assets.icons.creditCard.path,
-                    comingSoon: false,
-                    pathUrl: RouteAPP.routeAddOrEditTransactionScreen,
-                  ),
-                  AppServicesItem(
-                      title: AppStrings.transactionListTxt,
-                      icon: Assets.icons.wallet.path,
-                      comingSoon: false,
-                      pathUrl: RouteAPP.routeTransactionListScreen,
-                  ),
-                  AppServicesItem(
-                      title: AppStrings.statisticsTxt,
-                      icon: Assets.icons.financeGrowth.path,
-                      comingSoon: false,
-                      pathUrl: RouteAPP.routeTransactionInformationScreen,
-                  ),
-                  AppServicesItem(
-                      title: "مدیریت اقساط",
-                      icon: Assets.icons.money.path,
-                      comingSoon: true,
-                      pathUrl: null,
-                  ),
-                ],
-              ),
-            )
-          ],
+                  AppServicesItem(title: "افزودن تراکنش جدید",description: "تراکنش های خودتون رو ذخیره کنید و به راحتی مدیریت کنید!", icon: Assets.icons.creditCard.path, comingSoon: false,color: AppColors.primaryColor, pathUrl: RouteAPP.routeAddOrEditTransactionScreen),
+                  AppServicesItem(title: "لیست تراکنش ها",description: 'لیستی از تراکنش هایی که قبلا اضافه کرده اید را مشاهده کنید', icon: Assets.icons.wallet.path, comingSoon: false,color: AppColors.greenColor, pathUrl: RouteAPP.routeTransactionListScreen),
+                ],),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  AppServicesItem(title: "آمار تراکنش ها",description: 'آمار کامل و دقیق از تراکنش هایی خود را مشاهده کنید!', icon: Assets.icons.financeGrowth.path, comingSoon: false,color: AppColors.yellowColor, pathUrl: RouteAPP.routeTransactionInformationScreen),
+                  AppServicesItem(title: "مدیریت اقساط",description: 'اقساط ماهانه خود را به سادگی مدیریت کنید!', icon: Assets.icons.wallet.path, comingSoon: true,color: AppColors.redColor, pathUrl: null),
+                ],),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

@@ -19,8 +19,8 @@ class PieChart2State extends State {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 1.3,
-      child: Card(
-        color: AppColors.darkGrayColor,
+      child: Container(
+        color: AppColors.scaffoldColor,
         child: Row(
           children: <Widget>[
             const SizedBox(
@@ -60,36 +60,22 @@ class PieChart2State extends State {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const <Widget>[
                 Indicator(
-                  color: Color(0xff0293ee),
+                  color: AppColors.greenColor,
+                  textColor: AppColors.textColor,
                   text: 'دریافتی این ماه',
-                  isSquare: true,
+                  isSquare: false,
                 ),
                 SizedBox(
                   height: 6,
                 ),
                 Indicator(
-                  color: Color(0xfff8b250),
+                  color: AppColors.redColor,
                   text: 'پرداختی این ماه',
-                  isSquare: true,
+                  textColor: AppColors.textColor,
+                  isSquare: false,
                 ),
                 SizedBox(
-                  height: 6,
-                ),
-                Indicator(
-                  color: Color(0xff845bef),
-                  text: 'دریافتی امروز',
-                  isSquare: true,
-                ),
-                SizedBox(
-                  height: 6,
-                ),
-                Indicator(
-                  color: Color(0xff13d38e),
-                  text: 'پرداختی امروز',
-                  isSquare: true,
-                ),
-                SizedBox(
-                  height: 18,
+                  height: 64,
                 ),
               ],
             ),
@@ -103,14 +89,14 @@ class PieChart2State extends State {
   }
 
   List<PieChartSectionData> showingSections() {
-    return List.generate(4, (i) {
+    return List.generate(2, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 25.0 : 16.0;
       final radius = isTouched ? 60.0 : 50.0;
       switch (i) {
         case 0:
           return PieChartSectionData(
-            color: const Color(0xff0293ee),
+            color: AppColors.greenColor,
             value: transactionController.receiptMothCalculator(),
             title: '',
             radius: radius,
@@ -122,7 +108,7 @@ class PieChart2State extends State {
           );
         case 1:
           return PieChartSectionData(
-            color: const Color(0xfff8b250),
+            color: AppColors.redColor,
             value: transactionController.paymentMothCalculator(),
             title: '',
             radius: radius,
@@ -132,30 +118,7 @@ class PieChart2State extends State {
               color: const Color(0xffffffff),
             ),
           );
-        case 2:
-          return PieChartSectionData(
-            color: const Color(0xff845bef),
-            value: transactionController.receiptTodayCalculator(),
-            title: '',
-            radius: radius,
-            titleStyle: TextStyle(
-              fontSize: fontSize,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xffffffff),
-            ),
-          );
-        case 3:
-          return PieChartSectionData(
-            color: const Color(0xff13d38e),
-            value: transactionController.paymentTodayCalculator(),
-            title: '',
-            radius: radius,
-            titleStyle: TextStyle(
-              fontSize: fontSize,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xffffffff),
-            ),
-          );
+
         default:
           throw Error();
       }

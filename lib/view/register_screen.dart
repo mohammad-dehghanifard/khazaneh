@@ -33,27 +33,32 @@ class RegisterScreen extends StatelessWidget {
               Stack(
                 children: [
                   authController.userImagePath.isEmpty?
-                  Image.asset("assets/icons/avatar.png",width: 250,):
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(120),
-                      child: Image.file(File(authController.userImagePath.value),width: 250,fit: BoxFit.cover,)),
+                  Container(
+                    width: 250,
+                    height: 250,
+                    decoration: BoxDecoration(
+                      color: AppColors.grayColor,
+                      shape: BoxShape.circle,
+                      border: Border.all(color: AppColors.redColor,width: 2)
+                    ),
+                      ):
+                  SizedBox(
+                    width: 250,
+                    height: 250,
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(120),
+                        child: Image.file(File(authController.userImagePath.value),fit: BoxFit.cover,)),
+                  ),
                   Positioned(
                     bottom: 15,
                     left: 100,
                     right: 100,
                     child: InkWell(
                       onTap: () => authController.pickAndSaveImage(ImageSource.gallery),
-                      child: Container(
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: AppColors.scaffoldColor,
-                        ),
-                        child: const Icon(
-                          CupertinoIcons.add,
-                          size: 40,
-                          color: Colors.white,
-                        ),
+                      child: const Icon(
+                        Icons.camera_alt,
+                        size: 40,
+
                       ),
                     ),
                   )
@@ -69,7 +74,7 @@ class RegisterScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: TextField(
                   controller: authController.usernameController,
-                  cursorColor: Colors.white,
+                  cursorColor: AppColors.primaryColor,
                   decoration: InputDecoration(
                     hintText: "نام و نام خانوادگی",
                     hintStyle: theme.subtitle1,

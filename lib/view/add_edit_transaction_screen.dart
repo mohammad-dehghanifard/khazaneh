@@ -20,7 +20,7 @@ class AddOrEditTransaction extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
       return Scaffold(
-        appBar: secondaryAppBar(),
+        appBar: secondaryAppBar(pageTitle: isEdit?'ویرایش تراکنش':'اضافه کردن تراکنش جدید'),
         backgroundColor: AppColors.scaffoldColor,
         body: SingleChildScrollView(
           child:  Padding(
@@ -32,56 +32,56 @@ class AddOrEditTransaction extends StatelessWidget {
                   Assets.icons.logotest.image(width: 230),
                   TextField(
                     controller: transactionController.transactionTitleController,
-                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                         hintText: "عنوان را وارد کنید",
-                        hintStyle: Theme.of(context).textTheme.subtitle1!.apply(color: Colors.white),
-                        fillColor: AppColors.darkGrayColor
+                        hintStyle: Theme.of(context).textTheme.subtitle1,
                     ),
                   ),
                   const SizedBox(height: 28),
                   TextField(
                     controller: transactionController.transactionPriceController,
-                    style: const TextStyle(color: Colors.white),
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                         hintText: "مبلغ را وارد کنید",
-                        hintStyle: Theme.of(context).textTheme.subtitle1!.apply(color: Colors.white),
+                        hintStyle: Theme.of(context).textTheme.subtitle1,
                         fillColor: AppColors.darkGrayColor
                     ),
                   ),
                   const SizedBox(height: 28),
                   //قسمت تاریخ
-                  Container(
-                    padding: const EdgeInsets.only(left: 12,right: 12),
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: AppColors.darkGrayColor,
-                      borderRadius: BorderRadius.circular(6)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text('تاریخ تراکنش : '),
-                        TextButton(
-                            onPressed: () => transactionController.timePicker(context),
-                            style: const ButtonStyle(
-                              overlayColor: MaterialStatePropertyAll(AppColors.lightGrayColor)
-                            ),
-                            child: Text(transactionController.transactionTime.value,
-                              style: textTheme.subtitle1!.apply(color: Colors.white),))
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      Expanded(child: TextField(
+                        controller: transactionController.transactionTimeController,
+                        decoration: const InputDecoration(
+                          hintText: 'تاریخ را وارد کنید'
+                        ),
+                      )),
+                      Container(
+                        width: 85,
+                        height: 78,
+                        margin: const EdgeInsets.symmetric(horizontal: 12),
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryColor,
+                          borderRadius: BorderRadius.circular(8)
+                        ),
+                        child: IconButton(
+                          onPressed: () => transactionController.timePicker(context),
+                          icon: const Icon(CupertinoIcons.calendar_badge_plus,size: 56,color: Colors.white,),
+                        ),
+                      )
+                    ],
                   ),
                   const SizedBox(height: 28),
+                  // انتخاب نوع تراکنش
                   CupertinoSlidingSegmentedControl<TransactionType>(
-                    children: const {
-                      TransactionType.receipt : Text("دریافتی"),
-                      TransactionType.payment : Text("پرداختی"),
+                    children:  {
+                      TransactionType.receipt : Text("دریافتی",style: textTheme.bodyText2!.apply(color: transactionController.selectedTransactionType.value == TransactionType.receipt? Colors.white : AppColors.textColor ),),
+                      TransactionType.payment : Text("پرداختی",style: textTheme.bodyText2!.apply(color: transactionController.selectedTransactionType.value == TransactionType.payment? Colors.white : AppColors.textColor )),
                     },
                     groupValue: transactionController.selectedTransactionType.value,
-                    backgroundColor: AppColors.darkGrayColor,
-                    thumbColor: AppColors.appBtnColor,
+                    backgroundColor: Colors.white,
+                    thumbColor: transactionController.selectedTransactionType == TransactionType.receipt? AppColors.greenColor : AppColors.redColor,
                     onValueChanged: (value) {
                       transactionController.selectedTransactionType.value = value!;
                     },),
@@ -94,9 +94,9 @@ class AddOrEditTransaction extends StatelessWidget {
                       },
                       style: ButtonStyle(
                           minimumSize: MaterialStateProperty.all(Size(Get.width, 50)),
-                          shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)))
+                          shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)))
                       ),
-                      child: const Text(AppStrings.addTransactionTxt)),
+                      child:  Text(isEdit?AppStrings.editTransactionTxt:AppStrings.addTransactionTxt)),
 
                 ],
               ),

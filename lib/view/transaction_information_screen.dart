@@ -8,6 +8,8 @@ import 'package:khazaneh/components/app_strings.dart';
 import 'package:khazaneh/components/appbars/secondary_appbar.dart';
 import 'package:khazaneh/components/bottom_navigation.dart';
 import 'package:khazaneh/components/widget/chart_widget.dart';
+import 'package:khazaneh/components/widget/price_label.dart';
+import 'package:khazaneh/constant/app_margin.dart';
 import 'package:khazaneh/controller/transaction/transaction_controller.dart';
 import 'package:khazaneh/view/add_edit_transaction_screen.dart';
 
@@ -20,95 +22,148 @@ class TransactionInformation  extends StatelessWidget {
     final theme = Theme.of(context).textTheme;
     return Scaffold(
       backgroundColor: AppColors.scaffoldColor,
-      appBar: secondaryAppBar(),
-      body: Column(
-        children: [
-          Container(
-            width: Get.width,
-            height: 250,
-            margin: const EdgeInsets.symmetric(horizontal: 12,vertical: 24),
-            decoration: const BoxDecoration(
-              color: AppColors.darkGrayColor,
-              borderRadius: BorderRadius.all(Radius.circular(16))
+      appBar: secondaryAppBar(pageTitle: 'آمار تراکنش ها'),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: AppMargin.bodyMargin),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: Get.width,
+              height: 230,
+              margin: const EdgeInsets.symmetric(horizontal: 12,vertical: 24),
+              decoration: const BoxDecoration(
+                color: AppColors.scaffoldColor,
+                borderRadius: BorderRadius.all(Radius.circular(16))
+              ),
+              child: const AppChart(),
             ),
-            child: const AppChart(),
-          ),
-
-          Expanded(
-              child: Container(
-                padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-                margin: const EdgeInsets.fromLTRB(16,0,16,42),
-                width: Get.width,
-                decoration: BoxDecoration(
-                  color: AppColors.darkGrayColor,
-                  borderRadius: BorderRadius.circular(12)
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children:  [
-                    // دریافتی ها
-                    const Text("دریافتی ها :"),
-                    const SizedBox(height: 8,),
-                    Row(
-                      children: [
-                        Text(AppStrings.todayReceiptTxt,style: theme.headline2,),
-                        const SizedBox(width: 8),
-                        Text("${transactionController.receiptTodayCalculator()}",style: theme.headline2,),
-                      ],
+            Text('آمار کامل تراکنش ها',style: theme.headline5!.apply(color: AppColors.primaryColor)),
+            const SizedBox(height: 16),
+            // دریافتی ها
+            Container(
+              width: Get.width,
+              height: 191,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),blurRadius: 10,offset: const Offset(0, 4)
+                  )
+                ]
+              ),
+              child: Column(
+                children: [
+                  const SizedBox(height: 12),
+                  Text('دریافتی ها',style: theme.headline5!.apply(color: AppColors.primaryColor)),
+                  const SizedBox(height: 8),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    child: Divider(height: 4,color: AppColors.grayColor),
+                  ),
+                  const SizedBox(height: 8),
+                  RichText(
+                      text: TextSpan(
+                          text: AppStrings.todayReceiptTxt,style: theme.headline5,
+                        children: [
+                          TextSpan(
+                            text: ' ${transactionController.receiptTodayCalculator()}'.withPriceLable,
+                            style: theme.headline5!.apply(color: AppColors.grayColor)
+                          )
+                        ]
+                      ),
+                  ),
+                  const SizedBox(height: 12),
+                  RichText(
+                      text: TextSpan(
+                          text: AppStrings.monthReceiptTxt,style: theme.headline5,
+                        children: [
+                          TextSpan(
+                            text: ' ${transactionController.receiptMothCalculator()}'.withPriceLable,
+                            style: theme.headline5!.apply(color: AppColors.grayColor)
+                          )
+                        ]
+                      ),
+                  ),
+                  const SizedBox(height: 12),
+                  RichText(
+                    text: TextSpan(
+                        text: AppStrings.yearReceiptTxt,style: theme.headline5,
+                        children: [
+                          TextSpan(
+                              text: ' ${transactionController.receiptYearCalculator()}'.withPriceLable,
+                              style: theme.headline5!.apply(color: AppColors.grayColor)
+                          )
+                        ]
                     ),
-                    const SizedBox(height: 8,),
-                    Row(
-                      children: [
-                        Text(AppStrings.monthReceiptTxt,style: theme.headline2,),
-                        const SizedBox(width: 8),
-                        Text("${transactionController.receiptMothCalculator()}",style: theme.headline2,),
-                      ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 24),
+            Container(
+              width: Get.width,
+              height: 191,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black.withOpacity(0.3),blurRadius: 10,offset: const Offset(0, 4)
+                    )
+                  ]
+              ),
+              child: Column(
+                children: [
+                  const SizedBox(height: 12),
+                  Text('پرداختی ها',style: theme.headline5!.apply(color: AppColors.primaryColor)),
+                  const SizedBox(height: 8),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    child: Divider(height: 4,color: AppColors.grayColor),
+                  ),
+                  const SizedBox(height: 8),
+                  RichText(
+                    text: TextSpan(
+                        text: AppStrings.todayPaymentTxt,style: theme.headline5,
+                        children: [
+                          TextSpan(
+                              text: ' ${transactionController.paymentTodayCalculator()}'.withPriceLable,
+                              style: theme.headline5!.apply(color: AppColors.grayColor)
+                          )
+                        ]
                     ),
-                    const SizedBox(height: 8,),
-                    Row(
-                      children: [
-                        Text(AppStrings.yearReceiptTxt,style: theme.headline2,),
-                        const SizedBox(width: 8),
-                        Text("${transactionController.receiptYearCalculator()}",style: theme.headline2,),
-                      ],
+                  ),
+                  const SizedBox(height: 12),
+                  RichText(
+                    text: TextSpan(
+                        text: AppStrings.monthPaymentTxt,style: theme.headline5,
+                        children: [
+                          TextSpan(
+                              text: ' ${transactionController.paymentMothCalculator()}'.withPriceLable,
+                              style: theme.headline5!.apply(color: AppColors.grayColor)
+                          )
+                        ]
                     ),
-
-                    const Padding(
-                      padding: EdgeInsets.all(6),
-                      child: Divider(color: AppColors.lightGrayColor,height: 10,),
+                  ),
+                  const SizedBox(height: 12),
+                  RichText(
+                    text: TextSpan(
+                        text: AppStrings.yearPaymentTxt,style: theme.headline5,
+                        children: [
+                          TextSpan(
+                              text: ' ${transactionController.paymentYearCalculator()}'.withPriceLable,
+                              style: theme.headline5!.apply(color: AppColors.grayColor)
+                          )
+                        ]
                     ),
-
-                    //پرداختی ها
-                     const Text("پرداختی ها : "),
-                    const SizedBox(height: 8,),
-                    Row(
-                      children: [
-                        Text(AppStrings.todayPaymentTxt,style: theme.headline2,),
-                        const SizedBox(width: 8),
-                        Text("${transactionController.paymentTodayCalculator()}",style: theme.headline2,),
-                      ],
-                    ),
-                    const SizedBox(height: 8,),
-                    Row(
-                      children: [
-                        Text(AppStrings.monthPaymentTxt,style: theme.headline2,),
-                        const SizedBox(width: 8),
-                        Text("${transactionController.paymentMothCalculator()}",style: theme.headline2,),
-                      ],
-                    ),
-                    const SizedBox(height: 8,),
-                    Row(
-                      children: [
-                        Text(AppStrings.yearPaymentTxt,style: theme.headline2,),
-                        const SizedBox(width: 8),
-                        Text("${transactionController.paymentYearCalculator()}",style: theme.headline2,),
-                      ],
-                    ),
-                  ],
-                ),
-              )
-          )
-        ],
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

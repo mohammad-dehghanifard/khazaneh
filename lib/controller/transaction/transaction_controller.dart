@@ -16,9 +16,8 @@ import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 class TransactionController extends GetxController {
   final TextEditingController transactionTitleController = TextEditingController();
   final TextEditingController transactionPriceController = TextEditingController();
+  final TextEditingController transactionTimeController = TextEditingController();
   var selectedTransactionType = TransactionType.receipt.obs;
-  RxString transactionTime = 'انتخاب تاریخ'.obs;
-
   Rx<TransactionEntity> transactionEntity = TransactionEntity().obs;
 
   String year = Jalali.now().year.toString();
@@ -34,7 +33,7 @@ class TransactionController extends GetxController {
     //مقدار دهی اولیه فیلد ها
     transactionEntity.value.title = transactionTitleController.text;
     transactionEntity.value.price = transactionPriceController.text;
-    transactionEntity.value.date = transactionTime.value;
+    transactionEntity.value.date = transactionTimeController.text;
     transactionEntity.value.transactionType = selectedTransactionType.value;
 
     if(transactionTitleController.text.isEmpty || transactionPriceController.text.isEmpty){
@@ -43,25 +42,15 @@ class TransactionController extends GetxController {
     }
     //ادیت کردن ایتم
     else if(transactionEntity.value.isInBox){
-
       transactionEntity.value.save();
       transactionEntity.value = TransactionEntity();
-
-      transactionTitleController.clear();
-      transactionPriceController.clear();
-      selectedTransactionType.value = TransactionType.receipt;
-      transactionTime.value = 'انتخاب تاریخ';
-      Get.back();
-
+      clearForm();
     }
     // اضافه کردن ایتم
     else{
       transactionHiveBox.add(transactionEntity.value);
-      transactionTitleController.clear();
-      transactionPriceController.clear();
-      transactionTime.value = 'انتخاب تاریخ';
-      selectedTransactionType.value = TransactionType.receipt;
-      Get.back();
+      transactionEntity.value = TransactionEntity();
+      clearForm();
     }
 
   }
@@ -71,7 +60,7 @@ class TransactionController extends GetxController {
     transactionTitleController.text = transactionItem.title;
     transactionPriceController.text = transactionItem.price;
     selectedTransactionType.value = transactionItem.transactionType;
-    transactionTime.value = transactionItem.date;
+    transactionTimeController.text = transactionItem.date;
   }
   deleteTransaction(BuildContext context,TransactionEntity transactionEntity){
     showDialog(
@@ -95,6 +84,7 @@ class TransactionController extends GetxController {
         },
     );
   }
+  // انتخاب تاریخ
   timePicker(BuildContext context) async {
     var selectedTime = await showPersianDatePicker(
       context: context,
@@ -105,7 +95,15 @@ class TransactionController extends GetxController {
     String years = selectedTime!.year.toString().length == 1 ? '0${selectedTime.year.toString()}' : selectedTime.year.toString();
     String moth = selectedTime.month.toString().length == 1 ? '0${selectedTime.month.toString()}' : selectedTime.month.toString();
     String day = selectedTime.day.toString().length == 1 ? '0${selectedTime.day.toString()}' : selectedTime.day.toString();
-    transactionTime.value = '$years/$moth/$day';
+    transactionTimeController.text = '$years/$moth/$day';
+  }
+  clearForm(){
+    transactionTitleController.clear();
+    transactionPriceController.clear();
+    transactionTimeController.clear();
+    selectedTransactionType.value = TransactionType.receipt;
+    Get.back();
+
   }
 
   // محاسبه دریافتی ها و پرداختی ها
