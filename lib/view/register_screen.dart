@@ -7,17 +7,20 @@ import 'package:image_picker/image_picker.dart';
 import 'package:khazaneh/components/app_colors.dart';
 import 'package:khazaneh/components/app_strings.dart';
 import 'package:khazaneh/constant/app_route.dart';
+import 'package:khazaneh/constant/database_key.dart';
 import 'package:khazaneh/controller/auth/auth_controller.dart';
+import 'package:khazaneh/controller/user/user_controller.dart';
 import 'package:khazaneh/view/home_screen.dart';
 import '../gen/assets.gen.dart';
 
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({Key? key}) : super(key: key);
   final AuthController authController = Get.put(AuthController());
+  final UserController userController = Get.put(UserController());
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context).textTheme;
+    var textTheme = Theme.of(context).textTheme;
     return Scaffold(
       backgroundColor: AppColors.scaffoldColor,
       body: SingleChildScrollView(
@@ -77,18 +80,25 @@ class RegisterScreen extends StatelessWidget {
                   cursorColor: AppColors.primaryColor,
                   decoration: InputDecoration(
                     hintText: "نام و نام خانوادگی",
-                    hintStyle: theme.subtitle1,
+                    hintStyle: textTheme.subtitle1,
                   ),
                 ),
               ),
               SizedBox(height: Get.height / 3.5),
               //Btn
-              ElevatedButton(
-                  onPressed: () => authController.authSuccess(),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16 , vertical: 6),
-                    child: Text("ثبت نام",),
-                  )),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: ElevatedButton(
+                    onPressed: () {
+                      authController.authSuccess();
+                      userController.userName.value = userController.box.read(DataBaseKey.saveUsernameKey);
+                      userController.userImagePath.value = userController.box.read(DataBaseKey.saveUserImageKey);
+                    },
+                    style: ButtonStyle(
+                      minimumSize: MaterialStatePropertyAll(Size(Get.width,50))
+                    ),
+                    child: Text("ثبت نام",style: textTheme.bodyText2!.apply(color: Colors.white,fontSizeFactor: 1.4),)),
+              ),
             ],
           ),
         ),

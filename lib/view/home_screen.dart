@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                         child: Image.file(File(userController.userImagePath.value),fit: BoxFit.cover,)):
                     Image.asset(
                       Assets.icons.avatar.path,
-                      width: 120,
+                      width: 60,
                     ),
                   ),
                   const SizedBox(width: 8),

@@ -69,7 +69,7 @@ class TransactionListItem extends StatelessWidget {
               padding: const EdgeInsets.only(left: 24),
               child: Expanded(
                 child: Text(
-                    transactionEntity.price.withPriceLable,
+                    transactionEntity.price.separator.withPriceLable,
                     style: textTheme.headline5!.apply(
                       color: transactionEntity.transactionType == TransactionType.receipt?
                       AppColors.greenColor :
@@ -85,38 +85,3 @@ class TransactionListItem extends StatelessWidget {
   }
 }
 
-/*
-Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            //information
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children:  [
-                   Text(transactionEntity.title),
-                  const SizedBox(height: 12),
-                  Text("تومان  ${transactionEntity.price}",style: textTheme.headline1,),
-                  const SizedBox(height: 12),
-                  Text("تاریخ : ${transactionEntity.date}",style: textTheme.bodyText1!.apply(color: Colors.white,fontSizeFactor: 0.9),),
-
-                ],
-              ),
-            ),
-
-            Container(
-              margin: const EdgeInsets.only(left: 16),
-              width: 80,
-              height: 80,
-              decoration: const BoxDecoration(
-                  color: AppColors.lightGrayColor,
-                  shape: BoxShape.circle
-              ),
-              child: transactionEntity.transactionType == TransactionType.receipt?
-              const Icon(Icons.keyboard_arrow_up_sharp,color: AppColors.greenColor,size: 80,) :
-              const Icon(Icons.keyboard_arrow_down_sharp,color: AppColors.redColor,size: 80,),
-            )
-          ],
-        ),
- */

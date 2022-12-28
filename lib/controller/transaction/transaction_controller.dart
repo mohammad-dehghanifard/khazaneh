@@ -32,13 +32,12 @@ class TransactionController extends GetxController {
   addTransaction(){
     //مقدار دهی اولیه فیلد ها
     transactionEntity.value.title = transactionTitleController.text;
-    transactionEntity.value.price = transactionPriceController.text;
+    transactionEntity.value.price = int.parse(transactionPriceController.text);
     transactionEntity.value.date = transactionTimeController.text;
     transactionEntity.value.transactionType = selectedTransactionType.value;
 
     if(transactionTitleController.text.isEmpty || transactionPriceController.text.isEmpty){
       showSnackBar(title: 'خطا',content: 'لطفا تمام اطلاعات تراکنش را وارد کنید!');
-
     }
     //ادیت کردن ایتم
     else if(transactionEntity.value.isInBox){
@@ -58,7 +57,7 @@ class TransactionController extends GetxController {
     transactionEntity.value = transactionItem;
     Get.to(AddOrEditTransaction(isEdit: true));
     transactionTitleController.text = transactionItem.title;
-    transactionPriceController.text = transactionItem.price;
+    transactionPriceController.text = transactionItem.price.toString();
     selectedTransactionType.value = transactionItem.transactionType;
     transactionTimeController.text = transactionItem.date;
   }
@@ -110,59 +109,59 @@ class TransactionController extends GetxController {
   String getDate(){
     return '$year/$moth/$toDay';
   }
-  double paymentTodayCalculator(){
-    double result = 0;
+  int paymentTodayCalculator(){
+    int result = 0;
     for(var value in transactionHiveBox.values){
       if(value.date == getDate() && value.transactionType == TransactionType.payment){
-        result += double.parse(value.price);
+        result += value.price;
       }
     }
     return result;
   }
-  double receiptTodayCalculator(){
-    double result = 0;
+  int receiptTodayCalculator(){
+    int result = 0;
     for(var value in transactionHiveBox.values){
       if(value.date == getDate() && value.transactionType == TransactionType.receipt){
-        result += double.parse(value.price);
+        result += value.price;
       }
     }
     return result;
   }
 
-  double paymentMothCalculator(){
-    double result = 0;
+  int paymentMothCalculator(){
+    int result = 0;
     for(var value in transactionHiveBox.values){
       if(value.date.substring(5,7) == moth && value.transactionType == TransactionType.payment){
-        result += double.parse(value.price);
+        result += value.price;
       }
     }
     return result;
   }
-  double receiptMothCalculator(){
-    double result = 0;
+  int receiptMothCalculator(){
+    int result = 0;
     for(var value in transactionHiveBox.values){
       if(value.date.substring(5,7) == moth && value.transactionType == TransactionType.receipt){
-        result += double.parse(value.price);
+        result += value.price;
       }
     }
     return result;
   }
 
-  double paymentYearCalculator(){
-    double result = 0;
+  int paymentYearCalculator(){
+    int result = 0;
     for(var value in transactionHiveBox.values){
       if(value.date.substring(0,4) == year && value.transactionType == TransactionType.payment){
-        result += double.parse(value.price);
+        result += value.price;
       }
     }
     return result;
 
   }
-  double receiptYearCalculator(){
-    double result = 0;
+  int receiptYearCalculator(){
+    int result = 0;
     for(var value in transactionHiveBox.values){
       if(value.date.substring(0,4) == year && value.transactionType == TransactionType.receipt){
-        result += double.parse(value.price);
+        result += value.price;
       }
     }
     return result;

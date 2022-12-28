@@ -68,7 +68,7 @@ class TransactionInformation  extends StatelessWidget {
                           text: AppStrings.todayReceiptTxt,style: theme.headline5,
                         children: [
                           TextSpan(
-                            text: ' ${transactionController.receiptTodayCalculator()}'.withPriceLable,
+                            text: ' ${transactionController.receiptTodayCalculator().separator}'.withPriceLable,
                             style: theme.headline5!.apply(color: AppColors.grayColor)
                           )
                         ]
@@ -80,7 +80,7 @@ class TransactionInformation  extends StatelessWidget {
                           text: AppStrings.monthReceiptTxt,style: theme.headline5,
                         children: [
                           TextSpan(
-                            text: ' ${transactionController.receiptMothCalculator()}'.withPriceLable,
+                            text: ' ${transactionController.receiptMothCalculator().separator}'.withPriceLable,
                             style: theme.headline5!.apply(color: AppColors.grayColor)
                           )
                         ]
@@ -92,7 +92,7 @@ class TransactionInformation  extends StatelessWidget {
                         text: AppStrings.yearReceiptTxt,style: theme.headline5,
                         children: [
                           TextSpan(
-                              text: ' ${transactionController.receiptYearCalculator()}'.withPriceLable,
+                              text: ' ${transactionController.receiptYearCalculator().separator}'.withPriceLable,
                               style: theme.headline5!.apply(color: AppColors.grayColor)
                           )
                         ]
@@ -129,7 +129,7 @@ class TransactionInformation  extends StatelessWidget {
                         text: AppStrings.todayPaymentTxt,style: theme.headline5,
                         children: [
                           TextSpan(
-                              text: ' ${transactionController.paymentTodayCalculator()}'.withPriceLable,
+                              text: ' ${transactionController.paymentTodayCalculator().separator}'.withPriceLable,
                               style: theme.headline5!.apply(color: AppColors.grayColor)
                           )
                         ]
@@ -141,7 +141,7 @@ class TransactionInformation  extends StatelessWidget {
                         text: AppStrings.monthPaymentTxt,style: theme.headline5,
                         children: [
                           TextSpan(
-                              text: ' ${transactionController.paymentMothCalculator()}'.withPriceLable,
+                              text: ' ${transactionController.paymentMothCalculator().separator}'.withPriceLable,
                               style: theme.headline5!.apply(color: AppColors.grayColor)
                           )
                         ]
@@ -153,7 +153,7 @@ class TransactionInformation  extends StatelessWidget {
                         text: AppStrings.yearPaymentTxt,style: theme.headline5,
                         children: [
                           TextSpan(
-                              text: ' ${transactionController.paymentYearCalculator()}'.withPriceLable,
+                              text: ' ${transactionController.paymentYearCalculator().separator}'.withPriceLable,
                               style: theme.headline5!.apply(color: AppColors.grayColor)
                           )
                         ]

@@ -18,7 +18,7 @@ class TransactionEntityAdapter extends TypeAdapter<TransactionEntity> {
     };
     return TransactionEntity()
       ..title = fields[0] as String
-      ..price = fields[1] as String
+      ..price = fields[1] as int
       ..date = fields[2] as String
       ..transactionType = fields[3] as TransactionType;
   }

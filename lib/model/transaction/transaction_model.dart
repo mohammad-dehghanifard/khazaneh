@@ -7,7 +7,7 @@ class TransactionEntity extends HiveObject {
   @HiveField(0)
   String title = '';
   @HiveField(1)
-  String price = "0";
+  int price = 0;
   @HiveField(2)
   String date = '';
   @HiveField(3)

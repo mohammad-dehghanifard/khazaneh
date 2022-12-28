@@ -97,7 +97,7 @@ class PieChart2State extends State {
         case 0:
           return PieChartSectionData(
             color: AppColors.greenColor,
-            value: transactionController.receiptMothCalculator(),
+            value: transactionController.receiptMothCalculator().toDouble(),
             title: '',
             radius: radius,
             titleStyle: TextStyle(
@@ -109,7 +109,7 @@ class PieChart2State extends State {
         case 1:
           return PieChartSectionData(
             color: AppColors.redColor,
-            value: transactionController.paymentMothCalculator(),
+            value: transactionController.paymentMothCalculator().toDouble(),
             title: '',
             radius: radius,
             titleStyle: TextStyle(

@@ -7,10 +7,11 @@ import 'package:khazaneh/components/widget/show_snack_bar.dart';
 import 'package:khazaneh/constant/database_key.dart';
 
 class UserController extends GetxController{
+  final box = GetStorage();
   final TextEditingController changeUserNameController = TextEditingController();
   RxString userName = "${GetStorage().read(DataBaseKey.saveUsernameKey)}".obs;
   RxString userImagePath = '${GetStorage().read(DataBaseKey.saveUserImageKey)}'.obs;
-  final box = GetStorage();
+
 
   updateUserName(){
     if(changeUserNameController.text.isNotEmpty){
