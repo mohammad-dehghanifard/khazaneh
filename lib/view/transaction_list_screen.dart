@@ -29,32 +29,30 @@ class TransactionListScreen extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       appBar: secondaryAppBar(pageTitle: 'لیست تراکنش ها'),
       backgroundColor: AppColors.scaffoldColor,
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 24),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 24),
 
-            //Transaction List
-            SizedBox(
-              height: Get.height / 1.3,
-              child: ValueListenableBuilder(
-                valueListenable: transactionController.transactionHiveBox.listenable(),
-                builder: (context, box, child) {
-                  final items = box.values.toList();
-                  return ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: items.length,
-                    itemBuilder: (context, index) {
-                      final item = items[index];
-                      return TransactionListItem(textTheme: textTheme, transactionEntity: item);
-                    },
-                  );
-                },
-              ),
+          //Transaction List
+          SizedBox(
+            height: Get.height / 1.3,
+            child: ValueListenableBuilder(
+              valueListenable: transactionController.transactionHiveBox.listenable(),
+              builder: (context, box, child) {
+                final items = box.values.toList();
+                return ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: items.length,
+                  itemBuilder: (context, index) {
+                    final item = items[index];
+                    return TransactionListItem(textTheme: textTheme, transactionEntity: item);
+                  },
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

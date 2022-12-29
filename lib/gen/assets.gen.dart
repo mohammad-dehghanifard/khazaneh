@@ -59,10 +59,22 @@ class $AssetsIconsGen {
       ];
 }
 
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/cratorimage.jpg
+  AssetGenImage get cratorimage =>
+      const AssetGenImage('assets/images/cratorimage.jpg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [cratorimage];
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
 class AssetGenImage {

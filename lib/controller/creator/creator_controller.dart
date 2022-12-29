@@ -6,7 +6,7 @@ class CreatorController extends GetxController{
   lunchUrl({required String url}) async {
     final uri = Uri.parse(url);
     if(await canLaunchUrl(uri)){
-      await launchUrl(uri);
+      await launchUrl(uri,mode: LaunchMode.externalApplication);
     }else{
       debugPrint('false');
     }

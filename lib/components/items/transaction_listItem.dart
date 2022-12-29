@@ -30,7 +30,7 @@ class TransactionListItem extends StatelessWidget {
       width: Get.width,
       decoration: BoxDecoration(
           color: AppColors.scaffoldColor,
-          borderRadius: BorderRadius.circular(12)
+          borderRadius: BorderRadius.circular(8)
       ),
       child: InkWell(
         onTap: () {
@@ -41,41 +41,43 @@ class TransactionListItem extends StatelessWidget {
         },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(children: [
-              Container(
-                margin: EdgeInsets.only(right: AppMargin.bodyMargin),
-                width: 89,
-                height: 89,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: transactionEntity.transactionType == TransactionType.receipt? AppColors.greenColor.withOpacity(0.5) : AppColors.redColor.withOpacity(0.5)
-                ),
-                child: transactionEntity.transactionType == TransactionType.receipt? const Icon(Icons.keyboard_arrow_up_sharp,size: 64,) : const Icon(Icons.keyboard_arrow_down_sharp,size: 64,),
+            Expanded(
+              child: Row(children: [
+                Container(
+                  margin: EdgeInsets.only(right: AppMargin.bodyMargin),
+                  width: 89,
+                  height: 89,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: transactionEntity.transactionType == TransactionType.receipt? AppColors.greenColor.withOpacity(0.5) : AppColors.redColor.withOpacity(0.5)
+                  ),
+                  child: transactionEntity.transactionType == TransactionType.receipt? const Icon(Icons.keyboard_arrow_up_sharp,size: 64,) : const Icon(Icons.keyboard_arrow_down_sharp,size: 64,),
 
-              ),
-              const SizedBox(width: 12),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(transactionEntity.title,style: textTheme.headline5),
-                  const SizedBox(height: 6),
-                  Text(transactionEntity.date,style: textTheme.caption)
-                ],
-              ),
-            ],),
-            Padding(
-              padding: const EdgeInsets.only(left: 24),
-              child: Expanded(
-                child: Text(
-                    transactionEntity.price.separator.withPriceLable,
-                    style: textTheme.headline5!.apply(
-                      color: transactionEntity.transactionType == TransactionType.receipt?
-                      AppColors.greenColor :
-                          AppColors.redColor
-                    ),
                 ),
+                const SizedBox(width: 12),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(transactionEntity.title,style: textTheme.headline5!.apply(fontSizeFactor: 0.8)),
+                    const SizedBox(height: 6),
+                    Text(transactionEntity.date,style: textTheme.caption)
+                  ],
+                ),
+              ],),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8),
+              child: Text(
+                  transactionEntity.price.separator.withPriceLable,
+                  maxLines: 1,
+                  overflow: TextOverflow.fade,
+                  style: textTheme.headline2!.apply(
+                    fontSizeFactor: 0.8,
+                    color: transactionEntity.transactionType == TransactionType.receipt?
+                    AppColors.greenColor :
+                        AppColors.redColor
+                  ),
               ),
             )
           ],

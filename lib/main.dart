@@ -104,7 +104,7 @@ class MyApp extends StatelessWidget {
               ),
               caption: TextStyle(
                 fontFamily: defaultFontFamily,
-                fontSize: 14,
+                fontSize: 12,
                 fontWeight: FontWeight.w200,
                 color: AppColors.lightGrayColor
               )

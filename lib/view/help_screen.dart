@@ -13,32 +13,34 @@ class HelpScreen extends StatelessWidget {
     return Scaffold(
       appBar: secondaryAppBar(pageTitle: 'راهنمای استفاده از نرم افزار'),
       backgroundColor: AppColors.scaffoldColor,
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('افزودن تراکنش جدید',style: textTheme.headline5!.apply(color: AppColors.primaryColor)),
-            const SizedBox(height: 4),
-            Text(AppStrings.addTransactionHelpTxt,style: textTheme.subtitle1),
-            const SizedBox(height: 32),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('افزودن تراکنش جدید',style: textTheme.headline5!.apply(color: AppColors.primaryColor)),
+              const SizedBox(height: 4),
+              Text(AppStrings.addTransactionHelpTxt,style: textTheme.subtitle1),
+              const SizedBox(height: 32),
 
-            Text('لیست تراکنش ها',style: textTheme.headline5!.apply(color: AppColors.primaryColor)),
-            const SizedBox(height: 4),
-            Text(AppStrings.transactionListHelpTxt,style: textTheme.subtitle1,textAlign: TextAlign.justify,),
-            const SizedBox(height: 32),
+              Text('لیست تراکنش ها',style: textTheme.headline5!.apply(color: AppColors.primaryColor)),
+              const SizedBox(height: 4),
+              Text(AppStrings.transactionListHelpTxt,style: textTheme.subtitle1,textAlign: TextAlign.justify,),
+              const SizedBox(height: 32),
 
-            Text('آمار تراکنش ها',style: textTheme.headline5!.apply(color: AppColors.primaryColor)),
-            const SizedBox(height: 4),
-            Text(AppStrings.transactionInformationHelpTxt,style: textTheme.subtitle1,textAlign: TextAlign.justify),
-            const SizedBox(height: 32),
+              Text('آمار تراکنش ها',style: textTheme.headline5!.apply(color: AppColors.primaryColor)),
+              const SizedBox(height: 4),
+              Text(AppStrings.transactionInformationHelpTxt,style: textTheme.subtitle1,textAlign: TextAlign.justify),
+              const SizedBox(height: 32),
 
-            Text('مدیریت اقساط',style: textTheme.headline5!.apply(color: AppColors.primaryColor)),
-            const SizedBox(height: 4),
-            Text(AppStrings.installmentHelpTxt,style: textTheme.subtitle1,textAlign: TextAlign.justify),
+              Text('مدیریت اقساط',style: textTheme.headline5!.apply(color: AppColors.primaryColor)),
+              const SizedBox(height: 4),
+              Text(AppStrings.installmentHelpTxt,style: textTheme.subtitle1,textAlign: TextAlign.justify),
 
 
-          ],
+            ],
+          ),
         ),
       ),
     );

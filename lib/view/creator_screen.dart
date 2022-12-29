@@ -34,6 +34,9 @@ class CreatorScreen extends StatelessWidget {
                 color: AppColors.grayColor,
                 border: Border.all(color: AppColors.redColor,width: 2)
               ),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(64),
+                  child: Image.asset(Assets.images.cratorimage.path)),
             ),
             const SizedBox(height: 16),
             RichText(

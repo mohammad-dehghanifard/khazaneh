@@ -40,8 +40,8 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset(Assets.icons.logotest.path),
-              const SpinKitSquareCircle(size: 60,color: AppColors.primaryColor,),
+              const Icon(Icons.monetization_on_outlined,color: AppColors.greenColor,size: 200,),
+              const SpinKitFadingCube(size: 60,color: AppColors.primaryColor,),
                Padding(
                 padding: const EdgeInsets.only(bottom: 16),
                 child: Text(AppStrings.appVersionTxt,style: Theme.of(context).textTheme.bodyText1,),

@@ -29,7 +29,7 @@ class AddOrEditTransaction extends StatelessWidget {
               ()=> Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Assets.icons.logotest.image(width: 230),
+                  const Icon(Icons.monetization_on_outlined,color: AppColors.greenColor,size: 200,),
                   TextField(
                     controller: transactionController.transactionTitleController,
                     decoration: InputDecoration(
