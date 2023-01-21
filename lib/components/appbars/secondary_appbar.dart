@@ -21,7 +21,7 @@ AppBar secondaryAppBar({required String pageTitle}) {
 
             InkWell(
                 onTap: () => Get.back(),
-                child: const Icon(Icons.arrow_forward_ios, size: 38,color: Colors.black,)
+                child: const Icon(Icons.arrow_forward_ios, size: 22,color: Colors.black,)
             ),
           ],
         ),

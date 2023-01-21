@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     const defaultFontFamily = FontFamily.iranSans;
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
         locale: const Locale("fa"),
         getPages: [
         GetPage(name: RouteAPP.routeHomeScreen, page: () =>  HomeScreen()),
@@ -99,7 +100,7 @@ class MyApp extends StatelessWidget {
                   color: AppColors.textColor),
               button: TextStyle(
                 fontFamily: defaultFontFamily,
-                fontSize: 16,
+                fontSize: 12,
                 fontWeight: FontWeight.w700,
               ),
               caption: TextStyle(

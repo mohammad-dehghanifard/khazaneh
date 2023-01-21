@@ -9,6 +9,7 @@ import 'package:khazaneh/components/bottom_navigation.dart';
 import 'package:khazaneh/components/widget/navigation_bottom_widget.dart';
 import 'package:khazaneh/constant/app_margin.dart';
 import 'package:khazaneh/constant/app_route.dart';
+import 'package:khazaneh/constant/database_key.dart';
 import 'package:khazaneh/controller/home/home_controller.dart';
 import 'package:khazaneh/controller/navigation/navigation_controller.dart';
 import 'package:khazaneh/gen/assets.gen.dart';
@@ -38,15 +39,15 @@ class MainScreen extends StatelessWidget {
             elevation: 0,
             automaticallyImplyLeading: false,
             actions: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: AppMargin.bodyMargin),
-                child: IconButton(
-                    onPressed:() {
-                      scaffoldKey.currentState?.openDrawer();
-                    },
-                    icon: const Icon(CupertinoIcons.list_bullet_indent,color: AppColors.primaryColor,) ),
-              ),
-              Expanded(child: SizedBox(width: Get.width,)),
+              IconButton(
+                  onPressed:() {
+                    scaffoldKey.currentState?.openDrawer();
+                  },
+                  icon: const Icon(CupertinoIcons.list_bullet_indent,color: AppColors.primaryColor,) ),
+              Expanded(child: SizedBox(width: MediaQuery.of(context).size.width,)),
+              IconButton(
+                  onPressed: () => Get.toNamed(RouteAPP.routeHelpScreen),
+                  icon: const Icon(Icons.help_sharp,size: 28,color: AppColors.redColor,) ),
             ],
           ),
           drawer: Drawer(
@@ -55,7 +56,27 @@ class MainScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ListView(
                 children: [
-                  DrawerHeader(child: Assets.icons.logotest.image()),
+                  DrawerHeader(child: Image.asset(Assets.icons.khazanehlogo.path)),
+                  ListTile(
+                    title: Text("لیست تراکنش ها",
+                        style: textTheme.bodyText2),
+                    subtitle: Text(
+                      "مشاهده لیست کامل تراکنش ها",
+                      style: Theme.of(context).textTheme.subtitle1!.apply(fontSizeFactor: 0.8),
+                    ),
+                    onTap: () => Get.toNamed(RouteAPP.routeTransactionListScreen),
+                  ),
+                  const Divider(color: AppColors.lightGrayColor),
+                  ListTile(
+                    title: Text("آمار تراکنش ها",
+                        style: textTheme.bodyText2),
+                    subtitle: Text(
+                      "مشاهده آمار کامل تراکنش های اضافه شده",
+                      style: Theme.of(context).textTheme.subtitle1!.apply(fontSizeFactor: 0.8),
+                    ),
+                    onTap: () => Get.toNamed(RouteAPP.routeTransactionInformationScreen),
+                  ),
+                  const Divider(color: AppColors.lightGrayColor,height: 1,),
                   ListTile(
                     title: Text("درباره برنامه",
                         style: textTheme.bodyText2),
@@ -65,7 +86,7 @@ class MainScreen extends StatelessWidget {
                     ),
                     onTap: () => Get.toNamed(RouteAPP.creatorMainScreen),
                   ),
-                  const Divider(color: AppColors.lightGrayColor),
+                  const Divider(color: AppColors.lightGrayColor,height: 0.9,),
                   ListTile(
                     title: Text("اشتراک گذاری",
                         style: textTheme.bodyText2),
@@ -75,7 +96,7 @@ class MainScreen extends StatelessWidget {
                     ),
                     onTap: () => homeController.shareApp(),
                   ),
-                  const Divider(height: 0.9,color: AppColors.lightGrayColor),
+                  const Divider(height: 0.5,color: AppColors.lightGrayColor),
                   ListTile(
                     title: Text("راهنما",
                         style: textTheme.bodyText2),
@@ -85,7 +106,6 @@ class MainScreen extends StatelessWidget {
                     ),
                     onTap: () => Get.toNamed(RouteAPP.routeHelpScreen),
                   ),
-                  const Divider(height: 0.8,color: AppColors.lightGrayColor),
                 ],
               ),
             ),

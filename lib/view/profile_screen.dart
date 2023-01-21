@@ -21,6 +21,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final UserController userController = Get.put(UserController());
     final textTheme = Theme.of(context).textTheme;
+    final size = MediaQuery.of(context).size;
     return Obx(() {
       return Scaffold(
         backgroundColor: AppColors.scaffoldColor,
@@ -45,21 +46,34 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(userController.userName.value,style: textTheme.subtitle1),
+              TextButton(
+               onPressed: () => userController.deleteProfileImage(),
+                style: ButtonStyle(
+                    overlayColor: MaterialStatePropertyAll(AppColors.redColor.withOpacity(0.2))
+                ),
+               child:  Text("حذف تصویر پروفایل",style: textTheme.headline5!.apply(color: AppColors.redColor,fontSizeFactor: 0.7),)),
               const SizedBox(height: 64),
+              const Divider(),
               UserOptionBtn(
+                  size: size,
                   title: 'ویرایش نام کاربری',
+                  content: 'جهت ویرایش نام کاربری خود کلیک کنید.',
                   onTap: () {
                     changeUsernameBottomSheet(context, userController);
                   },
                   textTheme: textTheme),
-              const SizedBox(height: 16),
+              const Divider(height: 2),
               UserOptionBtn(
+                  size: size,
                   title: 'تغییر عکس پروفایل',
+                  content: 'جهت تغییر تصویر پروفایل خود کلیک کنید.',
                   onTap: () {
                      userController.changeProfileImage(ImageSource.gallery);
                      userController.userImagePath.value == userController.box.read(DataBaseKey.saveUserImageKey);
                   },
                   textTheme: textTheme),
+              const Divider(height: 1),
+
             ],
           ),
         ),

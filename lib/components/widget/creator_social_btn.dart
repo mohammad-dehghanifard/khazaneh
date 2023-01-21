@@ -21,7 +21,6 @@ class CreatorSocialBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.all(9),
       width: 100,
       height: 100,

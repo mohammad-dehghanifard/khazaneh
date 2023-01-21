@@ -52,14 +52,14 @@ class NavigationBottomWidget extends StatelessWidget {
                 child: Container(
                   height: 65,
                   width: 65,
-                  decoration:  BoxDecoration(
+                  decoration:  const BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.black,
+                      color: AppColors.primaryColor,
                       boxShadow: [
                         BoxShadow(
-                            color: AppColors.textColor.withOpacity(0.6),
+                            color: AppColors.primaryColor,
                             blurRadius: 20,
-                            offset: const Offset(0, 10)
+                            offset: Offset(0, 10)
                         )
                       ]
                   ),

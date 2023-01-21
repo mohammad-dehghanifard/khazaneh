@@ -28,25 +28,20 @@ class TransactionController extends GetxController {
 
 
 
-
   addTransaction(){
-    //مقدار دهی اولیه فیلد ها
-    transactionEntity.value.title = transactionTitleController.text;
-    transactionEntity.value.price = int.parse(transactionPriceController.text);
-    transactionEntity.value.date = transactionTimeController.text;
-    transactionEntity.value.transactionType = selectedTransactionType.value;
-
-    if(transactionTitleController.text.isEmpty || transactionPriceController.text.isEmpty){
+    if(transactionTitleController.text.isEmpty || transactionPriceController.text.isEmpty||transactionTimeController.text.isEmpty){
       showSnackBar(title: 'خطا',content: 'لطفا تمام اطلاعات تراکنش را وارد کنید!');
     }
     //ادیت کردن ایتم
     else if(transactionEntity.value.isInBox){
+      setTranActionModelData();
       transactionEntity.value.save();
       transactionEntity.value = TransactionEntity();
       clearForm();
     }
     // اضافه کردن ایتم
     else{
+      setTranActionModelData();
       transactionHiveBox.add(transactionEntity.value);
       transactionEntity.value = TransactionEntity();
       clearForm();
@@ -83,6 +78,23 @@ class TransactionController extends GetxController {
         },
     );
   }
+
+  //مقدار دهی اولیه و پاک شدن فرم ها
+  clearForm(){
+    transactionTitleController.clear();
+    transactionPriceController.clear();
+    transactionTimeController.clear();
+    selectedTransactionType.value = TransactionType.receipt;
+    Get.back();
+
+  }
+  setTranActionModelData(){
+    transactionEntity.value.title = transactionTitleController.text;
+    transactionEntity.value.price = int.parse(transactionPriceController.text);
+    transactionEntity.value.date = transactionTimeController.text;
+    transactionEntity.value.transactionType = selectedTransactionType.value;
+  }
+
   // انتخاب تاریخ
   timePicker(BuildContext context) async {
     var selectedTime = await showPersianDatePicker(
@@ -95,14 +107,6 @@ class TransactionController extends GetxController {
     String moth = selectedTime.month.toString().length == 1 ? '0${selectedTime.month.toString()}' : selectedTime.month.toString();
     String day = selectedTime.day.toString().length == 1 ? '0${selectedTime.day.toString()}' : selectedTime.day.toString();
     transactionTimeController.text = '$years/$moth/$day';
-  }
-  clearForm(){
-    transactionTitleController.clear();
-    transactionPriceController.clear();
-    transactionTimeController.clear();
-    selectedTransactionType.value = TransactionType.receipt;
-    Get.back();
-
   }
 
   // محاسبه دریافتی ها و پرداختی ها

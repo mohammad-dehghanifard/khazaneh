@@ -34,4 +34,9 @@ class UserController extends GetxController{
       showSnackBar(title: 'خطا',content: 'شما هیچ عکسی انتخاب نکرده اید!');
     }
   }
+  deleteProfileImage() {
+    box.remove(DataBaseKey.saveUserImageKey);
+    userImagePath.value = "";
+  }
+
 }

@@ -12,13 +12,17 @@ import 'package:khazaneh/gen/assets.gen.dart';
 class AppServicesItem extends StatelessWidget {
   const AppServicesItem(
       {Key? key,
+      required this.width,
+      required this.height,
       required this.title,
       required this.description,
       required this.icon,
       required this.comingSoon,
-        required this.color,
+      required this.color,
       required this.pathUrl})
       : super(key: key);
+  final double width;
+  final double height;
   final title;
   final description;
   final icon;
@@ -29,6 +33,7 @@ class AppServicesItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final size = MediaQuery.of(context).size;
     return InkWell(
       borderRadius: BorderRadius.circular(16),
       onTap: () {
@@ -37,31 +42,35 @@ class AppServicesItem extends StatelessWidget {
             : showSnackBar(title: 'بزودی',content: 'این ویژگی در اپدیت های اینده اضافه خواهد شد!');
       },
       child: Container(
-        margin: const EdgeInsets.all(5),
-        width: 194,
-        height: 217,
+        margin: const EdgeInsets.fromLTRB(9,0,9,16),
+        width: width,
+        height: height,
         padding:  EdgeInsets.symmetric(horizontal: comingSoon!? 0  :8),
         decoration: BoxDecoration(
             color: color,
-            borderRadius: BorderRadius.circular(16)),
+            borderRadius: BorderRadius.circular(12)),
         child: comingSoon == false
-            ? Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+            ? Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                // service Icon
                 children: [
-                  Row(
-                    children: [
-                      Expanded(child: SizedBox(width: Get.width,)),
-                      Image.asset(
-                        icon,
-                        width: 90,
-                      ),
-                    ],
+                  Image.asset(
+                    icon,
+                    width: 60,
                   ),
-                  Text(title,style: textTheme.bodyText2!.apply(color: Colors.white),),
-                  const SizedBox(height: 6,),
-                  Text(description,style: textTheme.subtitle1!.apply(color: Colors.white,fontSizeFactor: 0.9),),
-
+                  const SizedBox(width: 4),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(title,style: textTheme.bodyText2!.apply(color: Colors.white),),
+                      const SizedBox(height: 2,),
+                      SizedBox(
+                          width: size.width / 1.4,
+                          child: Text(description,style: textTheme.subtitle1!.apply(color: Colors.white,fontSizeFactor: 0.8),)),
+                      const SizedBox(height: 4,),
+                    ],
+                  )
                 ],
               )
             : Stack(
@@ -69,33 +78,34 @@ class AppServicesItem extends StatelessWidget {
                   Positioned.fill(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        // service Icon
                         children: [
-                          Row(
-                            children: [
-                              Expanded(child: SizedBox(width: Get.width,)),
-                              Image.asset(
-                                icon,
-                                width: 90,
-                              ),
-                            ],
+                          Image.asset(
+                            icon,
+                            width: 60,
                           ),
-                          Text(title,style: textTheme.bodyText2!.apply(color: Colors.white),),
-                          const SizedBox(height: 6,),
-                          Text(description,style: textTheme.subtitle1!.apply(color: Colors.white,fontSizeFactor: 0.9),),
-
+                          const SizedBox(width: 4),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(title,style: textTheme.bodyText2!.apply(color: Colors.white),),
+                              const SizedBox(height: 6,),
+                              Text(description,style: textTheme.subtitle1!.apply(color: Colors.white,fontSizeFactor: 0.8),),
+                            ],
+                          )
                         ],
                       ),
                     ),
                   ),
                   Container(
-                      width: 194,
-                      height: 217,
+                      width: width,
+                      height: height,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(12),
                           color: AppColors.textColor.withOpacity(0.8)),
                       child: Text(
                         "بزودی....",

@@ -20,49 +20,49 @@ class TransactionInformation  extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).textTheme;
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColors.scaffoldColor,
       appBar: secondaryAppBar(pageTitle: 'آمار تراکنش ها'),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: AppMargin.bodyMargin),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: Get.width,
-              height: 230,
-              margin: const EdgeInsets.symmetric(horizontal: 12,vertical: 24),
-              decoration: const BoxDecoration(
-                color: AppColors.scaffoldColor,
-                borderRadius: BorderRadius.all(Radius.circular(16))
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: AppMargin.bodyMargin),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: size.width,
+                height: 230,
+                margin: const EdgeInsets.symmetric(horizontal: 12,vertical: 24),
+                decoration: const BoxDecoration(
+                  color: AppColors.scaffoldColor,
+                  borderRadius: BorderRadius.all(Radius.circular(16))
+                ),
+                child: const AppChart(),
               ),
-              child: const AppChart(),
-            ),
-            Text('آمار کامل تراکنش ها',style: theme.headline5!.apply(color: AppColors.primaryColor)),
-            const SizedBox(height: 16),
-            // دریافتی ها
-            Container(
-              width: Get.width,
-              height: 191,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),blurRadius: 10,offset: const Offset(0, 4)
-                  )
-                ]
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+              // دریافتی ها
+              Container(
+                width: size.width,
+                height: 191,
+                padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),blurRadius: 10,offset: const Offset(0, 4)
+                    )
+                  ]
+                ),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 12),
-                    Text('دریافتی ها',style: theme.headline5!.apply(color: AppColors.primaryColor)),
+                    Center(child: Text('دریافتی ها',style: theme.headline5!.apply(color: AppColors.greenColor))),
                     const SizedBox(height: 8),
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12),
-                      child: Divider(height: 4,color: AppColors.grayColor),
+                      child: Divider(height: 1,color: AppColors.grayColor),
                     ),
                     const SizedBox(height: 8),
                     RichText(
@@ -73,7 +73,7 @@ class TransactionInformation  extends StatelessWidget {
                           children: [
                             TextSpan(
                               text: ' ${transactionController.receiptTodayCalculator().separator}'.withPriceLable,
-                              style: theme.headline2!.copyWith(color: AppColors.grayColor,fontSize: 16)
+                              style: theme.headline2!.copyWith(color: AppColors.greenColor,fontSize: 14)
                             )
                           ]
                         ),
@@ -87,7 +87,7 @@ class TransactionInformation  extends StatelessWidget {
                           children: [
                             TextSpan(
                               text: ' ${transactionController.receiptMothCalculator().separator}'.withPriceLable,
-                              style: theme.headline5!.copyWith(color: AppColors.grayColor,fontSize: 16)
+                              style: theme.headline5!.copyWith(color: AppColors.greenColor,fontSize: 14)
                             )
                           ]
                         ),
@@ -101,7 +101,7 @@ class TransactionInformation  extends StatelessWidget {
                           children: [
                             TextSpan(
                                 text: ' ${transactionController.receiptYearCalculator().separator}'.withPriceLable,
-                                style: theme.headline5!.copyWith(color: AppColors.grayColor,fontSize: 16)
+                                style: theme.headline5!.copyWith(color: AppColors.greenColor,fontSize: 14)
                             )
                           ]
                       ),
@@ -109,76 +109,79 @@ class TransactionInformation  extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-            const SizedBox(height: 24),
-            //پرداختی ها
-            Container(
-              width: Get.width,
-              height: 191,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black.withOpacity(0.3),blurRadius: 10,offset: const Offset(0, 4)
-                    )
-                  ]
+              const SizedBox(height: 24),
+              //پرداختی ها
+              Container(
+                width: size.width,
+                height: 191,
+                padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black.withOpacity(0.3),blurRadius: 10,offset: const Offset(0, 4)
+                      )
+                    ]
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 12),
+                    Center(child: Text('پرداختی ها',style: theme.headline5!.apply(color: AppColors.redColor))),
+                    const SizedBox(height: 8),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12),
+                      child: Divider(height: 1,color: AppColors.grayColor),
+                    ),
+                    const SizedBox(height: 8),
+                    RichText(
+                      maxLines: 1,
+                      overflow: TextOverflow.fade,
+                      text: TextSpan(
+                          text: AppStrings.todayPaymentTxt,style: theme.headline5!.copyWith(fontSize: 16),
+                          children: [
+                            TextSpan(
+                                text: ' ${transactionController.paymentTodayCalculator().separator}'.withPriceLable,
+                                style: theme.headline5!.copyWith(color: AppColors.redColor,fontSize: 14)
+                            )
+                          ]
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    RichText(
+                      maxLines: 1,
+                      overflow: TextOverflow.fade,
+                      text: TextSpan(
+                          text: AppStrings.monthPaymentTxt,style: theme.headline5!.copyWith(fontSize: 16),
+                          children: [
+                            TextSpan(
+                                text: ' ${transactionController.paymentMothCalculator().separator}'.withPriceLable,
+                                style: theme.headline5!.copyWith(color: AppColors.redColor,fontSize: 14)
+                            )
+                          ]
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    RichText(
+                      maxLines: 1,
+                      overflow: TextOverflow.fade,
+                      text: TextSpan(
+                          text: AppStrings.yearPaymentTxt,style: theme.headline5!.copyWith(fontSize: 16),
+                          children: [
+                            TextSpan(
+                                text: ' ${transactionController.paymentYearCalculator().separator}'.withPriceLable,
+                                style: theme.headline5!.copyWith(color: AppColors.redColor,fontSize: 14)
+                            )
+                          ]
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              child: Column(
-                children: [
-                  const SizedBox(height: 12),
-                  Text('پرداختی ها',style: theme.headline5!.apply(color: AppColors.primaryColor)),
-                  const SizedBox(height: 8),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
-                    child: Divider(height: 4,color: AppColors.grayColor),
-                  ),
-                  const SizedBox(height: 8),
-                  RichText(
-                    maxLines: 1,
-                    overflow: TextOverflow.fade,
-                    text: TextSpan(
-                        text: AppStrings.todayPaymentTxt,style: theme.headline5!.copyWith(fontSize: 16),
-                        children: [
-                          TextSpan(
-                              text: ' ${transactionController.paymentTodayCalculator().separator}'.withPriceLable,
-                              style: theme.headline5!.copyWith(color: AppColors.grayColor,fontSize: 16)
-                          )
-                        ]
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  RichText(
-                    maxLines: 1,
-                    overflow: TextOverflow.fade,
-                    text: TextSpan(
-                        text: AppStrings.monthPaymentTxt,style: theme.headline5!.copyWith(fontSize: 16),
-                        children: [
-                          TextSpan(
-                              text: ' ${transactionController.paymentMothCalculator().separator}'.withPriceLable,
-                              style: theme.headline5!.copyWith(color: AppColors.grayColor,fontSize: 16)
-                          )
-                        ]
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  RichText(
-                    maxLines: 1,
-                    overflow: TextOverflow.fade,
-                    text: TextSpan(
-                        text: AppStrings.yearPaymentTxt,style: theme.headline5!.copyWith(fontSize: 16),
-                        children: [
-                          TextSpan(
-                              text: ' ${transactionController.paymentYearCalculator().separator}'.withPriceLable,
-                              style: theme.headline5!.copyWith(color: AppColors.grayColor,fontSize: 16)
-                          )
-                        ]
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
+              SizedBox(height: size.height / 12)
+            ],
+          ),
         ),
       ),
     );

@@ -30,9 +30,9 @@ class $AssetsIconsGen {
   AssetGenImage get instagram =>
       const AssetGenImage('assets/icons/instagram.png');
 
-  /// File path: assets/icons/logotest.png
-  AssetGenImage get logotest =>
-      const AssetGenImage('assets/icons/logotest.png');
+  /// File path: assets/icons/khazanehlogo.png
+  AssetGenImage get khazanehlogo =>
+      const AssetGenImage('assets/icons/khazanehlogo.png');
 
   /// File path: assets/icons/mywebsite.png
   AssetGenImage get mywebsite =>
@@ -52,7 +52,7 @@ class $AssetsIconsGen {
         money,
         avatar,
         instagram,
-        logotest,
+        khazanehlogo,
         mywebsite,
         telegram,
         wallet

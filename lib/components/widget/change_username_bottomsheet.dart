@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:khazaneh/components/app_colors.dart';
 import 'package:khazaneh/controller/user/user_controller.dart';
 
 Future<dynamic> changeUsernameBottomSheet(BuildContext context, UserController userController) {
@@ -26,8 +28,10 @@ Future<dynamic> changeUsernameBottomSheet(BuildContext context, UserController u
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
+
                 controller: userController.changeUserNameController,
                 decoration: const InputDecoration(
+                    prefixIcon:  Icon(CupertinoIcons.person_alt_circle,color: AppColors.primaryColor,size: 32,),
                     hintText: 'نام کاربری جدید را وارد کنید'
                 ),
               ),
@@ -38,8 +42,8 @@ Future<dynamic> changeUsernameBottomSheet(BuildContext context, UserController u
               child: ElevatedButton(
                   onPressed: () => userController.updateUserName(),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('ذخیره تغیرات',style: Theme.of(context).textTheme.bodyText2!.apply(fontSizeFactor: 1.5,color: Colors.white),),
+                    padding: const EdgeInsets.all(12),
+                    child: Text('ذخیره تغیرات',style: Theme.of(context).textTheme.bodyText2!.apply(fontSizeFactor: 1,color: Colors.white),),
                   )
               ),
             ),

@@ -21,6 +21,7 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColors.scaffoldColor,
       body: SingleChildScrollView(
@@ -33,44 +34,29 @@ class RegisterScreen extends StatelessWidget {
                 height: 84,
               ),
               // avatar image
-              Stack(
-                children: [
-                  authController.userImagePath.isEmpty?
-                  Container(
-                    width: 250,
-                    height: 250,
-                    decoration: BoxDecoration(
-                      color: AppColors.grayColor,
-                      shape: BoxShape.circle,
-                      border: Border.all(color: AppColors.redColor,width: 2)
-                    ),
-                      ):
-                  SizedBox(
-                    width: 250,
-                    height: 250,
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(120),
-                        child: Image.file(File(authController.userImagePath.value),fit: BoxFit.cover,)),
-                  ),
-                  Positioned(
-                    bottom: 15,
-                    left: 100,
-                    right: 100,
-                    child: InkWell(
-                      onTap: () => authController.pickAndSaveImage(ImageSource.gallery),
-                      child: const Icon(
-                        Icons.camera_alt,
-                        size: 40,
-
-                      ),
-                    ),
-                  )
-                ],
+              authController.userImagePath.isEmpty?
+              Container(
+                width: size.width / 2.5,
+                height: size.height / 4,
+                decoration: BoxDecoration(
+                  color: AppColors.grayColor,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: AppColors.redColor,width: 2)
+                ),
+                  ):
+              SizedBox(
+                width: size.width / 2,
+                height: size.height / 4,
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(160),
+                    child: Image.file(File(authController.userImagePath.value),fit: BoxFit.cover,)),
               ),
-              const SizedBox(height: 24),
-              const Text(
-                AppStrings.selectImageTxt,
-              ),
+             TextButton(
+               onPressed: () => authController.pickAndSaveImage(ImageSource.gallery),
+               style: ButtonStyle(
+                 overlayColor: MaterialStatePropertyAll(AppColors.redColor.withOpacity(0.2))
+               ),
+               child:   Text(AppStrings.selectImageTxt,style: textTheme.bodyText1!.apply(color: AppColors.redColor),),),
               const SizedBox(height: 36),
               // Text Field
               Padding(
@@ -81,6 +67,7 @@ class RegisterScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: "نام و نام خانوادگی",
                     hintStyle: textTheme.subtitle1,
+                    prefixIcon: const Icon(CupertinoIcons.person_alt_circle,color: AppColors.primaryColor,size: 32,)
                   ),
                 ),
               ),

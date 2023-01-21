@@ -27,6 +27,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final HomeController homeController = Get.put(HomeController());
     final UserController userController = Get.put(UserController());
+    final size = MediaQuery.of(context).size;
     return Obx(() {
       return Scaffold(
         backgroundColor: AppColors.scaffoldColor,
@@ -40,16 +41,22 @@ class HomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const SizedBox(width: 16),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(75),
-                    child:  homeController.box.read(DataBaseKey.saveUserImageKey) != null ?
-                    SizedBox(
-                      width: 60,
-                      height: 60,
-                        child: Image.file(File(userController.userImagePath.value),fit: BoxFit.cover,)):
-                    Image.asset(
-                      Assets.icons.avatar.path,
-                      width: 60,
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(75),
+                      border: Border.all(color: AppColors.primaryColor,width: 1.5)
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(75),
+                      child:  homeController.box.read(DataBaseKey.saveUserImageKey) != null ?
+                      SizedBox(
+                        width: 60,
+                        height: 60,
+                          child: Image.file(File(userController.userImagePath.value),fit: BoxFit.cover,)):
+                      Image.asset(
+                        Assets.icons.avatar.path,
+                        width: 60,
+                      ),
                     ),
                   ),
                   const SizedBox(width: 8),
@@ -69,21 +76,16 @@ class HomeScreen extends StatelessWidget {
                   )
                 ],
               ),
-              const SizedBox(height: 48),
+               SizedBox(height: size.height / 25),
+              //ایتم های برنامه
+              AppServicesItem(width: size.width / 1,height: size.height / 9.8,title: "افزودن تراکنش جدید",description: "تراکنش های خودتون رو ذخیره کنید و به راحتی مدیریت کنید!", icon: Assets.icons.creditCard.path, comingSoon: false,color: AppColors.primaryColor, pathUrl: RouteAPP.routeAddOrEditTransactionScreen),
+              AppServicesItem(width: size.width / 1,height : size.height / 9.8,title: "لیست تراکنش ها",description: 'لیستی از تراکنش هایی که قبلا اضافه کرده اید را مشاهده کنید', icon: Assets.icons.wallet.path, comingSoon: false,color: AppColors.greenColor, pathUrl: RouteAPP.routeTransactionListScreen),
+              AppServicesItem(width: size.width / 1,height: size.height / 9.8,title: "آمار تراکنش ها",description: 'آمار کامل و دقیق از تراکنش هایی خود را مشاهده کنید!', icon: Assets.icons.financeGrowth.path, comingSoon: false,color: AppColors.yellowColor, pathUrl: RouteAPP.routeTransactionInformationScreen),
+              AppServicesItem(width: size.width / 1,height: size.height / 9.8,title: "مدیریت اقساط",description: 'اقساط ماهانه خود را به سادگی مدیریت کنید!', icon: Assets.icons.wallet.path, comingSoon: true,color: AppColors.redColor, pathUrl: null),
+              SizedBox(height: size.width / 6,)
 
               // app service item
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  AppServicesItem(title: "افزودن تراکنش جدید",description: "تراکنش های خودتون رو ذخیره کنید و به راحتی مدیریت کنید!", icon: Assets.icons.creditCard.path, comingSoon: false,color: AppColors.primaryColor, pathUrl: RouteAPP.routeAddOrEditTransactionScreen),
-                  AppServicesItem(title: "لیست تراکنش ها",description: 'لیستی از تراکنش هایی که قبلا اضافه کرده اید را مشاهده کنید', icon: Assets.icons.wallet.path, comingSoon: false,color: AppColors.greenColor, pathUrl: RouteAPP.routeTransactionListScreen),
-                ],),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  AppServicesItem(title: "آمار تراکنش ها",description: 'آمار کامل و دقیق از تراکنش هایی خود را مشاهده کنید!', icon: Assets.icons.financeGrowth.path, comingSoon: false,color: AppColors.yellowColor, pathUrl: RouteAPP.routeTransactionInformationScreen),
-                  AppServicesItem(title: "مدیریت اقساط",description: 'اقساط ماهانه خود را به سادگی مدیریت کنید!', icon: Assets.icons.wallet.path, comingSoon: true,color: AppColors.redColor, pathUrl: null),
-                ],),
+
             ],
           ),
         ),
@@ -91,3 +93,4 @@ class HomeScreen extends StatelessWidget {
     });
   }
 }
+

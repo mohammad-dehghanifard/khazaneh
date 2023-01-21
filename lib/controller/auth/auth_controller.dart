@@ -8,7 +8,7 @@ import 'package:khazaneh/constant/app_route.dart';
 import 'package:khazaneh/constant/database_key.dart';
 
 class AuthController extends GetxController{
-  final TextEditingController usernameController = TextEditingController(text: 'محمد دهقانی فرد');
+  final TextEditingController usernameController = TextEditingController();
   final RxString userImagePath = ''.obs;
   final box = GetStorage();
 

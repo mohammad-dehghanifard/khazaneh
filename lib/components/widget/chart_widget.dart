@@ -17,6 +17,7 @@ class PieChart2State extends State {
   final TransactionController transactionController = Get.put(TransactionController());
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
     return AspectRatio(
       aspectRatio: 1.3,
       child: Container(
@@ -26,6 +27,32 @@ class PieChart2State extends State {
             const SizedBox(
               height: 18,
             ),
+
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children:  <Widget>[
+                Indicator(
+                  color: AppColors.greenColor,
+                  text: 'دریافتی امسال',
+                  textTheme: textTheme,
+                  isSquare: false,
+                ),
+                SizedBox(
+                  height: 6,
+                ),
+                Indicator(
+                  color: AppColors.redColor,
+                  text: 'پرداختی های امسال',
+                  textTheme: textTheme,
+                  isSquare: false,
+                ),
+                SizedBox(
+                  height: 64,
+                ),
+              ],
+            ),
+            const SizedBox(width: 32),
             Expanded(
               child: AspectRatio(
                 aspectRatio: 1,
@@ -55,30 +82,7 @@ class PieChart2State extends State {
                 ),
               ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const <Widget>[
-                Indicator(
-                  color: AppColors.greenColor,
-                  textColor: AppColors.textColor,
-                  text: 'دریافتی این ماه',
-                  isSquare: false,
-                ),
-                SizedBox(
-                  height: 6,
-                ),
-                Indicator(
-                  color: AppColors.redColor,
-                  text: 'پرداختی این ماه',
-                  textColor: AppColors.textColor,
-                  isSquare: false,
-                ),
-                SizedBox(
-                  height: 64,
-                ),
-              ],
-            ),
+
             const SizedBox(
               width: 28,
             ),
@@ -97,7 +101,7 @@ class PieChart2State extends State {
         case 0:
           return PieChartSectionData(
             color: AppColors.greenColor,
-            value: transactionController.receiptMothCalculator().toDouble(),
+            value: transactionController.receiptYearCalculator().toDouble(),
             title: '',
             radius: radius,
             titleStyle: TextStyle(
@@ -109,7 +113,7 @@ class PieChart2State extends State {
         case 1:
           return PieChartSectionData(
             color: AppColors.redColor,
-            value: transactionController.paymentMothCalculator().toDouble(),
+            value: transactionController.paymentYearCalculator().toDouble(),
             title: '',
             radius: radius,
             titleStyle: TextStyle(
@@ -132,15 +136,16 @@ class Indicator extends StatelessWidget {
     super.key,
     required this.color,
     required this.text,
+    required this.textTheme,
     required this.isSquare,
     this.size = 16,
-    this.textColor = Colors.white,
   });
   final Color color;
   final String text;
   final bool isSquare;
   final double size;
-  final Color textColor;
+  final  textTheme;
+
 
   @override
   Widget build(BuildContext context) {
@@ -159,11 +164,7 @@ class Indicator extends StatelessWidget {
         ),
         Text(
           text,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: textColor,
-          ),
+          style: textTheme.bodyText1,
         )
       ],
     );

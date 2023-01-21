@@ -40,11 +40,12 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Icon(Icons.monetization_on_outlined,color: AppColors.greenColor,size: 200,),
-              const SpinKitFadingCube(size: 60,color: AppColors.primaryColor,),
+              const SizedBox(),
+              Image.asset(Assets.icons.khazanehlogo.path),
+              const SpinKitFadingCube(size: 30,color: AppColors.primaryColor,),
                Padding(
                 padding: const EdgeInsets.only(bottom: 16),
-                child: Text(AppStrings.appVersionTxt,style: Theme.of(context).textTheme.bodyText1,),
+                child: Text(AppStrings.appVersionTxt,style: Theme.of(context).textTheme.bodyText1),
               ),
             ],
           ),

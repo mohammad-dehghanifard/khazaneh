@@ -17,78 +17,87 @@ class CreatorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColors.scaffoldColor,
       appBar: secondaryAppBar(pageTitle: 'سازنده برنامه'),
-      body: SizedBox(
-        width: Get.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 24),
-            Container(
-              width: 120,
-              height: 120,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.grayColor,
-                border: Border.all(color: AppColors.redColor,width: 2)
+      body: SingleChildScrollView(
+        child: SizedBox(
+          width: size.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 24),
+              //image
+              Container(
+                width: 120,
+                height: 120,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.grayColor,
+                  border: Border.all(color: AppColors.redColor,width: 2)
+                ),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(64),
+                    child: Image.asset(Assets.images.cratorimage.path)),
               ),
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(64),
-                  child: Image.asset(Assets.images.cratorimage.path)),
-            ),
-            const SizedBox(height: 16),
-            RichText(
-                text: TextSpan(
-                    text: 'محمد دهقانی فرد',
-                    style: textTheme.bodyText2,
-                    children: [
-                      TextSpan(
-                        text: ' /برنامه نویس موبایل',
-                        style: textTheme.subtitle1!.apply(fontSizeFactor: 0.8)
-                      )
-                    ]
-                ),
-            ),
-            const SizedBox(height: 16,),
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Text(
-                AppStrings.creatorDescription,
-                style: textTheme.subtitle2,
-                textAlign: TextAlign.justify,
+              const SizedBox(height: 16),
+              //title
+              RichText(
+                  text: TextSpan(
+                      text: 'محمد دهقانی فرد',
+                      style: textTheme.bodyText2,
+                      children: [
+                        TextSpan(
+                          text: ' /برنامه نویس موبایل',
+                          style: textTheme.subtitle1!.apply(fontSizeFactor: 0.8)
+                        )
+                      ]
+                  ),
               ),
-            ),
-            const SizedBox(height: 16,),
-            const Text('ارتباط با من'),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CreatorSocialBtn(
-                    textTheme: textTheme,
-                    color: AppColors.redColor,
-                    title: 'وب سایت',
-                    icon: Assets.icons.mywebsite.path,
-                    onTap: () => creatorController.lunchUrl(url: 'https://dehghanifard.ir'),
+              const SizedBox(height: 16,),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Text(
+                  AppStrings.creatorDescription,
+                  style: textTheme.subtitle2,
+                  textAlign: TextAlign.justify,
                 ),
-                CreatorSocialBtn(
-                    textTheme: textTheme,
-                    color: AppColors.primaryColor,
-                    title: 'تلگرام',
-                    icon: Assets.icons.telegram.path,
-                    onTap: () => creatorController.lunchUrl(url: 'https://t.me/Mohammad_df'),
+              ),
+              const SizedBox(height: 16,),
+              const Text('ارتباط با من'),
+              // social media icon
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16,22,16,0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    CreatorSocialBtn(
+                        textTheme: textTheme,
+                        color: AppColors.redColor,
+                        title: 'وب سایت',
+                        icon: Assets.icons.mywebsite.path,
+                        onTap: () => creatorController.lunchUrl(url: 'https://dehghanifard.ir'),
+                    ),
+                    CreatorSocialBtn(
+                        textTheme: textTheme,
+                        color: AppColors.primaryColor,
+                        title: 'تلگرام',
+                        icon: Assets.icons.telegram.path,
+                        onTap: () => creatorController.lunchUrl(url: 'https://t.me/Mohammad_df'),
+                    ),
+                    CreatorSocialBtn(
+                        textTheme: textTheme,
+                        color: AppColors.yellowColor,
+                        title: 'اینستاگرام',
+                        icon: Assets.icons.instagram.path,
+                        onTap: () => creatorController.lunchUrl(url: 'https://www.instagram.com/m.deghanifard/'),
+                    ),
+                  ],
                 ),
-                CreatorSocialBtn(
-                    textTheme: textTheme,
-                    color: AppColors.yellowColor,
-                    title: 'اینستاگرام',
-                    icon: Assets.icons.instagram.path,
-                    onTap: () => creatorController.lunchUrl(url: 'https://www.instagram.com/m.deghanifard/'),
-                ),
-              ],
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
