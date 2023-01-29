@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:khazaneh/components/app_colors.dart';
-import 'package:khazaneh/components/app_strings.dart';
+import 'package:khazaneh/constant/colors/app_colors.dart';
+import 'package:khazaneh/constant/strings/app_strings.dart';
 import 'package:khazaneh/components/appbars/secondary_appbar.dart';
 
 class HelpScreen extends StatelessWidget {

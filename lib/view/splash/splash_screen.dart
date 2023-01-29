@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:khazaneh/components/app_colors.dart';
-import 'package:khazaneh/components/app_strings.dart';
-import 'package:khazaneh/constant/app_route.dart';
-import 'package:khazaneh/constant/database_key.dart';
+import 'package:khazaneh/constant/colors/app_colors.dart';
+import 'package:khazaneh/constant/strings/app_strings.dart';
+import 'package:khazaneh/constant/routes/app_route.dart';
+import 'package:khazaneh/constant/keys/database_key.dart';
 import 'package:khazaneh/controller/user/user_controller.dart';
 import 'package:khazaneh/gen/assets.gen.dart';
-import 'package:khazaneh/view/home_screen.dart';
-import 'package:khazaneh/view/register_screen.dart';
+import 'package:khazaneh/view/home/home_screen.dart';
+import 'package:khazaneh/view/register/register_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

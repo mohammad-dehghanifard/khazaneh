@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:khazaneh/components/app_colors.dart';
+import 'package:khazaneh/constant/colors/app_colors.dart';
 import 'package:khazaneh/controller/user/user_controller.dart';
 
 Future<dynamic> changeUsernameBottomSheet(BuildContext context, UserController userController) {

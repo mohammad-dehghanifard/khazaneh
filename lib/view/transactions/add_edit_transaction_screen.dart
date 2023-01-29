@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:khazaneh/components/app_colors.dart';
-import 'package:khazaneh/components/app_strings.dart';
+import 'package:khazaneh/constant/colors/app_colors.dart';
+import 'package:khazaneh/constant/strings/app_strings.dart';
 import 'package:khazaneh/components/appbars/secondary_appbar.dart';
 import 'package:khazaneh/controller/transaction/transaction_controller.dart';
 import 'package:khazaneh/model/transaction/transaction_model.dart';
-import '../gen/assets.gen.dart';
+import '../../gen/assets.gen.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 

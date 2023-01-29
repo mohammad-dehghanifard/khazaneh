@@ -3,13 +3,13 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:khazaneh/components/app_colors.dart';
-import 'package:khazaneh/components/widget/price_label.dart';
-import 'package:khazaneh/constant/app_margin.dart';
-import 'package:khazaneh/constant/app_route.dart';
+import 'package:khazaneh/constant/colors/app_colors.dart';
+import 'package:khazaneh/components/widget/labels/price_label.dart';
+import 'package:khazaneh/constant/margin/app_margin.dart';
+import 'package:khazaneh/constant/routes/app_route.dart';
 import 'package:khazaneh/controller/transaction/transaction_controller.dart';
 import 'package:khazaneh/model/transaction/transaction_model.dart';
-import 'package:khazaneh/view/add_edit_transaction_screen.dart';
+import 'package:khazaneh/view/transactions/add_edit_transaction_screen.dart';
 
 
 class TransactionListItem extends StatelessWidget {

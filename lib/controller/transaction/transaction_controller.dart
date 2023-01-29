@@ -4,12 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:khazaneh/components/app_colors.dart';
-import 'package:khazaneh/components/widget/show_snack_bar.dart';
-import 'package:khazaneh/constant/app_route.dart';
-import 'package:khazaneh/constant/database_key.dart';
+import 'package:khazaneh/constant/colors/app_colors.dart';
+import 'package:khazaneh/components/widget/snackbars/show_snack_bar.dart';
+import 'package:khazaneh/constant/routes/app_route.dart';
+import 'package:khazaneh/constant/keys/database_key.dart';
 import 'package:khazaneh/model/transaction/transaction_model.dart';
-import 'package:khazaneh/view/add_edit_transaction_screen.dart';
+import 'package:khazaneh/view/transactions/add_edit_transaction_screen.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 

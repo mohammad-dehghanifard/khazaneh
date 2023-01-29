@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:khazaneh/components/app_colors.dart';
-import 'package:khazaneh/constant/app_route.dart';
+import 'package:khazaneh/constant/colors/app_colors.dart';
+import 'package:khazaneh/constant/routes/app_route.dart';
 
 Widget navigationBottom(RxInt selectedPageIndex) {
   return AnimatedBottomNavigationBar(

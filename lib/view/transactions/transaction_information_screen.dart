@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:khazaneh/components/app_colors.dart';
-import 'package:khazaneh/components/app_strings.dart';
+import 'package:khazaneh/constant/colors/app_colors.dart';
+import 'package:khazaneh/constant/strings/app_strings.dart';
 import 'package:khazaneh/components/appbars/secondary_appbar.dart';
-import 'package:khazaneh/components/bottom_navigation.dart';
-import 'package:khazaneh/components/widget/chart_widget.dart';
-import 'package:khazaneh/components/widget/price_label.dart';
-import 'package:khazaneh/constant/app_margin.dart';
+import 'package:khazaneh/components/navigationbtn/bottom_navigation.dart';
+import 'package:khazaneh/components/widget/charts/chart_widget.dart';
+import 'package:khazaneh/components/widget/labels/price_label.dart';
+import 'package:khazaneh/constant/margin/app_margin.dart';
 import 'package:khazaneh/controller/transaction/transaction_controller.dart';
-import 'package:khazaneh/view/add_edit_transaction_screen.dart';
+import 'package:khazaneh/view/transactions/add_edit_transaction_screen.dart';
 
 class TransactionInformation  extends StatelessWidget {
    TransactionInformation({Key? key}) : super(key: key);

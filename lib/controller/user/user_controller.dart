@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:khazaneh/components/app_colors.dart';
-import 'package:khazaneh/components/widget/show_snack_bar.dart';
-import 'package:khazaneh/constant/database_key.dart';
+import 'package:khazaneh/constant/colors/app_colors.dart';
+import 'package:khazaneh/components/widget/snackbars/show_snack_bar.dart';
+import 'package:khazaneh/constant/keys/database_key.dart';
 
 class UserController extends GetxController{
   final box = GetStorage();

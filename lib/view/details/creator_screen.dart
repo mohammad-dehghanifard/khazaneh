@@ -3,10 +3,10 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:khazaneh/components/app_colors.dart';
-import 'package:khazaneh/components/app_strings.dart';
+import 'package:khazaneh/constant/colors/app_colors.dart';
+import 'package:khazaneh/constant/strings/app_strings.dart';
 import 'package:khazaneh/components/appbars/secondary_appbar.dart';
-import 'package:khazaneh/components/widget/creator_social_btn.dart';
+import 'package:khazaneh/components/widget/btns/creator_social_btn.dart';
 import 'package:khazaneh/controller/creator/creator_controller.dart';
 import 'package:khazaneh/gen/assets.gen.dart';
 
