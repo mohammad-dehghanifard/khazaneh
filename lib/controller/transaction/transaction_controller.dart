@@ -30,7 +30,7 @@ class TransactionController extends GetxController {
 
   addTransaction(){
     if(transactionTitleController.text.isEmpty || transactionPriceController.text.isEmpty||transactionTimeController.text.isEmpty){
-      showSnackBar(title: 'خطا',content: 'لطفا تمام اطلاعات تراکنش را وارد کنید!');
+      showSnackBar(backgroundColor: AppColors.redColor,title: 'خطا',content: 'لطفا تمام اطلاعات تراکنش را وارد کنید!');
     }
     //ادیت کردن ایتم
     else if(transactionEntity.value.isInBox){

@@ -8,7 +8,15 @@ import 'package:share_plus/share_plus.dart';
 class HomeController extends GetxController{
   final box = GetStorage();
 
-shareApp() => Share.share('سلام من برای مدیریت مالی هزینه های شخصی خودم از خزانه استفاده میکنم. به تو هم پیشنهاد میکنم ازش استفاده کنی!');
+shareApp() => Share.share(
+    """
+سلام من برای مدیریت مالی هزینه های شخصی خودم از اپلیکیشن خزانه استفاده میکنم. خیلی باحاله اگر دوست داشته باشی تو هم میتونی ازش استفاده کنی!
+    
+دانلود از مایکت :
+    
+https://cafebazaar.ir/app/com.deheghanifard.khazaneh
+    """
+);
 
  hiveDataBaseInit() async {
    await Hive.initFlutter();
@@ -17,3 +25,4 @@ shareApp() => Share.share('سلام من برای مدیریت مالی هزین
  }
 
 }
+

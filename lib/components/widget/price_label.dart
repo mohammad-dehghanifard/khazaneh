@@ -10,7 +10,5 @@ extension SperatorNumber on int{
 
 extension PriceLable on String{
   String get withPriceLable => "${this} تومان ";
-
-
 }
 

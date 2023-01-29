@@ -79,7 +79,12 @@ class RegisterScreen extends StatelessWidget {
                     onPressed: () {
                       authController.authSuccess();
                       userController.userName.value = userController.box.read(DataBaseKey.saveUsernameKey);
-                      userController.userImagePath.value = userController.box.read(DataBaseKey.saveUserImageKey);
+                      if(authController.userImagePath.value != ''){
+                        userController.userProfileImagePath.value = userController.box.read(DataBaseKey.saveUserImageKey);
+                      }else{
+                        userController.box.write(DataBaseKey.saveUserImageKey, "not");
+                        userController.userProfileImagePath.value = "not";
+                      }
                     },
                     style: ButtonStyle(
                       minimumSize: MaterialStatePropertyAll(Size(Get.width,50))

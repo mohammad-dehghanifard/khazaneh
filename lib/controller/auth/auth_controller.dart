@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:khazaneh/components/app_colors.dart';
 import 'package:khazaneh/components/widget/show_snack_bar.dart';
 import 'package:khazaneh/constant/app_route.dart';
 import 'package:khazaneh/constant/database_key.dart';
@@ -18,8 +19,10 @@ class AuthController extends GetxController{
       if(filePicker != null){
         userImagePath.value = filePicker.path;
         box.write(DataBaseKey.saveUserImageKey, userImagePath.value);
+        showSnackBar(backgroundColor: AppColors.greenColor,title: 'عملیات موفق',content: 'تصویر پروفایل شما با موفقیت انتخاب شد!');
+
       }else{
-        showSnackBar(title: 'خطا',content: 'شما هیچ عکسی انتخاب نکرده اید!');
+        showSnackBar(backgroundColor: AppColors.redColor,title: 'خطا',content: 'شما هیچ عکسی انتخاب نکرده اید!');
       }
   }
   saveUserName(String username){
@@ -28,10 +31,11 @@ class AuthController extends GetxController{
   authSuccess(){
 
     if(usernameController.text.isEmpty){
-      showSnackBar(title: 'خطا',content: 'شما نام کاربری خود را وارد نکرده اید!');
+      showSnackBar(backgroundColor: AppColors.redColor,title: 'خطا',content: 'شما نام کاربری خود را وارد نکرده اید!');
     }else{
       saveUserName(usernameController.text);
       Get.offNamed(RouteAPP.routeMainScreen);
+
     }
 
   }

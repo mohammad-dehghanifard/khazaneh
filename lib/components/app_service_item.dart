@@ -39,7 +39,7 @@ class AppServicesItem extends StatelessWidget {
       onTap: () {
         pathUrl != null
             ? Get.toNamed(pathUrl!)
-            : showSnackBar(title: 'بزودی',content: 'این ویژگی در اپدیت های اینده اضافه خواهد شد!');
+            : showSnackBar(backgroundColor: AppColors.primaryColor,title: 'بزودی',content: 'این ویژگی در اپدیت های اینده اضافه خواهد شد!');
       },
       child: Container(
         margin: const EdgeInsets.fromLTRB(9,0,9,16),
@@ -63,12 +63,14 @@ class AppServicesItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      const SizedBox(height: 2),
                       Text(title,style: textTheme.bodyText2!.apply(color: Colors.white),),
-                      const SizedBox(height: 2,),
+                      const SizedBox(height: 3,),
                       SizedBox(
                           width: size.width / 1.4,
+                          height: size.height / 16,
                           child: Text(description,style: textTheme.subtitle1!.apply(color: Colors.white,fontSizeFactor: 0.8),)),
-                      const SizedBox(height: 4,),
+                      //const SizedBox(height: 4,),
                     ],
                   )
                 ],

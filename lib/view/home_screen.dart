@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:khazaneh/components/app_colors.dart';
 import 'package:khazaneh/components/app_service_item.dart';
 import 'package:khazaneh/components/app_strings.dart';
@@ -25,6 +26,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("============${GetStorage().read(DataBaseKey.saveUserImageKey)}==============");
     final HomeController homeController = Get.put(HomeController());
     final UserController userController = Get.put(UserController());
     final size = MediaQuery.of(context).size;
@@ -48,11 +50,11 @@ class HomeScreen extends StatelessWidget {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(75),
-                      child:  homeController.box.read(DataBaseKey.saveUserImageKey) != null ?
+                      child:  userController.userProfileImagePath.value != "not" ?
                       SizedBox(
                         width: 60,
                         height: 60,
-                          child: Image.file(File(userController.userImagePath.value),fit: BoxFit.cover,)):
+                          child: Image.file(File(userController.userProfileImagePath.value),fit: BoxFit.cover,)):
                       Image.asset(
                         Assets.icons.avatar.path,
                         width: 60,
