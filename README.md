@@ -2,8 +2,6 @@
 
 A  Personal financial management  project.
 
-![Screenshot_20230130_225136](https://user-images.githubusercontent.com/104780008/218301018-89c341b0-14f0-4d90-a1ee-173cc313585a.png)
-
 
 ## Getting Started
 
