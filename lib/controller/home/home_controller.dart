@@ -14,14 +14,15 @@ shareApp() => Share.share(
     
 دانلود از مایکت :
     
-https://cafebazaar.ir/app/com.deheghanifard.khazaneh
+https://myket.ir/app/com.deheghanifard.khazaneh
     """
 );
 
- hiveDataBaseInit() async {
+initialHiveDatabase() async {
    await Hive.initFlutter();
    Hive.registerAdapter(TransactionEntityAdapter());
-   Hive.openBox<TransactionEntity>(DataBaseKey.transactionHiveKey);
+   Hive.registerAdapter(TransactionTypeAdapter());
+   await Hive.openBox<TransactionEntity>(DataBaseKey.transactionHiveKey);
  }
 
 }

@@ -1,15 +1,11 @@
-import 'dart:ffi';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:khazaneh/constant/colors/app_colors.dart';
 import 'package:khazaneh/components/widget/snackbars/show_snack_bar.dart';
-import 'package:khazaneh/constant/routes/app_route.dart';
 import 'package:khazaneh/constant/keys/database_key.dart';
 import 'package:khazaneh/model/transaction/transaction_model.dart';
-import 'package:khazaneh/view/transactions/add_edit_transaction_screen.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 
@@ -18,6 +14,7 @@ class TransactionController extends GetxController {
   final TextEditingController transactionPriceController = TextEditingController();
   final TextEditingController transactionTimeController = TextEditingController();
   var selectedTransactionType = TransactionType.receipt.obs;
+
   Rx<TransactionEntity> transactionEntity = TransactionEntity().obs;
 
   String year = Jalali.now().year.toString();
@@ -25,8 +22,6 @@ class TransactionController extends GetxController {
   String toDay = Jalali.now().day.toString().length ==1? '0${Jalali.now().day.toString()}' : Jalali.now().day.toString();
 
   final transactionHiveBox = Hive.box<TransactionEntity>(DataBaseKey.transactionHiveKey);
-
-
 
   addTransaction(){
     if(transactionTitleController.text.isEmpty || transactionPriceController.text.isEmpty||transactionTimeController.text.isEmpty){
@@ -48,14 +43,14 @@ class TransactionController extends GetxController {
     }
 
   }
-  updateTransactionNavigation(TransactionEntity transactionItem){
-    transactionEntity.value = transactionItem;
-    Get.to(AddOrEditTransaction(isEdit: true));
-    transactionTitleController.text = transactionItem.title;
-    transactionPriceController.text = transactionItem.price.toString();
-    selectedTransactionType.value = transactionItem.transactionType;
-    transactionTimeController.text = transactionItem.date;
+
+  setUpdateData(){
+    transactionTitleController.text = transactionEntity.value.title;
+    transactionPriceController.text = transactionEntity.value.price.toString();
+    selectedTransactionType.value = transactionEntity.value.transactionType;
+    transactionTimeController.text = transactionEntity.value.date;
   }
+
   deleteTransaction(BuildContext context,TransactionEntity transactionEntity){
     showDialog(
         context: context,
@@ -79,14 +74,11 @@ class TransactionController extends GetxController {
     );
   }
 
+
   //مقدار دهی اولیه و پاک شدن فرم ها
   clearForm(){
-    transactionTitleController.clear();
-    transactionPriceController.clear();
-    transactionTimeController.clear();
-    selectedTransactionType.value = TransactionType.receipt;
+    transactionEntity.value = TransactionEntity();
     Get.back();
-
   }
   setTranActionModelData(){
     transactionEntity.value.title = transactionTitleController.text;
@@ -171,7 +163,6 @@ class TransactionController extends GetxController {
     return result;
 
   }
-
 
 }
 

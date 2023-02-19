@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:khazaneh/constant/routes/app_route.dart';
-import 'package:khazaneh/constant/keys/database_key.dart';
 import 'package:khazaneh/controller/home/home_controller.dart';
 import 'package:khazaneh/gen/fonts.gen.dart';
-import 'package:khazaneh/model/transaction/transaction_model.dart';
 import 'package:khazaneh/view/transactions/add_edit_transaction_screen.dart';
 import 'package:khazaneh/view/details/creator_screen.dart';
 import 'package:khazaneh/view/details/help_screen.dart';
 import 'package:khazaneh/view/home/home_screen.dart';
 import 'package:khazaneh/view/main/main_screen.dart';
-import 'package:khazaneh/view/profile/profile_screen.dart';
 import 'package:khazaneh/view/register/register_screen.dart';
 import 'package:khazaneh/view/splash/splash_screen.dart';
 import 'package:khazaneh/view/transactions/transaction_information_screen.dart';
@@ -22,10 +18,7 @@ import 'constant/colors/app_colors.dart';
 
 void main() async {
   final HomeController homeController = Get.put(HomeController());
-  await Hive.initFlutter();
-  Hive.registerAdapter(TransactionEntityAdapter());
-  Hive.registerAdapter(TransactionTypeAdapter());
-  Hive.openBox<TransactionEntity>(DataBaseKey.transactionHiveKey);
+  homeController.initialHiveDatabase();
   await GetStorage.init();
   runApp(const MyApp());
 }
@@ -40,9 +33,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
         locale: const Locale("fa"),
         getPages: [
-        GetPage(name: RouteAPP.routeHomeScreen, page: () =>  HomeScreen()),
+        GetPage(name: RouteAPP.routeHomeScreen, page: () => const HomeScreen()),
         GetPage(name: RouteAPP.routeRegisterScreen, page: () =>  RegisterScreen()),
-        GetPage(name: RouteAPP.routeAddOrEditTransactionScreen, page: () =>  AddOrEditTransaction()),
+        GetPage(name: RouteAPP.routeAddOrEditTransactionScreen, page: () =>  const AddOrEditTransaction()),
         GetPage(name: RouteAPP.routeTransactionListScreen, page: () =>  TransactionListScreen()),
         GetPage(name: RouteAPP.routeTransactionInformationScreen, page: () =>  TransactionInformation()),
         GetPage(name: RouteAPP.routeMainScreen, page: () =>  MainScreen()),

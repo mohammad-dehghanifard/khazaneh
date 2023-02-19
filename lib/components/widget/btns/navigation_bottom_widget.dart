@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:khazaneh/constant/colors/app_colors.dart';
 import 'package:khazaneh/constant/routes/app_route.dart';
 import 'package:khazaneh/controller/navigation/navigation_controller.dart';
+import 'package:khazaneh/model/transaction/transaction_model.dart';
 
 class NavigationBottomWidget extends StatelessWidget {
   NavigationBottomWidget({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class NavigationBottomWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 130,
+      height: 100,
       child: Stack(
         children: [
           Positioned(
@@ -20,7 +21,7 @@ class NavigationBottomWidget extends StatelessWidget {
             right: 40,
             left: 40,
             child: Container(
-              height: 65,
+              height: 50,
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(16))
@@ -45,13 +46,13 @@ class NavigationBottomWidget extends StatelessWidget {
           ),
           Center(
             child: InkWell(
-              onTap: () => Get.toNamed(RouteAPP.routeAddOrEditTransactionScreen),
+              onTap: () => Get.toNamed(RouteAPP.routeAddOrEditTransactionScreen,arguments: TransactionEntity()),
               child: Container(
                 width: 65,
                 alignment: Alignment.topCenter,
                 child: Container(
-                  height: 65,
-                  width: 65,
+                  height: 50,
+                  width: 50,
                   decoration:  const BoxDecoration(
                       shape: BoxShape.circle,
                       color: AppColors.primaryColor,
@@ -63,7 +64,7 @@ class NavigationBottomWidget extends StatelessWidget {
                         )
                       ]
                   ),
-                  child: const Icon(Icons.add,color: Colors.white,size: 32,),
+                  child: const Icon(Icons.add,color: Colors.white,size: 26,),
                 ),
               ),
             ),

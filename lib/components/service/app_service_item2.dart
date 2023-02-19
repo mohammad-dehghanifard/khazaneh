@@ -5,9 +5,8 @@ import 'package:get/get.dart';
 import 'package:khazaneh/constant/colors/app_colors.dart';
 import 'package:khazaneh/components/widget/snackbars/show_snack_bar.dart';
 
-
-class AppServicesItem extends StatelessWidget {
-  const AppServicesItem(
+class SquareAppServicesItem extends StatelessWidget {
+  const SquareAppServicesItem(
       {Key? key,
       required this.width,
       required this.height,
@@ -49,13 +48,13 @@ class AppServicesItem extends StatelessWidget {
             color: color,
             borderRadius: BorderRadius.circular(12)),
         child: comingSoon == false
-            ? Row(
+            ? Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 // service Icon
                 children: [
                   Image.asset(
                     icon,
-                    width: 60,
+                    width: 75,
                   ),
                   const SizedBox(width: 4),
                   Column(

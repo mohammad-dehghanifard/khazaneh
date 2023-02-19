@@ -2,25 +2,39 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:khazaneh/constant/colors/app_colors.dart';
 import 'package:khazaneh/constant/strings/app_strings.dart';
 import 'package:khazaneh/components/appbars/secondary_appbar.dart';
 import 'package:khazaneh/controller/transaction/transaction_controller.dart';
 import 'package:khazaneh/model/transaction/transaction_model.dart';
 import '../../gen/assets.gen.dart';
-import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 
-class AddOrEditTransaction extends StatelessWidget {
+class AddOrEditTransaction extends StatefulWidget {
   final bool isEdit;
-  AddOrEditTransaction({Key? key,this.isEdit = false}) : super(key: key);
+  const AddOrEditTransaction({Key? key,this.isEdit = false}) : super(key: key);
+
+  @override
+  State<AddOrEditTransaction> createState() => _AddOrEditTransactionState();
+}
+
+class _AddOrEditTransactionState extends State<AddOrEditTransaction> {
   final TransactionController transactionController = Get.put(TransactionController());
+
+  @override
+  void initState() {
+    transactionController.transactionEntity.value = Get.arguments;
+    transactionController.setUpdateData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
       return Scaffold(
-        appBar: secondaryAppBar(pageTitle: isEdit?'ویرایش تراکنش':'اضافه کردن تراکنش جدید'),
+        appBar: secondaryAppBar(pageTitle: transactionController.transactionEntity.value.title != '' ?
+        'ویرایش تراکنش'
+         :'اضافه کردن تراکنش جدید'),
         backgroundColor: AppColors.scaffoldColor,
         body: SingleChildScrollView(
           child:  Padding(
@@ -107,7 +121,7 @@ class AddOrEditTransaction extends StatelessWidget {
                           minimumSize: MaterialStateProperty.all(Size(Get.width, 50)),
                           shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)))
                       ),
-                      child:  Text(isEdit?AppStrings.editTransactionTxt:AppStrings.addTransactionTxt,style: textTheme.headline2,)),
+                      child:  Text(widget.isEdit?AppStrings.editTransactionTxt:AppStrings.addTransactionTxt,style: textTheme.headline2,)),
 
                 ],
               ),
@@ -118,7 +132,5 @@ class AddOrEditTransaction extends StatelessWidget {
       );
 
   }
-
-
 }
 

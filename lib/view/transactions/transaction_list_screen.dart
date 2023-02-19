@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:khazaneh/constant/colors/app_colors.dart';
-import 'package:khazaneh/constant/strings/app_strings.dart';
 import 'package:khazaneh/components/appbars/secondary_appbar.dart';
 import 'package:khazaneh/constant/routes/app_route.dart';
 import 'package:khazaneh/controller/transaction/transaction_controller.dart';
@@ -23,7 +21,7 @@ class TransactionListScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.toNamed(RouteAPP.routeAddOrEditTransactionScreen),
+        onPressed: () => Get.toNamed(RouteAPP.routeAddOrEditTransactionScreen,arguments: TransactionEntity()),
         backgroundColor: AppColors.primaryColor,
         child: const Icon(CupertinoIcons.add, size: 26),
       ),
