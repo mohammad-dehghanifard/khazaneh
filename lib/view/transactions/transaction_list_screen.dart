@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:khazaneh/components/widget/empty_state/empty_state.dart';
 import 'package:khazaneh/constant/colors/app_colors.dart';
 import 'package:khazaneh/components/appbars/secondary_appbar.dart';
 import 'package:khazaneh/constant/routes/app_route.dart';
@@ -12,8 +13,7 @@ import '../../components/items/transaction_listItem.dart';
 
 class TransactionListScreen extends StatelessWidget {
   TransactionListScreen({Key? key}) : super(key: key);
-  final TransactionController transactionController =
-      Get.put(TransactionController());
+  final TransactionController transactionController = Get.put(TransactionController());
 
   @override
   Widget build(BuildContext context) {
@@ -39,17 +39,25 @@ class TransactionListScreen extends StatelessWidget {
                     transactionController.transactionHiveBox.listenable(),
                 builder: (context, box, child) {
                   final items = box.values.toList();
-                  return ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: items.length,
-                    itemBuilder: (context, index) {
-                      final item = items[index];
-                      return TransactionListItem(
-                          textTheme: textTheme, transactionEntity: item);
-                    },
-                  );
+                  if(items.isNotEmpty){
+                    return ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: items.length,
+                      itemBuilder: (context, index) {
+                        final item = items[index];
+                        return TransactionListItem(
+                            textTheme: textTheme, transactionEntity: item);
+                      },
+                    );
+                  } else{
+                    return const EmptyState(
+                        content: "شما هیچ تراکنشی اضافه نکردید!",
+                        imgSize: 364,
+                    );
+                  }
                 },
               ),
+              // gradiant
               Positioned(
                 bottom: 0,
                 left: 0,

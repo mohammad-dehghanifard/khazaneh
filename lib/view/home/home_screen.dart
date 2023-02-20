@@ -3,8 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:khazaneh/components/items/tranc_action_home_item.dart';
-import 'package:khazaneh/components/service/app_service_item2.dart';
+import 'package:khazaneh/components/items/trancaction_home_item.dart';
+import 'package:khazaneh/components/service/square_app_service_item.dart';
+import 'package:khazaneh/components/widget/empty_state/empty_state.dart';
 import 'package:khazaneh/constant/colors/app_colors.dart';
 import 'package:khazaneh/components/service/app_service_item.dart';
 import 'package:khazaneh/constant/routes/app_route.dart';
@@ -93,18 +94,21 @@ class HomeScreen extends StatelessWidget {
               ValueListenableBuilder(
                   valueListenable: transactionController.transactionHiveBox.listenable(),
                   builder: (context, box, child) {
-                    final items;
+                    final List<TransactionEntity> items;
                     if(box.values.length >= 5){
                       items = box.values.take(5).toList();
                     } else{
                       items = [];
                     }
+                    if(items.length == 5){
                     return SizedBox(
                       width: size.width,
                       height: 150,
                       child: Stack(
                         children: [
                           ListView.builder(
+                              padding: const EdgeInsets.only(bottom: 16),
+                              physics: const BouncingScrollPhysics(),
                               itemCount: items.length,
                               itemBuilder: (context, index) {
                                 final item = items[index];
@@ -130,6 +134,10 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                     );
+                    } else{
+                      return const EmptyState(content: "برای فعال شدن این بخش باید پنج تراکنش رو اضافه کنی!",imgSize: 128,);
+                    }
+
                   },
               )
             ],

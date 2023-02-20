@@ -1,22 +1,16 @@
 // ignore_for_file: unrelated_type_equality_checks, must_be_immutable
 
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
-import 'package:khazaneh/components/navigationbtn/bottom_navigation.dart';
 import 'package:khazaneh/components/widget/btns/navigation_bottom_widget.dart';
-import 'package:khazaneh/constant/margin/app_margin.dart';
 import 'package:khazaneh/constant/routes/app_route.dart';
-import 'package:khazaneh/constant/keys/database_key.dart';
 import 'package:khazaneh/controller/home/home_controller.dart';
 import 'package:khazaneh/controller/navigation/navigation_controller.dart';
 import 'package:khazaneh/gen/assets.gen.dart';
 import 'package:khazaneh/view/home/home_screen.dart';
 import 'package:khazaneh/view/profile/profile_screen.dart';
 import '../../constant/colors/app_colors.dart';
-import '../transactions/transaction_information_screen.dart';
 
 
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();

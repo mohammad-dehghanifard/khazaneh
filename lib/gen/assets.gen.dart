@@ -66,8 +66,11 @@ class $AssetsImagesGen {
   AssetGenImage get cratorimage =>
       const AssetGenImage('assets/images/cratorimage.jpg');
 
+  /// File path: assets/images/empty_state.svg
+  String get emptyState => 'assets/images/empty_state.svg';
+
   /// List of all assets
-  List<AssetGenImage> get values => [cratorimage];
+  List<dynamic> get values => [cratorimage, emptyState];
 }
 
 class Assets {
