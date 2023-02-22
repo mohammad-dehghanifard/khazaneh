@@ -48,6 +48,7 @@ dependencies:
   share_plus: ^6.3.0
   intl: ^0.18.0
   flutter_svg: ^1.1.6
+  flutter_slidable: ^2.0.0
 
 dev_dependencies:
   flutter_test:

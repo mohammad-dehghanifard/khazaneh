@@ -11,7 +11,6 @@ class SquareAppServicesItem extends StatelessWidget {
       required this.width,
       required this.height,
       required this.title,
-      required this.description,
       required this.icon,
       required this.comingSoon,
       required this.color,
@@ -21,7 +20,6 @@ class SquareAppServicesItem extends StatelessWidget {
   final double width;
   final double height;
   final title;
-  final description;
   final icon;
   final comingSoon;
   final Color color;
@@ -31,7 +29,6 @@ class SquareAppServicesItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final size = MediaQuery.of(context).size;
     return InkWell(
       borderRadius: BorderRadius.circular(16),
       onTap: () {
@@ -54,23 +51,10 @@ class SquareAppServicesItem extends StatelessWidget {
                 children: [
                   Image.asset(
                     icon,
-                    width: 75,
+                    width: 68,
                   ),
-                  const SizedBox(width: 4),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 2),
-                      Text(title,style: textTheme.bodyText2!.apply(color: Colors.white),),
-                      const SizedBox(height: 3,),
-                      SizedBox(
-                          width: size.width / 1.4,
-                          height: size.height / 16,
-                          child: Text(description,style: textTheme.subtitle1!.apply(color: Colors.white,fontSizeFactor: 0.8),)),
-                      //const SizedBox(height: 4,),
-                    ],
-                  )
+                  const SizedBox(width: 2),
+                  Text(title,style: textTheme.bodyText2!.apply(color: Colors.white),),
                 ],
               )
             : Stack(
@@ -92,8 +76,6 @@ class SquareAppServicesItem extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(title,style: textTheme.bodyText2!.apply(color: Colors.white),),
-                              const SizedBox(height: 6,),
-                              Text(description,style: textTheme.subtitle1!.apply(color: Colors.white,fontSizeFactor: 0.8),),
                             ],
                           )
                         ],

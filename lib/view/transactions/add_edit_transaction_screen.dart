@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:khazaneh/constant/colors/app_colors.dart';
 import 'package:khazaneh/constant/strings/app_strings.dart';
@@ -11,8 +10,8 @@ import '../../gen/assets.gen.dart';
 
 
 class AddOrEditTransaction extends StatefulWidget {
-  final bool isEdit;
-  const AddOrEditTransaction({Key? key,this.isEdit = false}) : super(key: key);
+
+  const AddOrEditTransaction({Key? key}) : super(key: key);
 
   @override
   State<AddOrEditTransaction> createState() => _AddOrEditTransactionState();
@@ -121,7 +120,7 @@ class _AddOrEditTransactionState extends State<AddOrEditTransaction> {
                           minimumSize: MaterialStateProperty.all(Size(Get.width, 50)),
                           shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)))
                       ),
-                      child:  Text(widget.isEdit?AppStrings.editTransactionTxt:AppStrings.addTransactionTxt,style: textTheme.headline2,)),
+                      child:  Text(transactionController.transactionEntity.value.title != '' ? AppStrings.editTransactionTxt:AppStrings.addTransactionTxt,style: textTheme.headline2,)),
 
                 ],
               ),

@@ -17,7 +17,6 @@ import 'package:khazaneh/model/transaction/transaction_model.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final UserController userController = Get.put(UserController());
@@ -79,8 +78,8 @@ class HomeScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SquareAppServicesItem(width: size.width / 2.2,height : size.height / 5.5,title: "لیست تراکنش ها",description: 'لیستی از تراکنش هایی که قبلا اضافه کرده اید را مشاهده کنید', icon: Assets.icons.wallet.path, comingSoon: false,color: AppColors.greenColor, pathUrl: RouteAPP.routeTransactionListScreen,data: null),
-                  SquareAppServicesItem(width: size.width / 2.2,height: size.height / 5.5,title: "آمار تراکنش ها",description: 'آمار کامل و دقیق از تراکنش هایی خود را مشاهده کنید!', icon: Assets.icons.financeGrowth.path, comingSoon: false,color: AppColors.yellowColor, pathUrl: RouteAPP.routeTransactionInformationScreen,data: null,),
+                  SquareAppServicesItem(width: size.width / 2.2,height : size.height / 7.6,title: "لیست تراکنش ها", icon: Assets.icons.wallet.path, comingSoon: false,color: AppColors.greenColor, pathUrl: RouteAPP.routeTransactionListScreen,data: null),
+                  SquareAppServicesItem(width: size.width / 2.2,height: size.height / 7.6,title: "آمار تراکنش ها", icon: Assets.icons.financeGrowth.path, comingSoon: false,color: AppColors.yellowColor, pathUrl: RouteAPP.routeTransactionInformationScreen,data: null,),
                 ],
               ),
               AppServicesItem(width: size.width / 1,height: size.height / 9.8,title: "مدیریت اقساط",description: 'اقساط ماهانه خود را به سادگی مدیریت کنید!', icon: Assets.icons.wallet.path, comingSoon: true,color: AppColors.redColor, pathUrl: null,data: null,),
@@ -139,7 +138,8 @@ class HomeScreen extends StatelessWidget {
                     }
 
                   },
-              )
+              ),
+              SizedBox(height: size.height * 0.20)
             ],
           ),
         ),
