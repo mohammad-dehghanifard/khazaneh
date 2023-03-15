@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:khazaneh/core/constant/style/text_style.dart';
 import 'package:khazaneh/gen/assets.gen.dart';
 
 class EmptyState extends StatelessWidget {
@@ -9,12 +10,11 @@ class EmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextTheme textTheme = Theme.of(context).textTheme;
     return Center(
       child: Column(
         children: [
           SvgPicture.asset(Assets.images.emptyState,height: imgSize),
-          Text(content,style: textTheme.bodyText1,)
+          Text(content,style: AppTextStyle.regularTxtStyle)
         ],
       ),
     );

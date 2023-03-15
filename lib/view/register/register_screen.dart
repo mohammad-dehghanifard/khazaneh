@@ -2,13 +2,13 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:khazaneh/core/constant/colors/app_colors.dart';
 import 'package:khazaneh/core/constant/strings/app_strings.dart';
 import 'package:khazaneh/core/constant/keys/database_key.dart';
 import 'package:khazaneh/controller/auth/auth_controller.dart';
 import 'package:khazaneh/controller/user/user_controller.dart';
+import 'package:khazaneh/core/constant/style/text_style.dart';
 
 
 class RegisterScreen extends StatelessWidget {
@@ -18,7 +18,6 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var textTheme = Theme.of(context).textTheme;
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColors.scaffoldColor,
@@ -54,7 +53,7 @@ class RegisterScreen extends StatelessWidget {
                style: ButtonStyle(
                  overlayColor: MaterialStatePropertyAll(AppColors.redColor.withOpacity(0.2))
                ),
-               child:   Text(AppStrings.selectImageTxt,style: textTheme.bodyText1!.apply(color: AppColors.redColor),),),
+               child: Text(AppStrings.selectImageTxt,style: AppTextStyle.regularTxtStyle.apply(color: AppColors.redColor),),),
               const SizedBox(height: 36),
               // Text Field
               Padding(
@@ -64,7 +63,7 @@ class RegisterScreen extends StatelessWidget {
                   cursorColor: AppColors.primaryColor,
                   decoration: InputDecoration(
                     hintText: "نام و نام خانوادگی",
-                    hintStyle: textTheme.subtitle1,
+                    hintStyle: AppTextStyle.subTitleTxtStyle1,
                     prefixIcon: const Icon(CupertinoIcons.person_alt_circle,color: AppColors.primaryColor,size: 32,)
                   ),
                 ),
@@ -87,7 +86,7 @@ class RegisterScreen extends StatelessWidget {
                     style: ButtonStyle(
                       minimumSize: MaterialStatePropertyAll(Size(Get.width,50))
                     ),
-                    child: Text("ثبت نام",style: textTheme.bodyText2!.apply(color: Colors.white,fontSizeFactor: 1.4),)),
+                    child: Text("ثبت نام",style: AppTextStyle.defaultTxtStyle.apply(color: Colors.white,fontSizeFactor: 1.4),)),
               ),
             ],
           ),

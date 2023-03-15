@@ -5,6 +5,7 @@ import 'package:khazaneh/core/components/widget/labels/price_label.dart';
 import 'package:khazaneh/core/constant/margin/app_margin.dart';
 import 'package:khazaneh/core/constant/routes/app_route.dart';
 import 'package:khazaneh/controller/transaction/transaction_controller.dart';
+import 'package:khazaneh/core/constant/style/text_style.dart';
 import 'package:khazaneh/model/transaction/transaction_model.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -14,10 +15,8 @@ class TransactionListItem extends StatelessWidget {
    TransactionListItem({
     Key? key,
     required this.transactionEntity,
-    required this.textTheme,
   }) : super(key: key);
 
-  final TextTheme textTheme;
   final TransactionEntity transactionEntity;
   final TransactionController transactionController = Get.put(TransactionController());
 
@@ -78,12 +77,12 @@ class TransactionListItem extends StatelessWidget {
                     children: [
                       SizedBox(width : size.width / 3,
                           child: Text(transactionEntity.title,
-                              style: textTheme.headline5!.apply(fontSizeFactor: 0.8),
+                              style: AppTextStyle.headlineTxtStyle3.apply(fontSizeFactor: 0.8),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                           )),
                       const SizedBox(height: 6),
-                      Text(transactionEntity.date,style: textTheme.caption)
+                      Text(transactionEntity.date,style: AppTextStyle.captionTxtStyle)
                     ],
                   ),
                 ],),
@@ -94,7 +93,7 @@ class TransactionListItem extends StatelessWidget {
                     transactionEntity.price.separator.withPriceLable,
                     maxLines: 1,
                     overflow: TextOverflow.fade,
-                    style: textTheme.headline2!.apply(
+                    style: AppTextStyle.headlineTxtStyle2.apply(
                       fontSizeFactor: 0.8,
                       color: transactionEntity.transactionType == TransactionType.receipt?
                       AppColors.greenColor :

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:khazaneh/core/components/widget/labels/price_label.dart';
 import 'package:khazaneh/core/constant/colors/app_colors.dart';
 import 'package:khazaneh/core/constant/routes/app_route.dart';
+import 'package:khazaneh/core/constant/style/text_style.dart';
 import 'package:khazaneh/model/transaction/transaction_model.dart';
 
 class TransActionHomeItem extends StatelessWidget {
@@ -11,12 +11,10 @@ class TransActionHomeItem extends StatelessWidget {
     Key? key,
     required this.size,
     required this.item,
-    required this.textTheme,
   }) : super(key: key);
 
   final Size size;
   final TransactionEntity item;
-  final TextTheme textTheme;
 
   @override
   Widget build(BuildContext context) {
@@ -43,18 +41,18 @@ class TransActionHomeItem extends StatelessWidget {
                   width :100,
                   child: Text(
                     item.title,
-                    style: textTheme.bodyText1,
+                    style: AppTextStyle.regularTxtStyle,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   )
               ),
 
-              Text(item.date,style: textTheme.bodyText1!.apply(fontSizeFactor: 0.7)),
+              Text(item.date,style: AppTextStyle.regularTxtStyle.apply(fontSizeFactor: 0.7)),
               SizedBox(width: size.width / 16),
               SizedBox(
                 width: 80,
                 child: Text(item.price.separator.withPriceLable,
-                    style: textTheme.bodyText1!.apply(
+                    style: AppTextStyle.regularTxtStyle.apply(
                     fontSizeFactor: 0.8,
                     color: item.transactionType == TransactionType.receipt? AppColors.greenColor : AppColors.redColor,),
                   maxLines: 1,

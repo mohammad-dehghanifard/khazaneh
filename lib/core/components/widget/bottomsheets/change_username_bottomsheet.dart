@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:khazaneh/core/constant/colors/app_colors.dart';
 import 'package:khazaneh/controller/user/user_controller.dart';
+import 'package:khazaneh/core/constant/style/text_style.dart';
 
 Future<dynamic> changeUsernameBottomSheet(BuildContext context, UserController userController) {
   return showModalBottomSheet(
@@ -43,7 +43,7 @@ Future<dynamic> changeUsernameBottomSheet(BuildContext context, UserController u
                   onPressed: () => userController.updateUserName(),
                   child: Padding(
                     padding: const EdgeInsets.all(12),
-                    child: Text('ذخیره تغیرات',style: Theme.of(context).textTheme.bodyText2!.apply(fontSizeFactor: 1,color: Colors.white),),
+                    child: Text('ذخیره تغیرات',style: AppTextStyle.defaultTxtStyle.apply(fontSizeFactor: 1,color: Colors.white),),
                   )
               ),
             ),

@@ -16,7 +16,6 @@ class TransactionListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var textTheme = Theme.of(context).textTheme;
     final size = MediaQuery.of(context).size;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -44,8 +43,7 @@ class TransactionListScreen extends StatelessWidget {
                       itemCount: items.length,
                       itemBuilder: (context, index) {
                         final item = items[index];
-                        return TransactionListItem(
-                            textTheme: textTheme, transactionEntity: item);
+                        return TransactionListItem(transactionEntity: item);
                       },
                     );
                   } else{

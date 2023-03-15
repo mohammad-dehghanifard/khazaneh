@@ -5,6 +5,7 @@ import 'package:khazaneh/core/constant/colors/app_colors.dart';
 import 'package:khazaneh/core/constant/strings/app_strings.dart';
 import 'package:khazaneh/core/components/appbars/secondary_appbar.dart';
 import 'package:khazaneh/controller/transaction/transaction_controller.dart';
+import 'package:khazaneh/core/constant/style/text_style.dart';
 import 'package:khazaneh/model/transaction/transaction_model.dart';
 import '../../gen/assets.gen.dart';
 
@@ -29,7 +30,6 @@ class _AddOrEditTransactionState extends State<AddOrEditTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
       return Scaffold(
         appBar: secondaryAppBar(pageTitle: transactionController.transactionEntity.value.title != '' ?
         'ویرایش تراکنش'
@@ -51,7 +51,7 @@ class _AddOrEditTransactionState extends State<AddOrEditTransaction> {
                       controller: transactionController.transactionTitleController,
                       decoration: InputDecoration(
                           hintText: "عنوان را وارد کنید",
-                          hintStyle: Theme.of(context).textTheme.subtitle1,
+                          hintStyle: AppTextStyle.subTitleTxtStyle1,
                       ),
                     ),
                   ),
@@ -63,7 +63,7 @@ class _AddOrEditTransactionState extends State<AddOrEditTransaction> {
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                           hintText: "مبلغ را وارد کنید",
-                          hintStyle: Theme.of(context).textTheme.subtitle1,
+                          hintStyle: AppTextStyle.subTitleTxtStyle1,
                           fillColor: AppColors.darkGrayColor
                       ),
                     ),
@@ -100,8 +100,8 @@ class _AddOrEditTransactionState extends State<AddOrEditTransaction> {
                   // انتخاب نوع تراکنش
                   CupertinoSlidingSegmentedControl<TransactionType>(
                     children:  {
-                      TransactionType.receipt : Text("دریافتی",style: textTheme.bodyText2!.apply(color: transactionController.selectedTransactionType.value == TransactionType.receipt? Colors.white : AppColors.textColor ),),
-                      TransactionType.payment : Text("پرداختی",style: textTheme.bodyText2!.apply(color: transactionController.selectedTransactionType.value == TransactionType.payment? Colors.white : AppColors.textColor )),
+                      TransactionType.receipt : Text("دریافتی",style: AppTextStyle.defaultTxtStyle.apply(color: transactionController.selectedTransactionType.value == TransactionType.receipt? Colors.white : AppColors.textColor ),),
+                      TransactionType.payment : Text("پرداختی",style: AppTextStyle.defaultTxtStyle.apply(color: transactionController.selectedTransactionType.value == TransactionType.payment? Colors.white : AppColors.textColor )),
                     },
                     groupValue: transactionController.selectedTransactionType.value,
                     backgroundColor: Colors.white,
@@ -120,7 +120,7 @@ class _AddOrEditTransactionState extends State<AddOrEditTransaction> {
                           minimumSize: MaterialStateProperty.all(Size(Get.width, 50)),
                           shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)))
                       ),
-                      child:  Text(transactionController.transactionEntity.value.title != '' ? AppStrings.editTransactionTxt:AppStrings.addTransactionTxt,style: textTheme.headline2,)),
+                      child:  Text(transactionController.transactionEntity.value.title != '' ? AppStrings.editTransactionTxt:AppStrings.addTransactionTxt,style: AppTextStyle.headlineTxtStyle2)),
 
                 ],
               ),

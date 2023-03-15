@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:khazaneh/core/constant/style/text_style.dart';
 
 class CreatorSocialBtn extends StatelessWidget {
   const CreatorSocialBtn({
     Key? key,
-    required this.textTheme,
     required this.color,
     required this.title,
     required this.icon,
     required this.onTap
   }) : super(key: key);
 
-  final TextTheme textTheme;
   final Color color;
   final String icon;
   final String title;
@@ -35,7 +33,7 @@ class CreatorSocialBtn extends StatelessWidget {
           children: [
             Image.asset(icon,width: 42,color: Colors.white,),
             const SizedBox(height: 12),
-            Text(title,style: textTheme.subtitle1!.apply(color: Colors.white),)
+            Text(title,style: AppTextStyle.subTitleTxtStyle1.apply(color: Colors.white),)
           ],
         ),
       ),

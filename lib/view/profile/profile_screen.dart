@@ -1,15 +1,12 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:khazaneh/core/constant/colors/app_colors.dart';
 import 'package:khazaneh/core/components/widget/bottomsheets/change_username_bottomsheet.dart';
 import 'package:khazaneh/core/components/widget/btns/user_option_btn.dart';
-import 'package:khazaneh/controller/auth/auth_controller.dart';
 import 'package:khazaneh/controller/user/user_controller.dart';
+import 'package:khazaneh/core/constant/style/text_style.dart';
 import 'package:khazaneh/gen/assets.gen.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -18,9 +15,8 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final UserController userController = Get.put(UserController());
-    final AuthController authController = Get.put(AuthController());
-    final textTheme = Theme.of(context).textTheme;
     final size = MediaQuery.of(context).size;
+
     return Obx(() {
       return Scaffold(
         backgroundColor: AppColors.scaffoldColor,
@@ -45,32 +41,27 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 12),
-                Text(userController.userName.value,style: textTheme.subtitle1),
+                Text(userController.userName.value,style: AppTextStyle.subTitleTxtStyle1),
                 TextButton(
                  onPressed: () => userController.deleteProfileImage(),
                   style: ButtonStyle(
                       overlayColor: MaterialStatePropertyAll(AppColors.redColor.withOpacity(0.2))
                   ),
-                 child:  Text("حذف تصویر پروفایل",style: textTheme.headline5!.apply(color: AppColors.redColor,fontSizeFactor: 0.7),)),
+                 child:  Text("حذف تصویر پروفایل",style: AppTextStyle.headlineTxtStyle3.apply(color: AppColors.redColor,fontSizeFactor: 0.7),)),
                 const SizedBox(height: 64),
                 const Divider(),
                 UserOptionBtn(
                     size: size,
                     title: 'ویرایش نام کاربری',
                     content: 'جهت ویرایش نام کاربری خود کلیک کنید.',
-                    onTap: () {
-                      changeUsernameBottomSheet(context, userController);
-                    },
-                    textTheme: textTheme),
+                    onTap: () => changeUsernameBottomSheet(context, userController)),
                 const Divider(height: 2),
                 UserOptionBtn(
                     size: size,
                     title: 'تغییر عکس پروفایل',
                     content: 'جهت تغییر تصویر پروفایل خود کلیک کنید.',
-                    onTap: () {
-                      userController.changeProfileImage(ImageSource.gallery);
-                    },
-                    textTheme: textTheme),
+                    onTap: () => userController.changeProfileImage(ImageSource.gallery)
+                ),
                 const Divider(height: 1),
 
               ],

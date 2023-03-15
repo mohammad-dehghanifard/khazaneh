@@ -1,9 +1,9 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:khazaneh/core/constant/colors/app_colors.dart';
 import 'package:khazaneh/controller/transaction/transaction_controller.dart';
+import 'package:khazaneh/core/constant/style/text_style.dart';
 
 class AppChart extends StatefulWidget {
   const AppChart({super.key});
@@ -17,7 +17,6 @@ class PieChart2State extends State {
   final TransactionController transactionController = Get.put(TransactionController());
   @override
   Widget build(BuildContext context) {
-    final TextTheme textTheme = Theme.of(context).textTheme;
     return AspectRatio(
       aspectRatio: 1.3,
       child: Container(
@@ -31,11 +30,10 @@ class PieChart2State extends State {
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children:  <Widget>[
+              children:  const <Widget>[
                 Indicator(
                   color: AppColors.greenColor,
                   text: 'دریافتی امسال',
-                  textTheme: textTheme,
                   isSquare: false,
                 ),
                 SizedBox(
@@ -44,7 +42,6 @@ class PieChart2State extends State {
                 Indicator(
                   color: AppColors.redColor,
                   text: 'پرداختی های امسال',
-                  textTheme: textTheme,
                   isSquare: false,
                 ),
                 SizedBox(
@@ -136,7 +133,6 @@ class Indicator extends StatelessWidget {
     super.key,
     required this.color,
     required this.text,
-    required this.textTheme,
     required this.isSquare,
     this.size = 16,
   });
@@ -144,7 +140,6 @@ class Indicator extends StatelessWidget {
   final String text;
   final bool isSquare;
   final double size;
-  final  textTheme;
 
 
   @override
@@ -164,7 +159,7 @@ class Indicator extends StatelessWidget {
         ),
         Text(
           text,
-          style: textTheme.bodyText1,
+          style: AppTextStyle.regularTxtStyle,
         )
       ],
     );

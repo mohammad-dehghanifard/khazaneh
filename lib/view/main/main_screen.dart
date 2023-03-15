@@ -7,6 +7,7 @@ import 'package:khazaneh/core/components/widget/btns/navigation_bottom_widget.da
 import 'package:khazaneh/core/constant/routes/app_route.dart';
 import 'package:khazaneh/controller/home/home_controller.dart';
 import 'package:khazaneh/controller/navigation/navigation_controller.dart';
+import 'package:khazaneh/core/constant/style/text_style.dart';
 import 'package:khazaneh/gen/assets.gen.dart';
 import 'package:khazaneh/view/home/home_screen.dart';
 import 'package:khazaneh/view/profile/profile_screen.dart';
@@ -21,7 +22,7 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Theme.of(context).textTheme;
+    //TextTheme textTheme = Theme.of(context).textTheme;
     final NavigationController navigationController = Get.put(NavigationController());
     return Obx(
       () {
@@ -53,50 +54,50 @@ class MainScreen extends StatelessWidget {
                   DrawerHeader(child: Image.asset(Assets.icons.khazanehlogo.path)),
                   ListTile(
                     title: Text("لیست تراکنش ها",
-                        style: textTheme.bodyText2),
+                        style: AppTextStyle.defaultTxtStyle),
                     subtitle: Text(
                       "مشاهده لیست کامل تراکنش ها",
-                      style: Theme.of(context).textTheme.subtitle1!.apply(fontSizeFactor: 0.8),
+                      style: AppTextStyle.subTitleTxtStyle1.apply(fontSizeFactor: 0.8),
                     ),
                     onTap: () => Get.toNamed(RouteAPP.routeTransactionListScreen),
                   ),
                   const Divider(color: AppColors.lightGrayColor),
                   ListTile(
                     title: Text("آمار تراکنش ها",
-                        style: textTheme.bodyText2),
+                        style: AppTextStyle.defaultTxtStyle),
                     subtitle: Text(
                       "مشاهده آمار کامل تراکنش های اضافه شده",
-                      style: Theme.of(context).textTheme.subtitle1!.apply(fontSizeFactor: 0.8),
+                      style: AppTextStyle.subTitleTxtStyle1.apply(fontSizeFactor: 0.8),
                     ),
                     onTap: () => Get.toNamed(RouteAPP.routeTransactionInformationScreen),
                   ),
                   const Divider(color: AppColors.lightGrayColor,height: 1,),
                   ListTile(
                     title: Text("درباره برنامه",
-                        style: textTheme.bodyText2),
+                        style: AppTextStyle.defaultTxtStyle),
                     subtitle: Text(
                       "معرفی برنامه و برنامه نویس خزانه",
-                      style: Theme.of(context).textTheme.subtitle1!.apply(fontSizeFactor: 0.8),
+                      style: AppTextStyle.subTitleTxtStyle1.apply(fontSizeFactor: 0.8),
                     ),
                     onTap: () => Get.toNamed(RouteAPP.creatorMainScreen),
                   ),
                   const Divider(color: AppColors.lightGrayColor,height: 0.9,),
                   ListTile(
                     title: Text("اشتراک گذاری",
-                        style: textTheme.bodyText2),
+                        style: AppTextStyle.defaultTxtStyle),
                     subtitle: Text(
                       "خزانه رو به دوستات معرفی کن",
-                      style: Theme.of(context).textTheme.subtitle1!.apply(fontSizeFactor: 0.8),
+                      style: AppTextStyle.subTitleTxtStyle1.apply(fontSizeFactor: 0.8),
                     ),
                     onTap: () => homeController.shareApp(),
                   ),
                   const Divider(height: 0.5,color: AppColors.lightGrayColor),
                   ListTile(
                     title: Text("راهنما",
-                        style: textTheme.bodyText2),
+                        style: AppTextStyle.defaultTxtStyle),
                     subtitle: Text(
                       "راهنمای استفاده از برنامه",
-                      style: Theme.of(context).textTheme.subtitle1!.apply(fontSizeFactor: 0.8),
+                      style: AppTextStyle.subTitleTxtStyle1.apply(fontSizeFactor: 0.8),
                     ),
                     onTap: () => Get.toNamed(RouteAPP.routeHelpScreen),
                   ),

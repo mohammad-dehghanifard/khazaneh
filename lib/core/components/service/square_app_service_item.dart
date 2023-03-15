@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:khazaneh/core/constant/colors/app_colors.dart';
 import 'package:khazaneh/core/components/widget/snackbars/show_snack_bar.dart';
+import 'package:khazaneh/core/constant/style/text_style.dart';
 
 class SquareAppServicesItem extends StatelessWidget {
   const SquareAppServicesItem(
@@ -28,7 +29,6 @@ class SquareAppServicesItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return InkWell(
       borderRadius: BorderRadius.circular(16),
       onTap: () {
@@ -54,7 +54,7 @@ class SquareAppServicesItem extends StatelessWidget {
                     width: 68,
                   ),
                   const SizedBox(width: 2),
-                  Text(title,style: textTheme.bodyText2!.apply(color: Colors.white),),
+                  Text(title,style: AppTextStyle.defaultTxtStyle.apply(color: Colors.white),),
                 ],
               )
             : Stack(
@@ -75,7 +75,7 @@ class SquareAppServicesItem extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(title,style: textTheme.bodyText2!.apply(color: Colors.white),),
+                              Text(title,style: AppTextStyle.defaultTxtStyle.apply(color: Colors.white),),
                             ],
                           )
                         ],
@@ -91,10 +91,7 @@ class SquareAppServicesItem extends StatelessWidget {
                           color: AppColors.textColor.withOpacity(0.8)),
                       child: Text(
                         "بزودی....",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText2!
-                            .copyWith(fontSize: 28,color: Colors.white),
+                        style: AppTextStyle.defaultTxtStyle.copyWith(fontSize: 28,color: Colors.white),
                       )),
                 ],
               ),

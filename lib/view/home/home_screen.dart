@@ -11,6 +11,7 @@ import 'package:khazaneh/core/components/service/app_service_item.dart';
 import 'package:khazaneh/core/constant/routes/app_route.dart';
 import 'package:khazaneh/controller/transaction/transaction_controller.dart';
 import 'package:khazaneh/controller/user/user_controller.dart';
+import 'package:khazaneh/core/constant/style/text_style.dart';
 import 'package:khazaneh/gen/assets.gen.dart';
 import 'package:khazaneh/model/transaction/transaction_model.dart';
 
@@ -22,7 +23,7 @@ class HomeScreen extends StatelessWidget {
     final UserController userController = Get.put(UserController());
     final TransactionController transactionController = Get.put(TransactionController());
     final size = MediaQuery.of(context).size;
-    final textTheme = Theme.of(context).textTheme;
+
     return Obx(() {
       return Scaffold(
         backgroundColor: AppColors.scaffoldColor,
@@ -60,13 +61,11 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("${userController.userName.value} عزیز ",style: Theme.of(context).textTheme.subtitle1,),
+                      Text("${userController.userName.value} عزیز ",style: AppTextStyle.subTitleTxtStyle1),
                       const SizedBox(height: 2),
                       Text(
                           "به اپلیکیشن خزانه خوش آمدید!",
-                          style: Theme.of(context)
-                              .textTheme
-                              .subtitle1
+                          style: AppTextStyle.subTitleTxtStyle1
                       )
                     ],
                   )
@@ -82,13 +81,13 @@ class HomeScreen extends StatelessWidget {
                   SquareAppServicesItem(width: size.width / 2.2,height: size.height / 7.6,title: "آمار تراکنش ها", icon: Assets.icons.financeGrowth.path, comingSoon: false,color: AppColors.yellowColor, pathUrl: RouteAPP.routeTransactionInformationScreen,data: null,),
                 ],
               ),
-              AppServicesItem(width: size.width / 1,height: size.height / 9.8,title: "مدیریت اقساط",description: 'اقساط ماهانه خود را به سادگی مدیریت کنید!', icon: Assets.icons.wallet.path, comingSoon: true,color: AppColors.redColor, pathUrl: null,data: null,),
+              AppServicesItem(width: size.width / 1,height: size.height / 9.8,title: "سایر خدمات",description: 'مدیریت اقساط، محسابه سود،سیستم محسابه دنگ و...', icon: Assets.icons.money.path, comingSoon: true,color: AppColors.redColor, pathUrl: null,data: null,),
               SizedBox(height: size.width * 0.01),
 
               // پنج تراکنش اخیر
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text("تراکنش های اخیر",style: textTheme.bodyText1),
+                child: Text("تراکنش های اخیر",style: AppTextStyle.regularTxtStyle),
               ),
               ValueListenableBuilder(
                   valueListenable: transactionController.transactionHiveBox.listenable(),
@@ -111,7 +110,7 @@ class HomeScreen extends StatelessWidget {
                               itemCount: items.length,
                               itemBuilder: (context, index) {
                                 final item = items[index];
-                                return TransActionHomeItem(size: size, item: item, textTheme: textTheme);
+                                return TransActionHomeItem(size: size, item: item);
                               },
                           ),
                           Positioned(

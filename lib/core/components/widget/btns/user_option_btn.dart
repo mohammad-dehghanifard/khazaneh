@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:khazaneh/core/constant/colors/app_colors.dart';
+import 'package:khazaneh/core/constant/style/text_style.dart';
 
 class UserOptionBtn extends StatelessWidget {
   const UserOptionBtn({
@@ -8,12 +9,10 @@ class UserOptionBtn extends StatelessWidget {
     required this.title,
     required this.content,
     required this.onTap,
-    required this.textTheme,
   }) : super(key: key);
   final String title;
   final String content;
   final Function() onTap;
-  final TextTheme textTheme;
   final Size size;
 
   @override
@@ -31,9 +30,9 @@ class UserOptionBtn extends StatelessWidget {
            Column(
              crossAxisAlignment: CrossAxisAlignment.start,
              children: [
-               Text(title,style: textTheme.bodyText1),
+               Text(title,style: AppTextStyle.regularTxtStyle),
                const SizedBox(height: 8),
-               Text(content,style: textTheme.subtitle1!.apply(fontSizeFactor: 0.9)),
+               Text(content,style: AppTextStyle.subTitleTxtStyle1.apply(fontSizeFactor: 0.9)),
              ],
            ),
            const Icon(Icons.arrow_forward_ios,color: AppColors.lightGrayColor),

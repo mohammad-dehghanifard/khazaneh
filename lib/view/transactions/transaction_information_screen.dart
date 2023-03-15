@@ -9,6 +9,7 @@ import 'package:khazaneh/core/components/widget/charts/chart_widget.dart';
 import 'package:khazaneh/core/components/widget/labels/price_label.dart';
 import 'package:khazaneh/core/constant/margin/app_margin.dart';
 import 'package:khazaneh/controller/transaction/transaction_controller.dart';
+import 'package:khazaneh/core/constant/style/text_style.dart';
 
 class TransactionInformation  extends StatelessWidget {
    TransactionInformation({Key? key}) : super(key: key);
@@ -16,7 +17,6 @@ class TransactionInformation  extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).textTheme;
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColors.scaffoldColor,
@@ -55,7 +55,7 @@ class TransactionInformation  extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 12),
-                    Center(child: Text('دریافتی ها',style: theme.headline5!.apply(color: AppColors.greenColor))),
+                    Center(child: Text('دریافتی ها',style: AppTextStyle.headlineTxtStyle3.apply(color: AppColors.greenColor))),
                     const SizedBox(height: 8),
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12),
@@ -66,11 +66,11 @@ class TransactionInformation  extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.fade,
                         text: TextSpan(
-                            text: AppStrings.todayReceiptTxt,style: theme.headline5!.copyWith(fontSize: 16),
+                            text: AppStrings.todayReceiptTxt,style: AppTextStyle.headlineTxtStyle3.copyWith(fontSize: 16),
                           children: [
                             TextSpan(
                               text: ' ${transactionController.receiptTodayCalculator().separator}'.withPriceLable,
-                              style: theme.headline2!.copyWith(color: AppColors.greenColor,fontSize: 14)
+                              style: AppTextStyle.headlineTxtStyle2.copyWith(color: AppColors.greenColor,fontSize: 14)
                             )
                           ]
                         ),
@@ -80,11 +80,11 @@ class TransactionInformation  extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.fade,
                         text: TextSpan(
-                            text: AppStrings.monthReceiptTxt,style: theme.headline5!.copyWith(fontSize: 16),
+                            text: AppStrings.monthReceiptTxt,style: AppTextStyle.headlineTxtStyle3.copyWith(fontSize: 16),
                           children: [
                             TextSpan(
                               text: ' ${transactionController.receiptMothCalculator().separator}'.withPriceLable,
-                              style: theme.headline5!.copyWith(color: AppColors.greenColor,fontSize: 14)
+                              style: AppTextStyle.headlineTxtStyle3.copyWith(color: AppColors.greenColor,fontSize: 14)
                             )
                           ]
                         ),
@@ -94,11 +94,11 @@ class TransactionInformation  extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.fade,
                       text: TextSpan(
-                          text: AppStrings.yearReceiptTxt,style: theme.headline5!.copyWith(fontSize: 16),
+                          text: AppStrings.yearReceiptTxt,style: AppTextStyle.headlineTxtStyle3.copyWith(fontSize: 16),
                           children: [
                             TextSpan(
                                 text: ' ${transactionController.receiptYearCalculator().separator}'.withPriceLable,
-                                style: theme.headline5!.copyWith(color: AppColors.greenColor,fontSize: 14)
+                                style: AppTextStyle.headlineTxtStyle3.copyWith(color: AppColors.greenColor,fontSize: 14)
                             )
                           ]
                       ),
@@ -125,7 +125,7 @@ class TransactionInformation  extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 12),
-                    Center(child: Text('پرداختی ها',style: theme.headline5!.apply(color: AppColors.redColor))),
+                    Center(child: Text('پرداختی ها',style: AppTextStyle.headlineTxtStyle3.apply(color: AppColors.redColor))),
                     const SizedBox(height: 8),
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12),
@@ -136,11 +136,11 @@ class TransactionInformation  extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.fade,
                       text: TextSpan(
-                          text: AppStrings.todayPaymentTxt,style: theme.headline5!.copyWith(fontSize: 16),
+                          text: AppStrings.todayPaymentTxt,style: AppTextStyle.headlineTxtStyle3.copyWith(fontSize: 16),
                           children: [
                             TextSpan(
                                 text: ' ${transactionController.paymentTodayCalculator().separator}'.withPriceLable,
-                                style: theme.headline5!.copyWith(color: AppColors.redColor,fontSize: 14)
+                                style: AppTextStyle.headlineTxtStyle3.copyWith(color: AppColors.redColor,fontSize: 14)
                             )
                           ]
                       ),
@@ -150,11 +150,11 @@ class TransactionInformation  extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.fade,
                       text: TextSpan(
-                          text: AppStrings.monthPaymentTxt,style: theme.headline5!.copyWith(fontSize: 16),
+                          text: AppStrings.monthPaymentTxt,style: AppTextStyle.headlineTxtStyle3.copyWith(fontSize: 16),
                           children: [
                             TextSpan(
                                 text: ' ${transactionController.paymentMothCalculator().separator}'.withPriceLable,
-                                style: theme.headline5!.copyWith(color: AppColors.redColor,fontSize: 14)
+                                style: AppTextStyle.headlineTxtStyle3.copyWith(color: AppColors.redColor,fontSize: 14)
                             )
                           ]
                       ),
@@ -164,11 +164,11 @@ class TransactionInformation  extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.fade,
                       text: TextSpan(
-                          text: AppStrings.yearPaymentTxt,style: theme.headline5!.copyWith(fontSize: 16),
+                          text: AppStrings.yearPaymentTxt,style: AppTextStyle.headlineTxtStyle3.copyWith(fontSize: 16),
                           children: [
                             TextSpan(
                                 text: ' ${transactionController.paymentYearCalculator().separator}'.withPriceLable,
-                                style: theme.headline5!.copyWith(color: AppColors.redColor,fontSize: 14)
+                                style: AppTextStyle.headlineTxtStyle3.copyWith(color: AppColors.redColor,fontSize: 14)
                             )
                           ]
                       ),

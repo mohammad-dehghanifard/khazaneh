@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:khazaneh/core/constant/colors/app_colors.dart';
 import 'package:khazaneh/core/constant/strings/app_strings.dart';
 import 'package:khazaneh/core/components/appbars/secondary_appbar.dart';
 import 'package:khazaneh/core/components/widget/btns/creator_social_btn.dart';
 import 'package:khazaneh/controller/creator/creator_controller.dart';
+import 'package:khazaneh/core/constant/style/text_style.dart';
 import 'package:khazaneh/gen/assets.gen.dart';
 
 class CreatorScreen extends StatelessWidget {
@@ -15,7 +14,7 @@ class CreatorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+    //final textTheme = Theme.of(context).textTheme;
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColors.scaffoldColor,
@@ -45,11 +44,11 @@ class CreatorScreen extends StatelessWidget {
               RichText(
                   text: TextSpan(
                       text: 'محمد دهقانی فرد',
-                      style: textTheme.bodyText2,
+                      style: AppTextStyle.defaultTxtStyle,
                       children: [
                         TextSpan(
                           text: ' /برنامه نویس موبایل',
-                          style: textTheme.subtitle1!.apply(fontSizeFactor: 0.8)
+                          style: AppTextStyle.subTitleTxtStyle1.apply(fontSizeFactor: 0.8)
                         )
                       ]
                   ),
@@ -59,7 +58,7 @@ class CreatorScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(16),
                 child: Text(
                   AppStrings.creatorDescription,
-                  style: textTheme.subtitle2,
+                  style: AppTextStyle.headlineTxtStyle2,
                   textAlign: TextAlign.justify,
                 ),
               ),
@@ -72,21 +71,18 @@ class CreatorScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     CreatorSocialBtn(
-                        textTheme: textTheme,
                         color: AppColors.redColor,
                         title: 'وب سایت',
                         icon: Assets.icons.mywebsite.path,
                         onTap: () => creatorController.lunchUrl(url: 'https://dehghanifard.ir'),
                     ),
                     CreatorSocialBtn(
-                        textTheme: textTheme,
                         color: AppColors.primaryColor,
                         title: 'تلگرام',
                         icon: Assets.icons.telegram.path,
                         onTap: () => creatorController.lunchUrl(url: 'https://t.me/Mohammad_df'),
                     ),
                     CreatorSocialBtn(
-                        textTheme: textTheme,
                         color: AppColors.yellowColor,
                         title: 'اینستاگرام',
                         icon: Assets.icons.instagram.path,

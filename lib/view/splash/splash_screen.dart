@@ -1,13 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:khazaneh/core/constant/colors/app_colors.dart';
 import 'package:khazaneh/core/constant/strings/app_strings.dart';
 import 'package:khazaneh/core/constant/routes/app_route.dart';
 import 'package:khazaneh/core/constant/keys/database_key.dart';
 import 'package:khazaneh/controller/user/user_controller.dart';
+import 'package:khazaneh/core/constant/style/text_style.dart';
 import 'package:khazaneh/gen/assets.gen.dart';
 
 
@@ -44,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
               const SpinKitFadingCube(size: 30,color: AppColors.primaryColor,),
                Padding(
                 padding: const EdgeInsets.only(bottom: 16),
-                child: Text(AppStrings.appVersionTxt,style: Theme.of(context).textTheme.bodyText1),
+                child: Text(AppStrings.appVersionTxt,style: AppTextStyle.regularTxtStyle),
               ),
             ],
           ),

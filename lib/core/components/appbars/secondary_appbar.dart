@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:khazaneh/gen/fonts.gen.dart';
 
 AppBar secondaryAppBar({required String pageTitle}) {
@@ -18,7 +16,6 @@ AppBar secondaryAppBar({required String pageTitle}) {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children:  [
-
             InkWell(
                 onTap: () => Get.back(),
                 child: const Icon(Icons.arrow_forward_ios, size: 22,color: Colors.black,)
