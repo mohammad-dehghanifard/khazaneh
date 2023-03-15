@@ -2,17 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:khazaneh/constant/colors/app_colors.dart';
-import 'package:khazaneh/components/widget/snackbars/show_snack_bar.dart';
+import 'package:khazaneh/core/constant/colors/app_colors.dart';
+import 'package:khazaneh/core/components/widget/snackbars/show_snack_bar.dart';
 
-
-class AppServicesItem extends StatelessWidget {
-  const AppServicesItem(
+class SquareAppServicesItem extends StatelessWidget {
+  const SquareAppServicesItem(
       {Key? key,
       required this.width,
       required this.height,
       required this.title,
-      required this.description,
       required this.icon,
       required this.comingSoon,
       required this.color,
@@ -22,7 +20,6 @@ class AppServicesItem extends StatelessWidget {
   final double width;
   final double height;
   final title;
-  final description;
   final icon;
   final comingSoon;
   final Color color;
@@ -32,7 +29,6 @@ class AppServicesItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final size = MediaQuery.of(context).size;
     return InkWell(
       borderRadius: BorderRadius.circular(16),
       onTap: () {
@@ -49,29 +45,16 @@ class AppServicesItem extends StatelessWidget {
             color: color,
             borderRadius: BorderRadius.circular(12)),
         child: comingSoon == false
-            ? Row(
+            ? Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 // service Icon
                 children: [
                   Image.asset(
                     icon,
-                    width: 60,
+                    width: 68,
                   ),
-                  const SizedBox(width: 4),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 2),
-                      Text(title,style: textTheme.bodyText2!.apply(color: Colors.white),),
-                      const SizedBox(height: 3,),
-                      SizedBox(
-                          width: size.width / 1.4,
-                          height: size.height / 16,
-                          child: Text(description,style: textTheme.subtitle1!.apply(color: Colors.white,fontSizeFactor: 0.8),)),
-                      //const SizedBox(height: 4,),
-                    ],
-                  )
+                  const SizedBox(width: 2),
+                  Text(title,style: textTheme.bodyText2!.apply(color: Colors.white),),
                 ],
               )
             : Stack(
@@ -93,8 +76,6 @@ class AppServicesItem extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(title,style: textTheme.bodyText2!.apply(color: Colors.white),),
-                              const SizedBox(height: 6,),
-                              Text(description,style: textTheme.subtitle1!.apply(color: Colors.white,fontSizeFactor: 0.8),),
                             ],
                           )
                         ],

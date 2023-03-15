@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:khazaneh/constant/keys/database_key.dart';
+import 'package:khazaneh/core/constant/keys/database_key.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:khazaneh/model/transaction/transaction_model.dart';
 import 'package:share_plus/share_plus.dart';
@@ -14,7 +14,7 @@ shareApp() => Share.share(
     
 دانلود از مایکت :
     
-https://myket.ir/app/com.deheghanifard.khazaneh
+https://cafebazaar.ir/app/com.deheghanifard.khazaneh
     """
 );
 

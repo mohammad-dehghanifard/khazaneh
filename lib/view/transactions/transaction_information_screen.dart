@@ -2,12 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:khazaneh/constant/colors/app_colors.dart';
-import 'package:khazaneh/constant/strings/app_strings.dart';
-import 'package:khazaneh/components/appbars/secondary_appbar.dart';
-import 'package:khazaneh/components/widget/charts/chart_widget.dart';
-import 'package:khazaneh/components/widget/labels/price_label.dart';
-import 'package:khazaneh/constant/margin/app_margin.dart';
+import 'package:khazaneh/core/constant/colors/app_colors.dart';
+import 'package:khazaneh/core/constant/strings/app_strings.dart';
+import 'package:khazaneh/core/components/appbars/secondary_appbar.dart';
+import 'package:khazaneh/core/components/widget/charts/chart_widget.dart';
+import 'package:khazaneh/core/components/widget/labels/price_label.dart';
+import 'package:khazaneh/core/constant/margin/app_margin.dart';
 import 'package:khazaneh/controller/transaction/transaction_controller.dart';
 
 class TransactionInformation  extends StatelessWidget {

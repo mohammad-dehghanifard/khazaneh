@@ -2,7 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:khazaneh/constant/colors/app_colors.dart';
+import 'package:khazaneh/core/constant/colors/app_colors.dart';
 import 'package:khazaneh/controller/transaction/transaction_controller.dart';
 
 class AppChart extends StatefulWidget {

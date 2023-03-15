@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:khazaneh/constant/routes/app_route.dart';
+import 'package:khazaneh/core/constant/colors/app_colors.dart';
+import 'package:khazaneh/core/constant/routes/app_route.dart';
 import 'package:khazaneh/controller/home/home_controller.dart';
 import 'package:khazaneh/gen/fonts.gen.dart';
 import 'package:khazaneh/view/transactions/add_edit_transaction_screen.dart';
@@ -14,7 +15,6 @@ import 'package:khazaneh/view/splash/splash_screen.dart';
 import 'package:khazaneh/view/transactions/transaction_information_screen.dart';
 import 'package:khazaneh/view/transactions/transaction_list_screen.dart';
 
-import 'constant/colors/app_colors.dart';
 
 void main() async {
   final HomeController homeController = Get.put(HomeController());

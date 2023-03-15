@@ -1,5 +1,5 @@
 class AppStrings {
-  static const appVersionTxt = "نسخه : 1.0.0";
+  static const appVersionTxt = "نسخه : 1.0.1";
   static const selectImageTxt = "افزودن تصویر پروفایل";
   static const receiptBtnTxt = "دریافتی";
   static const paymentBtnTxt = "پرداختی";

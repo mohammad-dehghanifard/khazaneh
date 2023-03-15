@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:khazaneh/constant/colors/app_colors.dart';
+import 'package:khazaneh/core/constant/colors/app_colors.dart';
 
 class UserOptionBtn extends StatelessWidget {
   const UserOptionBtn({

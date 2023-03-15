@@ -3,14 +3,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:khazaneh/components/widget/btns/navigation_bottom_widget.dart';
-import 'package:khazaneh/constant/routes/app_route.dart';
+import 'package:khazaneh/core/components/widget/btns/navigation_bottom_widget.dart';
+import 'package:khazaneh/core/constant/routes/app_route.dart';
 import 'package:khazaneh/controller/home/home_controller.dart';
 import 'package:khazaneh/controller/navigation/navigation_controller.dart';
 import 'package:khazaneh/gen/assets.gen.dart';
 import 'package:khazaneh/view/home/home_screen.dart';
 import 'package:khazaneh/view/profile/profile_screen.dart';
-import '../../constant/colors/app_colors.dart';
+import '../../core/constant/colors/app_colors.dart';
 
 
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
