@@ -1,4 +1,6 @@
 import 'package:get/state_manager.dart';
+import 'package:khazaneh/core/components/widget/snackbars/show_snack_bar.dart';
+import 'package:khazaneh/core/constant/colors/app_colors.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 class CalculateController extends GetxController{
@@ -39,7 +41,11 @@ calculate(){
     double calculateResult = expression.evaluate(EvaluationType.REAL, contextModel);
     userOutput.value = calculateResult.toString();
   }catch(e){
-
+    showSnackBar(
+      title: "خطا",
+      content: "متاسفانه خطایی رخ داده است، مجدد امتحان کنید",
+      backgroundColor: AppColors.redColor
+    );
   }
 }
 //حذف تمام اطلاعات

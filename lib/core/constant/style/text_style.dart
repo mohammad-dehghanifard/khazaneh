@@ -49,6 +49,11 @@ class AppTextStyle{
       fontWeight: FontWeight.w200,
       color: AppColors.lightGrayColor
   );
+  static TextStyle calculateBtnTxtStyle = TextStyle(
+      fontFamily: defaultFontFamily,
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: AppColors.textColor);
 
 
 }
