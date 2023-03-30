@@ -4,13 +4,13 @@ import 'package:get_storage/get_storage.dart';
 import 'package:khazaneh/core/constant/colors/app_colors.dart';
 import 'package:khazaneh/core/constant/routes/app_route.dart';
 import 'package:khazaneh/controller/home/home_controller.dart';
+import 'package:khazaneh/view/calculator/calculator_screen.dart';
 import 'package:khazaneh/view/transactions/add_edit_transaction_screen.dart';
 import 'package:khazaneh/view/details/creator_screen.dart';
 import 'package:khazaneh/view/details/help_screen.dart';
 import 'package:khazaneh/view/home/home_screen.dart';
 import 'package:khazaneh/view/main/main_screen.dart';
 import 'package:khazaneh/view/register/register_screen.dart';
-import 'package:khazaneh/view/splash/splash_screen.dart';
 import 'package:khazaneh/view/transactions/transaction_information_screen.dart';
 import 'package:khazaneh/view/transactions/transaction_list_screen.dart';
 
@@ -60,6 +60,6 @@ class MyApp extends StatelessWidget {
 
           primarySwatch: Colors.blue,
         ),
-        home: const SplashScreen());
+        home: const CalculatorScreen());
   }
 }
