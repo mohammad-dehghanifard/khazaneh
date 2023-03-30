@@ -33,13 +33,14 @@ final List<String> operators = [
 // محسابه کردن
 calculate(){
   try{
-    String result = userOutput.value;
+    String result = userInput.value;
     result = result.replaceAll("x", "*");
     Parser parser = Parser();
     Expression expression = parser.parse(result);
     ContextModel contextModel = ContextModel();
     double calculateResult = expression.evaluate(EvaluationType.REAL, contextModel);
     userOutput.value = calculateResult.toString();
+    update();
   }catch(e){
     showSnackBar(
       title: "خطا",
@@ -62,6 +63,12 @@ deleteLastNumber(){
 }
 //فشرده شدن دکمه ها
 onBtnPressed(int index) => userInput.value += operators[index];
-
+// تشخیص عملگر ها از عدد
+bool isOperator(String input) {
+    if (input == "%" || input == "/" || input == "x" || input == "-" || input == "+" || input == "=") {
+      return true;
+    }
+    return false;
+  }
 
 }
