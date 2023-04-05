@@ -30,16 +30,29 @@ class CalculatorScreen extends StatelessWidget {
                     height: size.height * 0.2,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         //user input
                         Text(controller.userInput.value,style: AppTextStyle.defaultTxtStyle.copyWith(fontSize: 26)),
                         const SizedBox(height: 10),
-                        //user output
-                        Text(controller.userOutput.value,style: AppTextStyle.defaultTxtStyle.copyWith(fontSize: 32,color: AppColors.redColor)),
+                        // user output
+                        RichText(
+                            text: controller.userOutput.value != ''? TextSpan(
+                              text: " = ",
+                              style: AppTextStyle.defaultTxtStyle.copyWith(fontSize: 24,color: AppColors.redColor),
+                              children: [
+                                // show user output txt
+                                TextSpan(
+                                    text: controller.userOutput.value,
+                                    style: AppTextStyle.defaultTxtStyle.copyWith(fontSize: 32,color: AppColors.redColor)),
+                              ]
+                            ) : const TextSpan()
+                        )
                       ],
                     ),
                   ),
                   SizedBox(height: size.height * 0.09),
+                  // btn list
                   Expanded(
                       child: Container(
                        decoration: const BoxDecoration(
@@ -58,6 +71,7 @@ class CalculatorScreen extends StatelessWidget {
                                  return CalculatorBtn(
                                      bgColor: AppColors.scaffoldColor,
                                      text: controller.operators[index],
+                                     fontSize: 18,
                                      textColor: AppColors.greenColor,
                                      onTap: () => controller.clearInputAndOutPut());
                                case 1 :
@@ -65,6 +79,7 @@ class CalculatorScreen extends StatelessWidget {
                                  return CalculatorBtn(
                                      bgColor: AppColors.scaffoldColor,
                                      text: controller.operators[index],
+                                     fontSize: 18,
                                      textColor: AppColors.greenColor,
                                      onTap: () => controller.deleteLastNumber());
                                case 19 :
@@ -72,12 +87,14 @@ class CalculatorScreen extends StatelessWidget {
                                  return CalculatorBtn(
                                      bgColor: AppColors.scaffoldColor,
                                      text: controller.operators[index],
+                                     fontSize: 16,
                                      textColor: AppColors.redColor,
                                      onTap: () => controller.calculate());
                                default:
                                  return CalculatorBtn(
                                      bgColor: AppColors.scaffoldColor,
                                      text: controller.operators[index],
+                                     fontSize: 16,
                                      textColor: controller.isOperator(controller.operators[index]) ? Colors.red : Colors.black,
                                      onTap: () => controller.onBtnPressed(index));
                              }
@@ -93,3 +110,4 @@ class CalculatorScreen extends StatelessWidget {
     );
   }
 }
+

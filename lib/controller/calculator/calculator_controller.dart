@@ -4,7 +4,7 @@ import 'package:khazaneh/core/constant/colors/app_colors.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 class CalculateController extends GetxController{
-RxString userInput = "0".obs;
+RxString userInput = "".obs;
 RxString userOutput = "".obs;
 
 final List<String> operators = [
@@ -35,6 +35,7 @@ calculate(){
   try{
     String result = userInput.value;
     result = result.replaceAll("x", "*");
+    result = result.replaceAll("%", "/");
     Parser parser = Parser();
     Expression expression = parser.parse(result);
     ContextModel contextModel = ContextModel();
