@@ -44,24 +44,27 @@ class _AddOrEditTransactionState extends State<AddOrEditTransaction> {
                 children: [
                   Image.asset(Assets.icons.khazanehlogo.path),
                   const SizedBox(height: 28),
-                  //قسمت دریافت عنوان و مبلغ
+                  //input title text field
                   SizedBox(
                     height: 50,
                     child: TextField(
                       controller: transactionController.transactionTitleController,
                       decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.all(3),
                           hintText: "عنوان را وارد کنید",
                           hintStyle: AppTextStyle.subTitleTxtStyle1,
                       ),
                     ),
                   ),
                   const SizedBox(height: 18),
+                  // input price text field
                   SizedBox(
                     height: 50,
                     child: TextField(
                       controller: transactionController.transactionPriceController,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.all(3),
                           hintText: "مبلغ را وارد کنید",
                           hintStyle: AppTextStyle.subTitleTxtStyle1,
                           fillColor: AppColors.darkGrayColor
@@ -69,7 +72,7 @@ class _AddOrEditTransactionState extends State<AddOrEditTransaction> {
                     ),
                   ),
                   const SizedBox(height: 18),
-                  //قسمت تاریخ
+                  //input date text field
                   Row(
                     children: [
                       Expanded(child: SizedBox(
@@ -77,6 +80,7 @@ class _AddOrEditTransactionState extends State<AddOrEditTransaction> {
                         child: TextField(
                           controller: transactionController.transactionTimeController,
                           decoration: const InputDecoration(
+                            contentPadding:  EdgeInsets.all(3),
                             hintText: 'تاریخ را وارد کنید'
                           ),
                         ),

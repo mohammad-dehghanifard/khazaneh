@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:khazaneh/core/animations/slide_in_animation.dart';
 import 'package:khazaneh/core/constant/colors/app_colors.dart';
 import 'package:khazaneh/core/constant/strings/app_strings.dart';
 import 'package:khazaneh/core/constant/routes/app_route.dart';
@@ -39,7 +40,11 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const SizedBox(),
-              Image.asset(Assets.icons.khazanehlogo.path),
+              SlideInAnimation(
+                   animDirection: AxisDirection.left,
+                    animDuration: const Duration(milliseconds: 500),
+                  child: Image.asset(Assets.icons.khazanehlogo.path)
+              ),
               const SpinKitFadingCube(size: 30,color: AppColors.primaryColor,),
                Padding(
                 padding: const EdgeInsets.only(bottom: 16),
