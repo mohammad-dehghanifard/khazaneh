@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:khazaneh/core/animations/slide_in_animation.dart';
 import 'package:khazaneh/core/components/widget/btns/navigation_bottom_widget.dart';
 import 'package:khazaneh/core/constant/routes/app_route.dart';
 import 'package:khazaneh/controller/home/home_controller.dart';
@@ -34,15 +35,25 @@ class MainScreen extends StatelessWidget {
             elevation: 0,
             automaticallyImplyLeading: false,
             actions: [
-              IconButton(
-                  onPressed:() {
-                    scaffoldKey.currentState?.openDrawer();
-                  },
-                  icon: const Icon(CupertinoIcons.list_bullet_indent,color: AppColors.primaryColor,) ),
+              SlideInAnimation(
+                animDirection: AxisDirection.left,
+                slideAnimDuration: const Duration(milliseconds: 1300),
+                opacityAnimDuration: const Duration(milliseconds: 1000),
+                child: IconButton(
+                    onPressed:() {
+                      scaffoldKey.currentState?.openDrawer();
+                    },
+                    icon: const Icon(CupertinoIcons.list_bullet_indent,color: AppColors.primaryColor,) ),
+              ),
               Expanded(child: SizedBox(width: MediaQuery.of(context).size.width,)),
-              IconButton(
-                  onPressed: () => Get.toNamed(RouteAPP.routeHelpScreen),
-                  icon: const Icon(Icons.help_sharp,size: 28,color: AppColors.redColor,) ),
+              SlideInAnimation(
+                animDirection: AxisDirection.right,
+                slideAnimDuration: const Duration(milliseconds: 1300),
+                opacityAnimDuration: const Duration(milliseconds: 1000),
+                child: IconButton(
+                    onPressed: () => Get.toNamed(RouteAPP.routeHelpScreen),
+                    icon: const Icon(Icons.help_sharp,size: 28,color: AppColors.redColor,) ),
+              ),
             ],
           ),
           drawer: Drawer(

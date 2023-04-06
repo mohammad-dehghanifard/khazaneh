@@ -24,6 +24,7 @@ class ProfileScreen extends StatelessWidget {
           child: Center(
             child: Column(
               children: [
+                // user image
                 Container(
                   width: 150,
                   height: 150,
@@ -41,7 +42,9 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 12),
+                // username
                 Text(userController.userName.value,style: AppTextStyle.subTitleTxtStyle1),
+                // delete profile image btn
                 TextButton(
                  onPressed: () => userController.deleteProfileImage(),
                   style: ButtonStyle(
@@ -50,12 +53,14 @@ class ProfileScreen extends StatelessWidget {
                  child:  Text("حذف تصویر پروفایل",style: AppTextStyle.headlineTxtStyle3.apply(color: AppColors.redColor,fontSizeFactor: 0.7),)),
                 const SizedBox(height: 64),
                 const Divider(),
+                // change username
                 UserOptionBtn(
                     size: size,
                     title: 'ویرایش نام کاربری',
                     content: 'جهت ویرایش نام کاربری خود کلیک کنید.',
                     onTap: () => changeUsernameBottomSheet(context, userController)),
                 const Divider(height: 2),
+                // change image
                 UserOptionBtn(
                     size: size,
                     title: 'تغییر عکس پروفایل',

@@ -2,6 +2,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:khazaneh/core/animations/opcity_animation.dart';
 import 'package:khazaneh/core/animations/slide_in_animation.dart';
 import 'package:khazaneh/core/components/service/square_app_service_item.dart';
 import 'package:khazaneh/core/constant/colors/app_colors.dart';
@@ -110,7 +111,11 @@ class HomeScreen extends StatelessWidget {
               // پنج تراکنش اخیر
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text("تراکنش های اخیر",style: AppTextStyle.regularTxtStyle),
+                child: OpacityAnimation(
+                    duration: const Duration(milliseconds: 1500),
+                    startValue: 0,
+                    endValue: 1,
+                    child: Text("تراکنش های اخیر",style: AppTextStyle.regularTxtStyle)),
               ),
               SlideInAnimation(
                   animDirection: AxisDirection.left,

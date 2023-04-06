@@ -45,9 +45,9 @@ class TransactionListScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final item = items[index];
                         return SlideInAnimation(
-                            animDirection: index / 4 == 0? AxisDirection.left : AxisDirection.right,
+                            animDirection: index % 2 == 0? AxisDirection.left : AxisDirection.right,
                             slideAnimDuration: const Duration(milliseconds: 1000),
-                            opacityAnimDuration: const Duration(milliseconds: 600),
+                            opacityAnimDuration: const Duration(milliseconds: 1000),
                             child: TransactionListItem(transactionEntity: item));
                       },
                     );
