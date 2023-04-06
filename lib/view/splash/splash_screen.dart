@@ -42,7 +42,8 @@ class _SplashScreenState extends State<SplashScreen> {
               const SizedBox(),
               SlideInAnimation(
                    animDirection: AxisDirection.left,
-                    animDuration: const Duration(milliseconds: 500),
+                    slideAnimDuration: const Duration(milliseconds: 800),
+                    opacityAnimDuration: const Duration(milliseconds: 400),
                   child: Image.asset(Assets.icons.khazanehlogo.path)
               ),
               const SpinKitFadingCube(size: 30,color: AppColors.primaryColor,),

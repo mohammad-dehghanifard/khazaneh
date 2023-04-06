@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:khazaneh/core/animations/slide_in_animation.dart';
 import 'package:khazaneh/core/components/widget/empty_state/empty_state.dart';
 import 'package:khazaneh/core/constant/colors/app_colors.dart';
 import 'package:khazaneh/core/components/appbars/secondary_appbar.dart';
@@ -43,7 +44,11 @@ class TransactionListScreen extends StatelessWidget {
                       itemCount: items.length,
                       itemBuilder: (context, index) {
                         final item = items[index];
-                        return TransactionListItem(transactionEntity: item);
+                        return SlideInAnimation(
+                            animDirection: index / 4 == 0? AxisDirection.left : AxisDirection.right,
+                            slideAnimDuration: const Duration(milliseconds: 1000),
+                            opacityAnimDuration: const Duration(milliseconds: 600),
+                            child: TransactionListItem(transactionEntity: item));
                       },
                     );
                   } else{
