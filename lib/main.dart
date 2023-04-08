@@ -4,6 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:khazaneh/core/constant/colors/app_colors.dart';
 import 'package:khazaneh/core/constant/routes/app_route.dart';
 import 'package:khazaneh/controller/home/home_controller.dart';
+import 'package:khazaneh/view/more_service/main_screen/more_service_main.dart';
 import 'package:khazaneh/view/splash/splash_screen.dart';
 import 'package:khazaneh/view/transactions/add_edit_transaction_screen.dart';
 import 'package:khazaneh/view/details/creator_screen.dart';
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: RouteAPP.routeTransactionInformationScreen, page: () =>  TransactionInformation()),
         GetPage(name: RouteAPP.routeMainScreen, page: () =>  MainScreen()),
         GetPage(name: RouteAPP.creatorMainScreen, page: () =>  CreatorScreen()),
-        GetPage(name: RouteAPP.routeHelpScreen, page: () =>   HelpScreen()),
+        GetPage(name: RouteAPP.routeHelpScreen, page: () =>  HelpScreen()),
+        GetPage(name: RouteAPP.moreServiceMainScreen, page: () => const MainMoreService()),
         ],
         theme: ThemeData(
           elevatedButtonTheme: ElevatedButtonThemeData(

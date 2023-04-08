@@ -105,7 +105,7 @@ class HomeScreen extends StatelessWidget {
                   animDirection: AxisDirection.right,
                   slideAnimDuration: const Duration(milliseconds: 1750),
                   opacityAnimDuration: const Duration(milliseconds: 1000),
-                  child: AppServicesItem(width: size.width / 1,height: size.height / 9.8,title: "سایر خدمات",description: 'مدیریت اقساط، محسابه سود،سیستم محسابه دنگ و...', icon: Assets.icons.money.path, comingSoon: true,color: AppColors.redColor, pathUrl: null,data: null,)),
+                  child: AppServicesItem(width: size.width / 1,height: size.height / 9.8,title: "سایر خدمات",description: 'مدیریت اقساط، محسابه سود، ماشین حساب ،سیستم محسابه دنگ و...', icon: Assets.icons.money.path, comingSoon: false,color: AppColors.redColor, pathUrl: RouteAPP.moreServiceMainScreen,data: null,)),
               SizedBox(height: size.width * 0.01),
 
               // پنج تراکنش اخیر

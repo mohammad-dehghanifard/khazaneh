@@ -21,6 +21,7 @@ class HelpScreen extends StatelessWidget {
           children: [
             Expanded(
               child: PageView(
+                physics: const BouncingScrollPhysics(),
                 controller: controller.pageController,
                 children: controller.pages,
               ),
@@ -28,6 +29,7 @@ class HelpScreen extends StatelessWidget {
            Row(
              mainAxisAlignment: MainAxisAlignment.spaceBetween,
              children: [
+               // back btn
                ElevatedButton(
                    onPressed: () {
                      controller.pageController.animateToPage(controller.pageController.page!.round() - 1, duration: const Duration(milliseconds: 300),  curve: Curves.easeIn);
@@ -36,6 +38,7 @@ class HelpScreen extends StatelessWidget {
                      minimumSize: MaterialStatePropertyAll(Size(64,48))
                    ),
                    child: const Icon(Icons.arrow_back)),
+               // go to next page btn
                ElevatedButton(
                    onPressed: () {
                      controller.pageController.animateToPage(controller.pageController.page!.round() + 1, duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
