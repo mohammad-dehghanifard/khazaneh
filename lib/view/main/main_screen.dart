@@ -23,7 +23,6 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TextTheme textTheme = Theme.of(context).textTheme;
     final NavigationController navigationController = Get.put(NavigationController());
     return Obx(
       () {

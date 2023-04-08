@@ -25,6 +25,7 @@ class _AddOrEditTransactionState extends State<AddOrEditTransaction> {
 
   @override
   void initState() {
+    // دریافت مدل
     transactionController.transactionEntity.value = Get.arguments;
     transactionController.setUpdateData();
     super.initState();
