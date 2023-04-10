@@ -21,7 +21,6 @@ class HelpScreen extends StatelessWidget {
           children: [
             Expanded(
               child: PageView(
-                physics: const BouncingScrollPhysics(),
                 controller: controller.pageController,
                 children: controller.pages,
               ),

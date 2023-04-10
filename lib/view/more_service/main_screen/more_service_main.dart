@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:khazaneh/core/animations/slide_in_animation.dart';
 import 'package:khazaneh/core/components/appbars/secondary_appbar.dart';
 import 'package:khazaneh/core/components/items/more_service_item.dart';
 import 'package:khazaneh/core/constant/colors/app_colors.dart';
+import 'package:khazaneh/core/constant/routes/app_route.dart';
 
 class MainMoreService extends StatelessWidget {
   const MainMoreService({Key? key}) : super(key: key);
@@ -28,7 +30,7 @@ class MainMoreService extends StatelessWidget {
                   size: size,
                   icon: Icons.calculate,
                   title: 'ماشین حساب',
-                  onTap: () {},
+                  onTap: () => Get.toNamed(RouteAPP.profitCalculationScreen),
               ),
             );
           },

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:khazaneh/controller/calculator/calculator_controller.dart';
+import 'package:khazaneh/core/components/appbars/secondary_appbar.dart';
 import 'package:khazaneh/core/components/widget/calculator/calculator_btn.dart';
 import 'package:khazaneh/core/constant/colors/app_colors.dart';
 import 'package:khazaneh/core/constant/style/text_style.dart';
@@ -13,6 +14,7 @@ class CalculatorScreen extends StatelessWidget {
     final CalculateController controller = Get.put(CalculateController());
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: secondaryAppBar(pageTitle: 'ماشین حساب'),
       backgroundColor: AppColors.scaffoldColor,
       body: Directionality(
         textDirection: TextDirection.ltr,

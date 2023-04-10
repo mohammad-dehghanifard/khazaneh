@@ -8,4 +8,6 @@ class RouteAPP {
   static const routeHelpScreen = "/routeProfileScreen";
   static const creatorMainScreen = "/routeCreatorScreen";
   static const moreServiceMainScreen = "/moreServiceMainScreen";
+  static const calculateScreen = "/calculateScreen";
+  static const profitCalculationScreen = "/profitCalculationScreen";
 }
