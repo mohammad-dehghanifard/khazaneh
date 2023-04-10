@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 class ProfitCalculationController extends GetxController {
   TextEditingController calculationTextController = TextEditingController();
+  TextEditingController profitTextController = TextEditingController();
 
 //نتیجه محاسبه سود روزانه
   RxInt profitOneDayCalculationResult = 0.obs;
