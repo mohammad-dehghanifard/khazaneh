@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:khazaneh/controller/profit_calculation_controller/profit_calculation_controller.dart';
 import 'package:khazaneh/core/animations/slide_in_animation.dart';
 import 'package:khazaneh/core/components/appbars/secondary_appbar.dart';
@@ -18,7 +17,8 @@ class ProfitCalculationScreen extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     final ProfitCalculationController profitController = Get.put(ProfitCalculationController());
     return Obx(
-      (){ return Scaffold(
+      (){
+        return Scaffold(
         backgroundColor: AppColors.scaffoldColor,
         appBar: secondaryAppBar(pageTitle: 'محسابه سود بانکی'),
         body: Padding(
@@ -26,7 +26,7 @@ class ProfitCalculationScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Image.asset(Assets.icons.financeGrowth.path),
+                Image.asset(Assets.icons.profiticon.path,height: size.height / 5,),
                 SizedBox(height: size.height * 0.06,),
                 // دریافت مبلغ کل سرمایه از کاربر
                 SizedBox(
@@ -90,7 +90,7 @@ class ProfitCalculationScreen extends StatelessWidget {
                               text: AppStrings.profitDayTxt,style: AppTextStyle.headlineTxtStyle3.copyWith(fontSize: 16),
                               children: [
                                 TextSpan(
-                                    text: ' ${profitController.profitOneDayCalculationResult.value}'.withPriceLable,
+                                    text: ' ${profitController.profitOneDayCalculationResult.value.separator}'.withPriceLable,
                                     style: AppTextStyle.headlineTxtStyle3.copyWith(color: AppColors.greenColor,fontSize: 14)
                                 )
                               ]
@@ -105,7 +105,7 @@ class ProfitCalculationScreen extends StatelessWidget {
                               text: AppStrings.profit30DayTxt,style: AppTextStyle.headlineTxtStyle3.copyWith(fontSize: 16),
                               children: [
                                 TextSpan(
-                                    text: ' ${profitController.profit30DayCalculationResult.value}'.withPriceLable,
+                                    text: ' ${profitController.profit30DayCalculationResult.value.separator}'.withPriceLable,
                                     style: AppTextStyle.headlineTxtStyle3.copyWith(color: AppColors.greenColor,fontSize: 14)
                                 )
                               ]
@@ -120,7 +120,7 @@ class ProfitCalculationScreen extends StatelessWidget {
                               text: AppStrings.profit31DayTxt,style: AppTextStyle.headlineTxtStyle3.copyWith(fontSize: 16),
                               children: [
                                 TextSpan(
-                                    text: ' ${profitController.profit31DayCalculationResult.value}'.withPriceLable,
+                                    text: ' ${profitController.profit31DayCalculationResult.value.separator}'.withPriceLable,
                                     style: AppTextStyle.headlineTxtStyle3.copyWith(color: AppColors.greenColor,fontSize: 14)
                                 )
                               ]
@@ -135,7 +135,7 @@ class ProfitCalculationScreen extends StatelessWidget {
                               text: AppStrings.profitYearTxt,style: AppTextStyle.headlineTxtStyle3.copyWith(fontSize: 16),
                               children: [
                                 TextSpan(
-                                    text: ' ${profitController.profitYearCalculationResult.value}'.withPriceLable,
+                                    text: ' ${profitController.profitYearCalculationResult.value.separator}'.withPriceLable,
                                     style: AppTextStyle.headlineTxtStyle3.copyWith(color: AppColors.greenColor,fontSize: 14)
                                 )
                               ]
@@ -147,7 +147,7 @@ class ProfitCalculationScreen extends StatelessWidget {
                 ),
                 SizedBox(height: size.height * 0.04),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => profitController.calculationProfit(),
                     style: ButtonStyle(
                         minimumSize: MaterialStatePropertyAll(Size(size.width,size.height * 0.06))
                     ),

@@ -5,7 +5,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
 
@@ -38,6 +38,10 @@ class $AssetsIconsGen {
   AssetGenImage get mywebsite =>
       const AssetGenImage('assets/icons/mywebsite.png');
 
+  /// File path: assets/icons/profiticon.png
+  AssetGenImage get profiticon =>
+      const AssetGenImage('assets/icons/profiticon.png');
+
   /// File path: assets/icons/telegram.png
   AssetGenImage get telegram =>
       const AssetGenImage('assets/icons/telegram.png');
@@ -54,6 +58,7 @@ class $AssetsIconsGen {
         instagram,
         khazanehlogo,
         mywebsite,
+        profiticon,
         telegram,
         wallet
       ];

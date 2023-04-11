@@ -29,6 +29,7 @@ class MainMoreService extends StatelessWidget {
               child: MoreServiceItem(
                   size: size,
                   icon: Icons.calculate,
+                  route: '',
                   title: 'ماشین حساب',
                   onTap: () => Get.toNamed(RouteAPP.profitCalculationScreen),
               ),

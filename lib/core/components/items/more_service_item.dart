@@ -9,12 +9,14 @@ class MoreServiceItem extends StatelessWidget {
     required this.size,
     required this.icon,
     required this.title,
+    required this.route,
     required this.onTap,
   });
 
   final Size size;
   final IconData icon;
   final String title;
+  final String route;
   final Function() onTap;
 
   @override

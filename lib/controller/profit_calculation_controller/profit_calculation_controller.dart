@@ -17,12 +17,21 @@ class ProfitCalculationController extends GetxController {
 // نتیجه محاسبه سود سالانه
   RxInt profitYearCalculationResult = 0.obs;
 
-  //محسابقه سود روزانه
-  calculationOneDayProfit(){}
-  // محسابه سود 30 روز
-  calculation30DayProfit(){}
-  // محسابه سود 31 روز
-  calculation31DayProfit(){}
-  // محسابه سود سالانه
-  calculationYearProfit(){}
+  //محسابه سود
+  calculationProfit(){
+    int totalAmount = int.parse(calculationTextController.text);
+    int profit = int.parse(profitTextController.text);
+
+    // محسابه سود سالانه
+    int result = totalAmount * profit ~/ 100;
+    profitYearCalculationResult.value = result;
+    // محسابه سود ماهانه
+    profit30DayCalculationResult.value = result ~/ 12;
+    // محسابه سود روزانه
+    profitOneDayCalculationResult.value = profit30DayCalculationResult.value ~/ 30;
+    // محسابه سود 31 روز
+    profit31DayCalculationResult.value = (profit30DayCalculationResult.value + profitOneDayCalculationResult.value).toInt();
+  }
+
+
 }
